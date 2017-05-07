@@ -2,16 +2,16 @@
   <div class="layout">
     <Row type="flex">
       <i-col :span="5" class="layout-menu-left">
-        <Menu active-name="1" theme="dark" width="auto">
+        <Menu :active-name="defaultActive" theme="dark" width="auto">
           <div class="layout-logo-left">微型问卷系统</div>
           <router-link to="/platform/list">
-            <Menu-item name="1">
+            <Menu-item name="/platform/list">
               <Icon type="ios-paper"></Icon>
               <span class="layout-text">我的问卷</span>
             </Menu-item>
           </router-link>
           <router-link to="/platform/new">
-            <Menu-item name="2">
+            <Menu-item name="/platform/new">
               <Icon type="android-create"></Icon>
               <span class="layout-text">新建问卷</span>
             </Menu-item>
@@ -37,8 +37,15 @@
 
 <script>
   export default {
-    data () {
-      return {}
+    computed: {
+      defaultActive () {
+        console.log(this.$route.matched[1])
+        if (this.$route.matched.length > 1) {
+          return this.$route.matched[1].path
+        } else {
+          return this.$route.path
+        }
+      }
     },
     methods: {
       logout () {

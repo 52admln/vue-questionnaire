@@ -16,3 +16,5 @@ new Vue({
   router,
   ...App
 }).$mount('#app')
+
+// router.push('/platform')

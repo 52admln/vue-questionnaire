@@ -18,29 +18,31 @@ let router = new Router({
     },
     {
       path: '/platform',
-      name: 'Layout',
+      name: 'Platform Layout',
       component: Layout,
       redirect: '/platform/list',
       children: [
         {
           path: 'list',
-          name: 'list',
+          name: 'Naire List',
           component: List,
           meta: {requiresAuth: true}
         },
         {
           path: 'new',
-          name: 'new',
+          name: 'New Layout',
           component: NewLayout,
           meta: {requiresAuth: true},
           children: [
             {
               path: '/',
+              name: 'New Naire',
               component: New,
               meta: {requiresAuth: true}
             },
             {
               path: 'edit',
+              name: 'Edit Question',
               component: Edit,
               meta: {requiresAuth: true}
             }

@@ -48,7 +48,7 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
             this.$Message.success('登录成功!')
-            this.$router.push('/index')
+            this.$router.push('/platform')
           }
         })
       }

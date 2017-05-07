@@ -7,6 +7,8 @@
         "q_id": 1,
         "isRequired": true,
         "type": "单选",
+        "selectContent": "选项4",
+        "additional": "附加说明1",
         "options": [
           {
             "content": "选项1",
@@ -26,6 +28,10 @@
         "q_id": 2,
         "isRequired": true,
         "type": "多选",
+        "selectMultipleContent": [
+          "选项1",
+          "选项2"
+        ],
         "options": [
           {
             "content": "选项1",
@@ -45,7 +51,7 @@
         "q_id": 3,
         "isRequired": true,
         "type": "文本",
-        "options": []
+        "selectContent": "测试内容"
       }
     ]
   }
