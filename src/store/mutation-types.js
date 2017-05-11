@@ -1,0 +1,2 @@
+// 列出所有的 动作名称
+export const REQUEST_QUESTION_LIST = 'REQUEST_QUESTION_LIST'

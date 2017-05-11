@@ -1,5 +1,5 @@
 <template>
-  <div class="new">
+  <div class="naire-layout">
     <router-view></router-view>
   </div>
 </template>

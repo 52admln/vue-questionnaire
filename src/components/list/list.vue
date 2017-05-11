@@ -1,5 +1,8 @@
 <template>
-  <div class="list">
+  <div class="naire-list">
+    <Row class="naire-btn">
+      <Col span="24"><Button type="primary" @click="newNaire">新建问卷</Button> </Col>
+    </Row>
     <Table border :context="self" :columns="columns7" :data="data6"></Table>
   </div>
 </template>
@@ -77,11 +80,16 @@
       },
       remove (index) {
         this.data6.splice(index, 1)
+      },
+      newNaire () {
+        this.$router.push('/platform/new')
       }
     }
   }
 </script>
 
 <style>
-
+  .naire-btn {
+    padding-bottom: 10px;
+  }
 </style>

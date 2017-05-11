@@ -6,6 +6,7 @@ import List from '@/components/list/list'
 import Edit from '@/components/edit/edit'
 import New from '@/components/edit/new'
 import NewLayout from '@/components/edit/home'
+import View from '@/components/view/view'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ let router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/view/:id',
+      name: 'View',
+      component: View
     },
     {
       path: '/platform',
@@ -30,7 +36,6 @@ let router = new Router({
         },
         {
           path: 'new',
-          name: 'New Layout',
           component: NewLayout,
           meta: {requiresAuth: true},
           children: [

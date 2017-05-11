@@ -1,8 +1,8 @@
 # vue-questionnaire
 
-> A Vue.js project
+> 简易问卷系统
 
-## Build Setup
+## 安装
 
 ``` bash
 # install dependencies
@@ -14,8 +14,26 @@ npm run dev
 # build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## API
+
+## 路由
+
+`/login` 登录
+
+`/platform/list` 问卷列表
+
+`/platform/new` 新建问卷
+
+`/platform/new/edit` 编辑问卷
+
+`/view` 问卷展示
+
+
+## 问题
+
+
+
+
+

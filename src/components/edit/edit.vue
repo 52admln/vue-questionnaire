@@ -6,46 +6,14 @@
       <Button type="primary" @click="addTextarea">文本题</Button>
     </div>
 
-    <Row class="question-wrapper">
-      <Col span="18" class="question-list">
-      <Row type="flex" justify="start" align="top" v-for="(_topic, index) in this.topic" :key="_topic.q_id">
-        <Col span="6" style="width: 60px;">
-        <h2>Q{{ _topic.order }}:</h2></Col>
-        <Col span="18">
-        <h3>{{ _topic.question }}{{_topic.isRequired ? "（必填）" : "（选填）"}}</h3>
-        <div class="question-options">
-          <div class="option-item" v-if="_topic.type === '单选'">
-            <Radio-group v-model="_topic.selectContent" vertical>
-              <Radio :label="option.o_id" v-for="(option, opIndex) in _topic.options" :key="option.o_id">
-                <span>{{option.content}}</span>
-                <Input v-model="_topic.additional"
-                       placeholder="请输入理由"
-                       style="width: 300px"
-                       :disabled="!(option.isAddition && _topic.selectContent === option.o_id)"
-                       v-if="option.isAddition"></Input>
-              </Radio>
-            </Radio-group>
-          </div>
-          <div class="option-item" v-if="_topic.type === '多选'">
-            <Checkbox-group v-model="_topic.selectMultipleContent" class="checkbox-list">
-              <Checkbox
-                :label="option.o_id"
-                v-for="(option, opIndex) in _topic.options"
-                :key="option.o_id">
-                <span>{{option.content}}</span>
-              </Checkbox>
-            </Checkbox-group>
-          </div>
-          <div class="option-item" v-if="_topic.type === '文本'">
-            <Input v-model="_topic.selectContent" type="textarea" :autosize="{minRows: 2,maxRows: 5}"
-                   placeholder="请输入..."></Input>
-          </div>
-        </div>
+    <questionList :question-list="this.questionList">
+      <Row>
+        <Col span="24">
+        <Button>保存问卷</Button>
+        <Button type="success">发布问卷</Button>
         </Col>
       </Row>
-      </Col>
-    </Row>
-
+    </questionList>
 
     <!-- addRadio -->
     <Modal v-model="addRadio_modal"
@@ -149,6 +117,7 @@
 </template>
 
 <script>
+  import questionList from '@/components/common/questionList/questionList'
 
   export default {
     data () {
@@ -170,11 +139,7 @@
         addTextarea_form: {
           title: '文本题目'
         },
-        questionList: [],
-        radio: 'apple',
-        checkbox: [],
-        value8: '',
-        topic: []
+        questionList: []
       }
     },
     methods: {
@@ -252,77 +217,14 @@
       }
     },
     created () {
-      this.topic = [
-        {
-          question: '问题1',
-          order: 1,
-          q_id: 1,
-          isRequired: true,
-          type: '单选',
-          selectContent: '',
-          additional: '',
-          options: [
-            {
-              content: '选项1',
-              o_id: 1,
-              isAddition: true
-            },
-            {
-              content: '选项1',
-              o_id: 2,
-              isAddition: false
-            }
-          ]
-        },
-        {
-          question: '多选问题2',
-          order: 2,
-          q_id: 2,
-          isRequired: true,
-          type: '多选',
-          selectMultipleContent: [],
-          options: [
-            {
-              content: '选项1',
-              o_id: 3,
-              isAddition: false
-            },
-            {
-              content: '选项1',
-              o_id: 4,
-              isAddition: false
-            }
-          ]
-        },
-        {
-          question: '多选多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3多选问题3问题3',
-          order: 22,
-          q_id: 211,
-          isRequired: true,
-          type: '多选',
-          selectMultipleContent: [],
-          options: [
-            {
-              content: '选项1',
-              o_id: 223,
-              isAddition: false
-            },
-            {
-              content: '选项1',
-              o_id: 554,
-              isAddition: false
-            }
-          ]
-        },
-        {
-          question: '文本题3',
-          order: 3,
-          q_id: 3,
-          isRequired: true,
-          type: '文本',
-          selectContent: ''
-        }
-      ]
+      this.$store.dispatch('getQuestionList')
+      console.log(this.$store.getters.questionList)
+      // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
+      let data = JSON.stringify(this.$store.getters.questionList)
+      this.questionList = JSON.parse(data)
+    },
+    components: {
+      questionList
     }
   }
 </script>
