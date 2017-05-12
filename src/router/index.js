@@ -7,6 +7,7 @@ import Edit from '@/components/edit/edit'
 import New from '@/components/edit/new'
 import NewLayout from '@/components/edit/home'
 import View from '@/components/view/view'
+import User from '@/components/user/user'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ let router = new Router({
               meta: {requiresAuth: true}
             }
           ]
+        },
+        {
+          path: 'user',
+          component: User,
+          meta: {requiresAuth: true}
         }
       ]
     }

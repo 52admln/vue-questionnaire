@@ -1,10 +1,10 @@
 const _questionlist = [
   {
-    question: '问题1',
-    order: 1,
     q_id: 1,
+    question: '问题1',
     isRequired: true,
     type: '单选',
+    description: '这个是一段描述文本描述文本描述文本描述文本',
     selectContent: '',
     additional: '',
     options: [
@@ -26,6 +26,7 @@ const _questionlist = [
     q_id: 2,
     isRequired: true,
     type: '多选',
+    description: '这个是一段描述文本描述文本描述文本描述文本',
     selectMultipleContent: [],
     options: [
       {
@@ -46,6 +47,7 @@ const _questionlist = [
     q_id: 211,
     isRequired: true,
     type: '多选',
+    description: '这个是一段描述文本描述文本描述文本描述文本',
     selectMultipleContent: [],
     options: [
       {
@@ -66,6 +68,7 @@ const _questionlist = [
     q_id: 3,
     isRequired: true,
     type: '文本',
+    description: '这个是一段描述文本描述文本描述文本描述文本',
     selectContent: ''
   }
 ]

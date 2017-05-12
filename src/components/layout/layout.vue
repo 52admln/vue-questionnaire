@@ -16,6 +16,12 @@
               <span class="layout-text">新建问卷</span>
             </Menu-item>
           </router-link>
+          <router-link to="/platform/user">
+            <Menu-item name="/platform/user">
+              <Icon type="person"></Icon>
+              <span class="layout-text">用户管理</span>
+            </Menu-item>
+          </router-link>
         </Menu>
       </i-col>
       <i-col :span="19" class="layout-content-right">

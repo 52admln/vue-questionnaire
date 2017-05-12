@@ -6,6 +6,7 @@
       <h2>Q{{ index + 1 }}:</h2></Col>
       <Col span="18">
       <h3>{{ topic.question }}{{topic.isRequired ? "（必填）" : "（选填）"}}</h3>
+      <p class="question-desc">说明：{{ topic.description }}</p>
       <div class="question-options">
         <div class="option-item" v-if="topic.type === '单选'">
           <Radio-group v-model="topic.selectContent" vertical>
@@ -67,6 +68,9 @@
   }
 
   .option-item {
+    padding: 5px 0;
+  }
+  .question-desc {
     padding: 5px 0;
   }
 </style>
