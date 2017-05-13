@@ -11,10 +11,11 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "iview": "^2.0.0-rc.12",
-    "vue": "^2.2.6",
-    "vue-router": "^2.3.1",
-    "vuex": "^2.3.1"
+    "axios": "^0.15.3",
+    "iview": "^2.0.0-rc.7",
+    "vue": "^2.1.10",
+    "vue-router": "^2.2.0",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
