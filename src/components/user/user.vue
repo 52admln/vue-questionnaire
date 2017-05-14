@@ -1,10 +1,10 @@
 <template>
   <div class="user">
     <Row type="flex" justify="start" style="padding-bottom: 10px;">
-      <Col span="2" style="width: 100px;">
+      <Col span="2" style="width: 100px">
       <Button type="primary">新增用户</Button>
       </Col>
-      <Col span="2" style="width: 100px;">
+      <Col span="2" style="width: 100px">
       <Upload
         action="/api/user/upload"
         accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -23,7 +23,7 @@
     <Row>
       <Col span="24">
       <Spin fix v-show="!loading">
-        <Icon type="load-c" size=18   class="demo-spin-icon-load"></Icon>
+        <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
         <div>数据加载中...</div>
       </Spin>
       <Table border :context="self" :columns="tableColumns" :data="userData" v-show="loading"></Table>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+  const OK = 0 // OK
   export default {
     data () {
       return {
@@ -54,55 +55,61 @@
           },
           {
             title: '用户 ID',
-            key: 'user_id'
+            key: 'u_id'
           },
           {
             title: '学号',
-            key: 's_number'
+            key: 'u_number'
           },
           {
             title: '姓名',
-            key: 'name'
+            key: 'u_name'
           },
           {
             title: '性别',
-            key: 'sex'
+            key: 'u_sex',
+            render (row, column, index) {
+              const sex = row.sex === '1' ? '女' : '男'
+              return `${sex}`
+            }
           },
           {
             title: '班级',
-            key: 'classname'
+            key: 'u_class'
           },
           {
             title: '身份证号',
-            key: 'identity'
+            key: 'u_identity'
           },
           {
             title: '出生日期',
-            key: 'birthday'
+            key: 'u_birthday'
           },
           {
             title: '民族',
-            key: 'nation'
+            key: 'u_nation'
           },
           {
             title: '操作',
             key: 'action',
-            width: 180,
-            align: 'center'
+            width: 130,
+            align: 'center',
+            render (row, column, index) {
+              return `<i-button type="primary" size="small" @click="update(${index})">修改</i-button>
+                    <Poptip
+        placement="left"
+        confirm
+        title="您确认删除这条内容吗？"
+        width="200"
+        @on-ok="remove(${index})"
+        @on-cancel="cancel">
+                      <i-button type="error" size="small">删除</i-button> </Poptip>`
+
+                .trim()
+            }
           }
         ],
-        userData: [
-          {
-            user_id: 1,
-            s_number: 201500,
-            name: 'wang',
-            sex: '1',
-            classname: 'class1',
-            identity: 'wdadaefd23423523453',
-            birthday: 'sdasdsadad',
-            nation: 'sdasd'
-          }
-        ],
+        userData: [],
         sexList: [
           {
             value: '0',
@@ -119,45 +126,63 @@
       update () {
         console.log('update')
       },
-      remove () {
+      remove (index) {
+        console.log(index)
+        this.$http.get('/api/user/del', {
+          params: {
+            u_id: this.userData[index].u_id
+          }
+        })
+          .then((response) => {
+            console.log(response.data.data)
+            if (response.data.data > 0 && response.data.err === OK) {
+              this.$Message.success('删除成功')
+              this.userData.splice(index, 1)
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('删除失败')
+          })
+      },
+      cancel () {
         console.log('remove')
       },
       changePage (curPage) {
-        // 这里直接更改了模拟的数据，真实使用场景应该从服务端获取数据
-        // this.userData = this.mockTableData1();
+        // 从服务端获取数据
         console.log(curPage)
         // 往后台传2各参数，每页显示条数和当前页码
-//        this.$http.get('/api/user', {
-//          params: {
-//            current: curPage,
-//            page_size: this.pageSize
-//          }
-//        })
-//          .then((response) => {
-//            this.userData = response.data.data;
-//            this.total = response.data.total;
-//          })
-//          .catch((error) => {
-//            console.log(error);
-//            this.$Message.error('网络错误，请重试');
-//          });
+        this.$http.get('/api/user', {
+          params: {
+            current: curPage,
+            page_size: this.pageSize
+          }
+        })
+          .then((response) => {
+            this.userData = response.data.data
+            this.total = response.data.total
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('网络错误，请重试')
+          })
       },
       getData () {
-//        this.$http.get('/api/user', {
-//          params: {
-//            current: this.currentPage,
-//            page_size: this.pageSize
-//          }
-//        })
-//          .then((response) => {
-//            this.userData = response.data.data;
-//            this.total = response.data.total;
-//            this.loading = true;
-//          })
-//          .catch((error) => {
-//            console.log(error);
-//            this.$Message.error('网络错误，请重试');
-//          });
+        this.$http.get('/api/user', {
+          params: {
+            current: this.currentPage,
+            page_size: this.pageSize
+          }
+        })
+          .then((response) => {
+            this.userData = response.data.data
+            this.total = response.data.total
+            this.loading = true
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('网络错误，请重试')
+          })
       },
       handleFormatError (file) {
         this.$Notice.warning({
@@ -175,6 +200,7 @@
         console.log(response)
         if (response.err === 0) {
           this.$Message.success(response.msg)
+          this.getData()
         } else {
           this.$Message.error('上传出错')
         }

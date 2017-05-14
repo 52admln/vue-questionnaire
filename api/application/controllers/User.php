@@ -4,7 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller
 {
 
+
 	// 获取所有用户
+	public function index() {
+		$this->load->model('user_model');
+
+		$result = $this->user_model->get_users();
+
+		echo json_encode($result);
+	}
+
+
+	// 批量上传用户
 	public function upload()
 	{
 		$this->load->model('user_model');
@@ -63,8 +74,8 @@ class User extends CI_Controller
 				}
 				$strs = explode(",", $strExcel);
 				// var_dump($strs);
-				// todo 往数据库内导入数据
-				// todo 在model层执行数据库语句，返回插入影响行数
+				// 往数据库内导入数据
+				// 执行数据库语句，返回插入影响行数
 				$insert_num = $this->user_model->upload($strs);
 
 				// 如果影响行数大于0，增加1条成功记录
@@ -74,11 +85,21 @@ class User extends CI_Controller
 					$error_result += 1;
 				}
 			}
+			unlink('./uploads/' . $upload_data['raw_name'] . $upload_data['file_ext']);
 			$msg = "插入成功" . $succ_result . "条数据，插入失败" . $error_result . "条数据。";
 		}
 
 		echo json_encode(array("err" => $err_code, "msg" => $msg ));
 	}
 
+	// 删除用户
+	public function del()
+	{
+		$this->load->model('user_model');
+
+		$result = $this->user_model->del_user();
+		echo json_encode($result);
+
+	}
 
 }
