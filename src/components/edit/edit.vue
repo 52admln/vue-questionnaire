@@ -6,7 +6,7 @@
       <Button type="primary" @click="addTextarea">文本题</Button>
     </div>
 
-    <questionList :question-list="this.questionList">
+    <questionList :question-list="this.questionList" :is-preview="true">
       <Row>
         <Col span="24">
         <Button>保存问卷</Button>
@@ -25,6 +25,9 @@
         <Form-item label="题目" prop="title">
           <Input v-model="addRadio_form.title" placeholder="请输入题目内容"></Input>
         </Form-item>
+        <Form-item label="题目说明" prop="description">
+          <Input v-model="addRadio_form.description" placeholder="请输入题目说明，可以为空"></Input>
+        </Form-item>
         <Form-item label="选项" prop="title">
           <div class="option-item" v-for="(option, index) in addRadio_form.options">
             <Row>
@@ -42,11 +45,19 @@
             </Row>
             <div class="option-addtion">
               是否有附加说明内容：
-              <i-switch :model="option.isAddition">
+              <i-switch v-model="option.isAddition">
                 <span slot="open">有</span>
                 <span slot="close">无</span>
               </i-switch>
             </div>
+          </div>
+        </Form-item>
+        <Form-item label="必填项">
+          <div class="option-addtion">
+            <i-switch v-model="addRadio_form.isRequired">
+              <span slot="open">是</span>
+              <span slot="close">否</span>
+            </i-switch>
           </div>
         </Form-item>
       </Form>
@@ -64,6 +75,9 @@
       <Form ref="addCheckbox" :model="addCheckbox_form" :label-width="80" class="form">
         <Form-item label="题目" prop="title">
           <Input v-model="addCheckbox_form.title" placeholder="请输入题目内容"></Input>
+        </Form-item>
+        <Form-item label="题目说明" prop="description">
+          <Input v-model="addCheckbox_form.description" placeholder="请输入题目说明，可以为空"></Input>
         </Form-item>
         <Form-item label="选项" prop="title">
           <div class="option-item" v-for="(option, index) in addCheckbox_form.options">
@@ -83,11 +97,19 @@
             </Row>
             <div class="option-addtion">
               是否有附加说明内容：
-              <i-switch :model="option.isAddition" disabled>
+              <i-switch v-model="option.isAddition" disabled>
                 <span slot="open">有</span>
                 <span slot="close">无</span>
               </i-switch>
             </div>
+          </div>
+        </Form-item>
+        <Form-item label="必填项">
+          <div class="option-addtion">
+            <i-switch v-model="addCheckbox_form.isRequired">
+              <span slot="open">是</span>
+              <span slot="close">否</span>
+            </i-switch>
           </div>
         </Form-item>
       </Form>
@@ -105,6 +127,17 @@
       <Form ref="addTextarea" :model="addTextarea_form" :label-width="80" class="form">
         <Form-item label="题目" prop="title">
           <Input v-model="addTextarea_form.title" placeholder="请输入题目内容"></Input>
+        </Form-item>
+        <Form-item label="题目说明" prop="description">
+          <Input v-model="addTextarea_form.description" placeholder="请输入题目说明，可以为空"></Input>
+        </Form-item>
+        <Form-item label="必填项">
+          <div class="option-addtion">
+            <i-switch v-model="addTextarea_form.isRequired">
+              <span slot="open">是</span>
+              <span slot="close">否</span>
+            </i-switch>
+          </div>
         </Form-item>
       </Form>
       <div slot="footer">
@@ -124,54 +157,81 @@
       return {
         addRadio_modal: false,
         addRadio_loading: false,
-        addRadio_form: {
-          title: '单选题目',
-          options: []
-        },
+        addRadio_form: {},
         addCheckbox_modal: false,
         addCheckbox_loading: false,
-        addCheckbox_form: {
-          title: '多选题目',
-          options: []
-        },
+        addCheckbox_form: {},
         addTextarea_modal: false,
         addTextarea_loading: false,
-        addTextarea_form: {
-          title: '文本题目'
-        },
-        questionList: []
+        addTextarea_form: {}
+      }
+    },
+    computed: {
+      questionList () {
+        let data = this.$store.getters.questionList
+        return JSON.parse(data)
       }
     },
     methods: {
+      // 新建题目
       addRadio () {
         console.log('addRadio')
         this.addRadio_modal = true
+        const radioQues = {
+          title: '单选题目',
+          options: [],
+          description: '',
+          type: '单选',
+          isRequired: true,
+          selectContent: '',
+          additional: ''
+        }
+        this.addRadio_form = Object.assign({}, radioQues)
         const tempData = {
           content: '选项1',
           isAddition: false
         }
-        this.addRadio_form.options.splice(0, this.addRadio_form.options.length, tempData)
+        this.addRadio_form.options.splice(0, this.addRadio_form.options.length, Object.assign({}, tempData))
       },
       addCheckbox () {
         console.log('addCheckbox')
         this.addCheckbox_modal = true
+        const checkboxQues = {
+          title: '多选题目',
+          options: [],
+          description: '',
+          type: '多选',
+          isRequired: true,
+          selectMultipleContent: []
+        }
+        this.addCheckbox_form = Object.assign({}, checkboxQues)
         const tempData = {
           content: '选项1',
           isAddition: false
         }
-        this.addCheckbox_form.options.splice(0, this.addCheckbox_form.options.length, tempData)
+        this.addCheckbox_form.options.splice(0, this.addCheckbox_form.options.length, Object.assign({}, tempData))
       },
       addTextarea () {
         console.log('addTextarea')
         this.addTextarea_modal = true
+        const TextareaQues = {
+          title: '文本题目',
+          description: '',
+          type: '文本',
+          isRequired: true,
+          selectContent: ''
+        }
+        this.addTextarea_form = Object.assign({}, TextareaQues)
       },
+      // 新增选项
       addOption (source) {
         const tempData = {
           content: '选项1',
           isAddition: false
         }
-        source.push(tempData)
+        source.push(Object.assign({}, tempData))
       },
+      // 删除选项
       delOption (source, index) {
         if (source.length > 1) {
           source.splice(index, 1)
@@ -179,10 +239,14 @@
           this.$Message.warning('最后一个啦，不要删除哦')
         }
       },
+      // 提交题目
       submitRadio (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
             console.log(this.addRadio_form)
+            const data = Object.assign({}, this.addRadio_form)
+            this.$store.dispatch('addQuestion', data)
+            this.addRadio_modal = false
           } else {
             this.$Message.error('表单填写有误!')
           }
@@ -192,6 +256,9 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
             console.log(this.addCheckbox_form)
+            const data = Object.assign({}, this.addCheckbox_form)
+            this.$store.dispatch('addQuestion', data)
+            this.addCheckbox_modal = false
           } else {
             this.$Message.error('表单填写有误!')
           }
@@ -201,6 +268,9 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
             console.log(this.addTextarea_form)
+            const data = Object.assign({}, this.addTextarea_form)
+            this.$store.dispatch('addQuestion', data)
+            this.addTextarea_modal = false
           } else {
             this.$Message.error('表单填写有误!')
           }

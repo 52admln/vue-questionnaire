@@ -48,10 +48,10 @@
           {
             title: '操作',
             key: 'action',
-            width: 170,
+            width: 280,
             align: 'center',
             render (row, column, index) {
-              return `<i-button size="small">查看</i-button> <i-button type="primary" size="small">编辑</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`
+              return `<i-button size="small">预览</i-button> <i-button type="success" size="small">获取地址</i-button> <i-button type="warning" size="small">统计</i-button> <i-button type="primary" size="small">编辑</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`
             }
           }
         ],

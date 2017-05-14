@@ -1,2 +1,7 @@
 // 列出所有的 动作名称
 export const REQUEST_QUESTION_LIST = 'REQUEST_QUESTION_LIST'
+
+export const CREATE_NEW_NAIRE = 'CREATE_NEW_NAIRE'
+export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
+export const DEL_QUESTION = 'DEL_QUESTION'
+export const DEL_OPTION = 'DEL_OPTION'

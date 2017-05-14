@@ -28,8 +28,7 @@
     created () {
       this.$store.dispatch('getQuestionList')
       // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
-      let data = JSON.stringify(this.$store.getters.questionList)
-      this.questionList = JSON.parse(data)
+      this.questionList = JSON.parse(this.$store.getters.questionList)
     },
     components: {
       questionList
@@ -40,7 +39,6 @@
 <style>
   .view-layout {
     width: 100%;
-    height: 100%;
     padding: 20px 0;
     background-color: rgb(237, 240, 248);
   }

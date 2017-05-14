@@ -8,6 +8,7 @@ import New from '@/components/edit/new'
 import NewLayout from '@/components/edit/home'
 import View from '@/components/view/view'
 import User from '@/components/user/user'
+import Preview from '@/components/preview/preview'
 
 Vue.use(Router)
 
@@ -58,8 +59,18 @@ let router = new Router({
           path: 'user',
           component: User,
           meta: {requiresAuth: true}
+        },
+        {
+          path: 'preview/:id',
+          component: Preview,
+          meta: {requiresAuth: true}
         }
       ]
+    },
+    {
+      path: '*',
+      name: '未找到页面',
+      redirect: '/platform'
     }
   ]
 })
