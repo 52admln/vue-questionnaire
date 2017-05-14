@@ -23,7 +23,7 @@
     <Row>
       <Col span="24">
       <Spin fix v-show="!loading">
-        <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+        <Icon type="load-c" size=18  class="demo-spin-icon-load"></Icon>
         <div>数据加载中...</div>
       </Spin>
       <Table border :context="self" :columns="tableColumns" :data="userData" v-show="loading"></Table>
@@ -69,7 +69,7 @@
             title: '性别',
             key: 'u_sex',
             render (row, column, index) {
-              const sex = row.sex === '1' ? '女' : '男'
+              const sex = row.u_sex === '1' ? '女' : '男'
               return `${sex}`
             }
           },

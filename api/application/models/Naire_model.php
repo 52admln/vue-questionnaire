@@ -10,9 +10,10 @@ class Naire_model extends CI_Model
 		$this->load->database();
 	}
 
-	// 获取用户
+	// 获取问卷详细信息
 	public function get_naires()
 	{
+		// todo 获取参数 naire id
 		$naire = $this->db->query("select * from naire where naire.n_id = 1")
 			->result_array();
 		$questions = $this->db->query("select * from question where question.n_id = 1")
@@ -29,7 +30,8 @@ class Naire_model extends CI_Model
 			"title" => $naire[0]["n_title"],
 			"creattime" => $naire[0]["n_creattime"],
 			"deadline" => $naire[0]["n_deadline"],
-			"status" => $naire[0]["n_status"]
+			"status" => $naire[0]["n_status"],
+			"intro" => $naire[0]["n_intro"]
 		);
 		foreach ($questions as $questionkey => $questionval) {
 //		  echo var_dump($val);
@@ -59,4 +61,14 @@ class Naire_model extends CI_Model
 
 	}
 
+	public function get_naire_list() {
+
+		$query = $this->db->get('naire');
+		if(!$query) {
+			$err = 1;
+		} else {
+			$err = 0;
+		}
+		return array("err"=> $err, "data" => $query->result_array());
+	}
 }

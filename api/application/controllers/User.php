@@ -30,7 +30,6 @@ class User extends CI_Controller
 		$this->load->library('upload', $config);
 
 		$err_code = 0;
-		$msg = '';
 
 		if (!$this->upload->do_upload('userfile')) {
 			$error = array('error' => $this->upload->display_errors());
