@@ -2,7 +2,7 @@
   <Row class="question-wrapper">
     <Col span="24" class="question-list">
     <p v-if="questionList.length == 0" style="margin: 10px 0">一点东西都没有，赶快点击上方按钮添加题目吧！</p>
-    <Row type="flex" justify="start" align="top" v-for="(topic, index) in questionList" :key="topic.q_id" class="question-item">
+    <Row type="flex" justify="start" align="top" v-for="(topic, index) in questionList" class="question-item" :key="topic.q_id">
       <Col span="6" style="width: 60px; text-align: center">
       <h2>Q{{ index + 1 }}:</h2>
       <div class="question-action" v-show="isPreview" @click="delQuestion(index)">
@@ -10,18 +10,19 @@
       </div>
       </Col>
       <Col span="18">
-      <h3>{{ topic.title }}{{topic.isRequired ? "（必填）" : "（选填）"}}</h3>
+      <h3>{{ topic.question }}{{topic.isRequired ? "（必填）" : "（选填）"}}</h3>
       <p class="question-desc" v-if="topic.description !== ''">说明：{{ topic.description }}</p>
       <div class="question-options">
         <div v-if="topic.type === '单选'">
           <Radio-group v-model="topic.selectContent" vertical style="width: 100%;">
-            <Radio :label="option.o_id" v-for="(option, opIndex) in topic.options" :key="option.o_id" :disabled="isPreview" class="option-item">
+            <Radio :label="option.o_id" v-for="(option, opIndex) in topic.options" :disabled="isPreview" class="option-item" :key="option.o_id">
               <span>{{option.content}}</span>
               <Input v-model="topic.additional"
                      placeholder="请输入理由"
                      style="width: 300px"
                      :disabled="!(option.isAddition && topic.selectContent === option.o_id )"
-                     v-if="option.isAddition"></Input>
+                     v-if="option.isAddition"
+              ></Input>
               <div class="option-action" v-show="isPreview" @click="delOption(index, opIndex)">
                 <Icon type="close" size="16"></Icon>
               </div>
@@ -29,11 +30,12 @@
           </Radio-group>
         </div>
         <div v-if="topic.type === '多选'">
-          <Checkbox-group v-model="topic.selectMultipleContent" class="checkbox-list" >
+          <Checkbox-group v-model="topic.selectMultipleContent" class="checkbox-list">
             <Checkbox
               :label="option.o_id"
               v-for="(option, opIndex) in topic.options"
-              :key="option.o_id" :disabled="isPreview" class="option-item" >
+              :disabled="isPreview"
+              class="option-item" :key="option.o_id">
               <span>{{option.content}}</span>
               <div class="option-action" v-show="isPreview" @click="delOption(index, opIndex)">
                 <Icon type="close" size="16"></Icon>
@@ -79,8 +81,8 @@
 
 <style scoped>
   .question-list {
-    padding: 15px 0;
-    overflow: hidden;
+    padding: 30px 0;
+    overflow: visible;
   }
 
   .checkbox-list label {
@@ -92,7 +94,7 @@
   }
 
   .option-item {
-    padding: 5px 0;
+    margin: 5px 0;
   }
   .question-desc {
     padding: 5px 0;

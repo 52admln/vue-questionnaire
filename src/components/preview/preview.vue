@@ -1,6 +1,6 @@
 <template>
   <div>
-    this is a preview page
+    preview page
   </div>
 </template>
 
@@ -8,6 +8,5 @@
   export default {}
 </script>
 
-<style>
-
+<style scoped>
 </style>

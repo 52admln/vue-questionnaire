@@ -1,15 +1,39 @@
 <template>
   <div class="edit">
-    <div class="add-button">
+    <Row>
+      <Col span="24">
+      <Form :model="formItem" :label-width="80">
+        <Form-item label="问卷名">
+          <Input v-model="formItem.title"
+                 placeholder="问卷名">
+          </Input>
+        </Form-item>
+        <Form-item label="问卷介绍">
+          <Input v-model="formItem.intro"
+                 type="textarea"
+                 :autosize="{minRows: 7,maxRows: 10}"
+                 placeholder="请输入问卷介绍..."></Input>
+        </Form-item>
+      </Form>
+      </Col>
+    </Row>
+    <Row class="add-button" type="flex" justify="center" align="middle">
       <Button type="primary" @click="addRadio">单选题</Button>
       <Button type="primary" @click="addCheckbox">多选题</Button>
       <Button type="primary" @click="addTextarea">文本题</Button>
-    </div>
+    </Row>
 
-    <questionList :question-list="this.questionList" :is-preview="true">
+    <questionList :question-list="this.naire.topic" :is-preview="true">
       <Row>
-        <Col span="24">
-        <Button>保存问卷</Button>
+        <Col span="4" style="margin-right: 10px;">
+        <Date-picker type="date" placeholder="截止日期"
+                     v-model="formItem.deadline"
+                     :editable="false" placement="top"
+                     :options="dateOption">
+        </Date-picker>
+        </Col>
+        <Col span="12">
+        <Button style="margin-right: 10px;" @click="handleSave">保存问卷</Button>
         <Button type="success">发布问卷</Button>
         </Col>
       </Row>
@@ -163,22 +187,44 @@
         addCheckbox_form: {},
         addTextarea_modal: false,
         addTextarea_loading: false,
-        addTextarea_form: {}
+        addTextarea_form: {},
+        formItem: {
+          title: '',
+          deadline: '',
+          intro: ''
+        },
+        dateOption: {
+          disabledDate (date) {
+            return date && date.valueOf() < Date.now() - 86400000
+          }
+        }
       }
     },
     computed: {
-      questionList () {
-        let data = this.$store.getters.questionList
+      naire () {
+        let data = this.$store.getters.naire
+        this.formItem = JSON.parse(data)
         return JSON.parse(data)
       }
     },
+    created () {
+      // 如果id存在，则从服务器获取数据，并展示
+      this.fetchData()
+    },
+    watch: {
+      // 如果路由有变化，会再次执行该方法
+      '$route': 'fetchData'
+    },
     methods: {
+      handleSave () {
+        this.formItem.deadline = new Date(this.formItem.deadline).getTime()
+        this.$store.dispatch('saveNewNaire', this.formItem)
+      },
       // 新建题目
       addRadio () {
-        console.log('addRadio')
         this.addRadio_modal = true
         const radioQues = {
-          title: '单选题目',
+          question: '单选题目',
           options: [],
           description: '',
           type: '单选',
@@ -188,16 +234,15 @@
         }
         this.addRadio_form = Object.assign({}, radioQues)
         const tempData = {
-          content: '选项1',
+          content: '选项',
           isAddition: false
         }
         this.addRadio_form.options.splice(0, this.addRadio_form.options.length, Object.assign({}, tempData))
       },
       addCheckbox () {
-        console.log('addCheckbox')
         this.addCheckbox_modal = true
         const checkboxQues = {
-          title: '多选题目',
+          question: '多选题目',
           options: [],
           description: '',
           type: '多选',
@@ -206,16 +251,15 @@
         }
         this.addCheckbox_form = Object.assign({}, checkboxQues)
         const tempData = {
-          content: '选项1',
+          content: '选项',
           isAddition: false
         }
         this.addCheckbox_form.options.splice(0, this.addCheckbox_form.options.length, Object.assign({}, tempData))
       },
       addTextarea () {
-        console.log('addTextarea')
         this.addTextarea_modal = true
         const TextareaQues = {
-          title: '文本题目',
+          question: '文本题目',
           description: '',
           type: '文本',
           isRequired: true,
@@ -226,7 +270,7 @@
       // 新增选项
       addOption (source) {
         const tempData = {
-          content: '选项1',
+          content: '选项',
           isAddition: false
         }
         source.push(Object.assign({}, tempData))
@@ -243,7 +287,6 @@
       submitRadio (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            console.log(this.addRadio_form)
             const data = Object.assign({}, this.addRadio_form)
             this.$store.dispatch('addQuestion', data)
             this.addRadio_modal = false
@@ -255,7 +298,6 @@
       submitCheckbox (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            console.log(this.addCheckbox_form)
             const data = Object.assign({}, this.addCheckbox_form)
             this.$store.dispatch('addQuestion', data)
             this.addCheckbox_modal = false
@@ -267,7 +309,6 @@
       submitTextarea (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            console.log(this.addTextarea_form)
             const data = Object.assign({}, this.addTextarea_form)
             this.$store.dispatch('addQuestion', data)
             this.addTextarea_modal = false
@@ -276,6 +317,7 @@
           }
         })
       },
+      // 关闭弹框
       closeRadioModal () {
         this.addRadio_modal = false
       },
@@ -284,14 +326,24 @@
       },
       closeTextareaModal () {
         this.addTextarea_modal = false
+      },
+      fetchData () {
+        if (this.$route.params.id) {
+//        this.$store.dispatch('getNaire')
+          this.$store.dispatch('getQuestionList')
+          // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
+        } else {
+          // 新增问卷
+          const _naire = {
+            title: '',
+            deadline: '',
+            intro: '',
+            topic: []
+          }
+          let newNaire = Object.assign({}, _naire)
+          this.$store.dispatch('createNaire', newNaire)
+        }
       }
-    },
-    created () {
-      this.$store.dispatch('getQuestionList')
-      console.log(this.$store.getters.questionList)
-      // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
-      let data = JSON.stringify(this.$store.getters.questionList)
-      this.questionList = JSON.parse(data)
     },
     components: {
       questionList
@@ -300,21 +352,6 @@
 </script>
 
 <style>
-
-  .question-list {
-    padding: 15px 0;
-    overflow: hidden;
-  }
-
-  .checkbox-list label {
-    display: block;
-    height: 30px;
-    line-height: 30px;
-  }
-
-  .question-options {
-    padding: 5px 0;
-  }
 
   .option-btn {
     padding-left: 10px;
@@ -327,6 +364,10 @@
   .option-addtion {
     height: 30px;
     line-height: 30px;
+  }
+
+  .add-button button {
+    margin: 0 10px;
   }
 
 </style>

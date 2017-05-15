@@ -45,6 +45,7 @@ class Naire_model extends CI_Model
 					);
 				}
 			}
+			if($questionval["q_type"] == '单选'){
 			$result['topic'][] = array(
 				"q_id" => $questionval["q_id"],
 				"question" => $questionval["q_content"],
@@ -55,6 +56,27 @@ class Naire_model extends CI_Model
 				"additional" => "",
 				"options" => $temp
 			);
+			} else if($questionval["q_type"] == '多选') {
+				$result['topic'][] = array(
+					"q_id" => $questionval["q_id"],
+					"question" => $questionval["q_content"],
+					"isRequired" => $questionval["q_isrequire"],
+					"type" => $questionval["q_type"],
+					"description" => $questionval["q_description"],
+					"selectMultipleContent" => array(),
+					"additional" => "",
+					"options" => $temp
+				);
+			} else if($questionval["q_type"] == '文本') {
+				$result['topic'][] = array(
+					"q_id" => $questionval["q_id"],
+					"question" => $questionval["q_content"],
+					"isRequired" => $questionval["q_isrequire"],
+					"type" => $questionval["q_type"],
+					"description" => $questionval["q_description"],
+					"selectContent" => "",
+				);
+			}
 		}
 
 		return array("err" => 0, "data" => $result);

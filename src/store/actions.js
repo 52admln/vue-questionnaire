@@ -17,6 +17,13 @@ export const createNaire = ({commit, state}, data) => {
   })
   console.log('commit CREATE_NEW_NAIRE')
 }
+export const saveNewNaire = ({commit, state}, data) => {
+  commit(types.SAVE_NEW_NAIRE, {
+    naire: data
+  })
+  console.log('commit SAVE_NEW_NAIRE')
+}
+
 // 新增问题
 export const addQuestion = ({commit, state}, data) => {
   commit(types.ADD_NEW_QUESTION, {

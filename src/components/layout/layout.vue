@@ -10,8 +10,8 @@
               <span class="layout-text">我的问卷</span>
             </Menu-item>
           </router-link>
-          <router-link to="/platform/new">
-            <Menu-item name="/platform/new">
+          <router-link to="/platform/edit">
+            <Menu-item name="/platform/edit">
               <Icon type="android-create"></Icon>
               <span class="layout-text">新建问卷</span>
             </Menu-item>

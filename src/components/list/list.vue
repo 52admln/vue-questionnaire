@@ -63,7 +63,7 @@
         this.naireList.splice(index, 1)
       },
       newNaire () {
-        this.$router.push('/platform/new')
+        this.$router.push('/platform/edit')
       },
       getData () {
         this.$http.get('/api/naire')

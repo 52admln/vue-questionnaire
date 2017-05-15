@@ -4,8 +4,6 @@ import Login from '@/components/login/login'
 import Layout from '@/components/layout/layout'
 import List from '@/components/list/list'
 import Edit from '@/components/edit/edit'
-import New from '@/components/edit/new'
-import NewLayout from '@/components/edit/home'
 import View from '@/components/view/view'
 import User from '@/components/user/user'
 import Preview from '@/components/preview/preview'
@@ -37,23 +35,16 @@ let router = new Router({
           meta: {requiresAuth: true}
         },
         {
-          path: 'new',
-          component: NewLayout,
-          meta: {requiresAuth: true},
-          children: [
-            {
-              path: '/',
-              name: 'New Naire',
-              component: New,
-              meta: {requiresAuth: true}
-            },
-            {
-              path: 'edit',
-              name: 'Edit Question',
-              component: Edit,
-              meta: {requiresAuth: true}
-            }
-          ]
+          path: 'edit',
+          name: 'Edit Question',
+          component: Edit,
+          meta: {requiresAuth: true}
+        },
+        {
+          path: 'edit/:id',
+          name: 'Edit Detail',
+          component: Edit,
+          meta: {requiresAuth: true}
         },
         {
           path: 'user',
@@ -70,7 +61,7 @@ let router = new Router({
     {
       path: '*',
       name: '未找到页面',
-      redirect: '/platform'
+      redirect: '/404'
     }
   ]
 })
