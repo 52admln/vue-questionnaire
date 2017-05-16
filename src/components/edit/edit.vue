@@ -2,17 +2,19 @@
   <div class="edit">
     <Row>
       <Col span="24">
-      <Form :model="formItem" :label-width="80">
+      <Form :model="naire" :label-width="80">
         <Form-item label="问卷名">
-          <Input v-model="formItem.title"
+          <Input v-model="title"
                  placeholder="问卷名">
           </Input>
         </Form-item>
         <Form-item label="问卷介绍">
-          <Input v-model="formItem.intro"
+          <Input v-model="textarea"
+                 @on-change="updateIntro"
                  type="textarea"
-                 :autosize="{minRows: 7,maxRows: 10}"
-                 placeholder="请输入问卷介绍..."></Input>
+                 :autosize="{minRows:8 ,maxRows: 10}"
+                 placeholder="请输入问卷介绍...">
+          </Input>
         </Form-item>
       </Form>
       </Col>
@@ -23,11 +25,11 @@
       <Button type="primary" @click="addTextarea">文本题</Button>
     </Row>
 
-    <questionList :question-list="this.naire.topic" :is-preview="true">
+    <questionList :question-list="naire.topic" :is-preview="true">
       <Row>
         <Col span="4" style="margin-right: 10px;">
         <Date-picker type="date" placeholder="截止日期"
-                     v-model="formItem.deadline"
+                     v-model="deadline"
                      :editable="false" placement="top"
                      :options="dateOption">
         </Date-picker>
@@ -47,7 +49,7 @@
       <!-- form表单-->
       <Form ref="addRadio" v-model="addRadio_form" :label-width="80" class="form">
         <Form-item label="题目" prop="title">
-          <Input v-model="addRadio_form.title" placeholder="请输入题目内容"></Input>
+          <Input v-model="addRadio_form.question" placeholder="请输入题目内容"></Input>
         </Form-item>
         <Form-item label="题目说明" prop="description">
           <Input v-model="addRadio_form.description" placeholder="请输入题目说明，可以为空"></Input>
@@ -98,7 +100,7 @@
       <!-- form表单-->
       <Form ref="addCheckbox" :model="addCheckbox_form" :label-width="80" class="form">
         <Form-item label="题目" prop="title">
-          <Input v-model="addCheckbox_form.title" placeholder="请输入题目内容"></Input>
+          <Input v-model="addCheckbox_form.question" placeholder="请输入题目内容"></Input>
         </Form-item>
         <Form-item label="题目说明" prop="description">
           <Input v-model="addCheckbox_form.description" placeholder="请输入题目说明，可以为空"></Input>
@@ -150,7 +152,7 @@
       <!-- form表单-->
       <Form ref="addTextarea" :model="addTextarea_form" :label-width="80" class="form">
         <Form-item label="题目" prop="title">
-          <Input v-model="addTextarea_form.title" placeholder="请输入题目内容"></Input>
+          <Input v-model="addTextarea_form.question" placeholder="请输入题目内容"></Input>
         </Form-item>
         <Form-item label="题目说明" prop="description">
           <Input v-model="addTextarea_form.description" placeholder="请输入题目说明，可以为空"></Input>
@@ -188,23 +190,43 @@
         addTextarea_modal: false,
         addTextarea_loading: false,
         addTextarea_form: {},
-        formItem: {
-          title: '',
-          deadline: '',
-          intro: ''
-        },
         dateOption: {
           disabledDate (date) {
             return date && date.valueOf() < Date.now() - 86400000
           }
-        }
+        },
+        textarea: ''
       }
     },
     computed: {
       naire () {
-        let data = this.$store.getters.naire
-        this.formItem = JSON.parse(data)
-        return JSON.parse(data)
+        return this.$store.getters.naire
+      },
+      title: {
+        get () {
+          return this.$store.getters.naire.title
+        },
+        set (value) {
+          this.$store.commit('UPDATE_TITLE', value)
+        }
+      },
+      intro: {
+        get () {
+          this.textarea = this.$store.getters.naire.intro
+          return this.$store.getters.intro
+        },
+        set (value) {
+          this.$store.commit('UPDATE_INTRO', value)
+        }
+      },
+      deadline: {
+        get () {
+          return this.$store.getters.deadline
+        },
+        set (value) {
+          console.log(value)
+          this.$store.commit('UPDATE_DEADLINE', value)
+        }
       }
     },
     created () {
@@ -216,9 +238,23 @@
       '$route': 'fetchData'
     },
     methods: {
+      updateIntro (e) {
+        this.$store.commit('UPDATE_INTRO', e.target.value)
+      },
       handleSave () {
-        this.formItem.deadline = new Date(this.formItem.deadline).getTime()
-        this.$store.dispatch('saveNewNaire', this.formItem)
+        let _axios = this.$store.dispatch('saveNewNaire')
+        _axios.then((response) => {
+          console.log(response.data)
+          if (response.data.err === 0) {
+            this.$Message.success(response.data.data)
+          } else {
+            this.$Message.error(response.data.data)
+          }
+        })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('新建失败，请重试')
+          })
       },
       // 新建题目
       addRadio () {
@@ -331,6 +367,7 @@
         if (this.$route.params.id) {
 //        this.$store.dispatch('getNaire')
           this.$store.dispatch('getQuestionList')
+          this.$store.dispatch('changeStatus', 'update')
           // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
         } else {
           // 新增问卷
@@ -338,10 +375,12 @@
             title: '',
             deadline: '',
             intro: '',
+            status: 0,
             topic: []
           }
           let newNaire = Object.assign({}, _naire)
           this.$store.dispatch('createNaire', newNaire)
+          this.$store.dispatch('changeStatus', 'create')
         }
       }
     },

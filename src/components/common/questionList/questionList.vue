@@ -2,11 +2,12 @@
   <Row class="question-wrapper">
     <Col span="24" class="question-list">
     <p v-if="questionList.length == 0" style="margin: 10px 0">一点东西都没有，赶快点击上方按钮添加题目吧！</p>
-    <Row type="flex" justify="start" align="top" v-for="(topic, index) in questionList" class="question-item" :key="topic.q_id">
+    <Row type="flex" justify="start" align="top" v-for="(topic, index) in questionList" class="question-item"
+         :key="topic.q_id">
       <Col span="6" style="width: 60px; text-align: center">
       <h2>Q{{ index + 1 }}:</h2>
       <div class="question-action" v-show="isPreview" @click="delQuestion(index)">
-        <Icon type="trash-a" size="18" ></Icon>
+        <Icon type="trash-a" size="18"></Icon>
       </div>
       </Col>
       <Col span="18">
@@ -15,7 +16,8 @@
       <div class="question-options">
         <div v-if="topic.type === '单选'">
           <Radio-group v-model="topic.selectContent" vertical style="width: 100%;">
-            <Radio :label="option.o_id" v-for="(option, opIndex) in topic.options" :disabled="isPreview" class="option-item" :key="option.o_id">
+            <Radio :label="option.o_id" v-for="(option, opIndex) in topic.options" :disabled="isPreview"
+                   class="option-item" :key="option.o_id">
               <span>{{option.content}}</span>
               <Input v-model="topic.additional"
                      placeholder="请输入理由"
@@ -96,35 +98,43 @@
   .option-item {
     margin: 5px 0;
   }
+
   .question-desc {
     padding: 5px 0;
   }
+
   .question-action {
     display: none;
     color: #a9afb2;
   }
+
   .question-item {
     padding: 20px 0;
     min-width: 300px;
   }
+
   .question-item:hover {
     background: rgba(238, 238, 238, 0.47);
   }
+
   .question-item:hover .question-action {
     display: block;
     margin-top: 8px;
   }
-  .question-action:hover{
+
+  .question-action:hover {
     color: #018fe5;
     cursor: pointer;
   }
+
   .option-item {
 
-
   }
+
   .question-btns {
     margin-top: 20px;
   }
+
   .option-action {
     display: none;
     margin-left: 100px;
@@ -132,9 +142,11 @@
     text-align: right;
     color: #a9afb2;
   }
+
   .option-action:hover {
     color: #018fe5;
   }
+
   .option-item:hover .option-action {
     display: inline-block;
     cursor: pointer;
