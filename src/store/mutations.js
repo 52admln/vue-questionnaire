@@ -1,9 +1,5 @@
 // 引入 api 接口
-import * as types from '../mutation-types'
-
-const state = {
-  naire: {}
-}
+import * as types from './mutation-types'
 
 const _naire = {
   n_id: '1',
@@ -65,28 +61,22 @@ const _naire = {
     }
   ]
 }
-const getters = {
-  naire: (state) => {
-    return JSON.stringify(state.naire)
-  }
-}
-
-// commit -> mutations 同步
-// dispatch -> actions 异步
-const mutations = {
+export default {
   [types.REQUEST_QUESTION_LIST] (state, action) {
     console.log(state, action)
     // 获取mock数据
     let data = JSON.stringify(_naire)
     state.naire = JSON.parse(data)
   },
-  [types.CREATE_NEW_NAIRE] (state, action) {
-    console.log(state, action)
-    state.naire = action.naire
+  [types.CREATE_NEW_NAIRE] (state, data) {
+    console.log('create new naire', data)
+    // state.naire = data.naire
+    state.naire = {...state.naire, ...data.naire}
   },
-  [types.SAVE_NEW_NAIRE] (state, action) {
-    console.log(state, action)
-    state.naire = action.naire
+  [types.SAVE_NEW_NAIRE] (state, data) {
+    console.log(state, data)
+    // state.naire = action.naire
+    state.naire = {...state.naire, ...data.naire}
   },
   [types.ADD_NEW_QUESTION] (state, action) {
     console.log(state, action)
@@ -99,11 +89,21 @@ const mutations = {
   [types.DEL_OPTION] (state, data) {
     console.log(state, data)
     state.naire.topic[data.index].options.splice(data.opIndex, 1)
+  },
+  [types.CHANGE_STATUS] (state, data) {
+    console.log(state, data)
+    state.status = data
+  },
+  [types.UPDATE_TITLE] (state, data) {
+    // state.title = data
+    state.naire = { ...state.naire, title: data }
+  },
+  [types.UPDATE_INTRO] (state, data) {
+    // state.intro = data
+    state.naire = { ...state.naire, intro: data }
+  },
+  [types.UPDATE_DEADLINE] (state, data) {
+    // state.deadline = data
+    state.naire = { ...state.naire, deadline: data }
   }
-}
-
-export default {
-  state,
-  getters,
-  mutations
 }

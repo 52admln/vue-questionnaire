@@ -1,5 +1,6 @@
 import api from '../api/index'
 import * as types from './mutation-types'
+import axios from 'axios'
 
 // 全局的actions
 
@@ -18,10 +19,15 @@ export const createNaire = ({commit, state}, data) => {
   console.log('commit CREATE_NEW_NAIRE')
 }
 export const saveNewNaire = ({commit, state}, data) => {
-  commit(types.SAVE_NEW_NAIRE, {
-    naire: data
+  // const params = new URLSearchParams()
+  // params.append('naire', JSON.stringify(state.naire))
+  // params.append('status', state.status)
+  // console.log('commit SAVE_NEW_NAIRE', state.naire)
+
+  return axios.post('/api/naire/save', {
+    naire: state.naire,
+    status: state.status
   })
-  console.log('commit SAVE_NEW_NAIRE')
 }
 
 // 新增问题
@@ -40,4 +46,9 @@ export const delQuestion = ({commit, state}, data) => {
 export const delOption = ({commit, state}, data) => {
   commit(types.DEL_OPTION, data)
   console.log('commit DEL_OPTION')
+}
+
+export const changeStatus = ({commit, state}, data) => {
+  commit(types.CHANGE_STATUS, data)
+  console.log('commit CHANGE_STATUS')
 }
