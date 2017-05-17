@@ -1,6 +1,6 @@
 // 引入 api 接口
 import * as types from './mutation-types'
-
+/*
 const _naire = {
   n_id: '1',
   title: '问卷1',
@@ -61,11 +61,12 @@ const _naire = {
     }
   ]
 }
+*/
 export default {
   [types.REQUEST_QUESTION_LIST] (state, action) {
     console.log(state, action)
     // 获取mock数据
-    let data = JSON.stringify(_naire)
+    let data = JSON.stringify(action.naire)
     state.naire = JSON.parse(data)
   },
   [types.CREATE_NEW_NAIRE] (state, data) {

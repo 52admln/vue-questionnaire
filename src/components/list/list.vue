@@ -1,7 +1,9 @@
 <template>
   <div class="naire-list">
     <Row class="naire-btn">
-      <Col span="24"><Button type="primary" @click="newNaire">新建问卷</Button> </Col>
+      <Col span="24">
+      <Button type="primary" @click="newNaire">新建问卷</Button>
+      </Col>
     </Row>
     <Table border :context="self" :columns="columns7" :data="naireList"></Table>
   </div>
@@ -51,7 +53,7 @@
             width: 280,
             align: 'center',
             render (row, column, index) {
-              return `<i-button size="small">预览</i-button> <i-button type="success" size="small">获取地址</i-button> <i-button type="warning" size="small">统计</i-button> <i-button type="primary" size="small">编辑</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`
+              return `<i-button size="small" @click="preview(${row.n_id})">预览</i-button> <i-button type="success" size="small">获取地址</i-button> <i-button type="warning" size="small">统计</i-button> <i-button type="primary" size="small">编辑</i-button> <i-button type="error" size="small" @click="remove(${index})">删除</i-button>`
             }
           }
         ],
@@ -75,6 +77,9 @@
             console.log(error)
             this.$Message.error('网络错误，请重试')
           })
+      },
+      preview (index) {
+        this.$router.push('/view/' + index)
       }
     },
     created () {

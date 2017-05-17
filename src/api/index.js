@@ -1,3 +1,4 @@
+import * as api from 'resource'
 const _questionlist = [
   {
     q_id: 1,
@@ -76,6 +77,7 @@ const _questionlist = [
 export default {
   // quesitonList
   getQuestionList () {
+    api.getNaire.post()
     console.log(_questionlist)
     return _questionlist
   }

@@ -13,18 +13,25 @@ class Naire_model extends CI_Model
 	// 获取问卷详细信息
 	public function get_naires()
 	{
-		// todo 获取参数 naire id
-		$naire = $this->db->query("select * from naire where naire.n_id = 1")
+		// 获取参数 naire id
+		// JSON 反序列化
+		$n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
+		if($n_id == '') {
+			return array("err" => 1, "data" => "请传入参数值");
+		}
+		$naire = $this->db->query("select * from naire where naire.n_id = {$n_id}")
 			->result_array();
-		$questions = $this->db->query("select * from question where question.n_id = 1")
+		$questions = $this->db->query("select * from question where question.n_id = {$n_id}")
 			->result_array();
-		$options = $this->db->query("select * from options where options.n_id = 1")
+		$options = $this->db->query("select * from options where options.n_id = {$n_id}")
 			->result_array();
 
 //		echo var_dump($naire);
 //		echo var_dump($questions);
 //		echo var_dump($options);
-
+		if(empty($naire) || empty($questions) || empty($options)) {
+			return array("err" => 1, "data" => "未获取到相应问卷");
+		}
 		$result = array(
 			"n_id" => $naire[0]["n_id"],
 			"title" => $naire[0]["n_title"],

@@ -1,15 +1,16 @@
-import api from '../api/index'
+// import api from '../api/index'
 import * as types from './mutation-types'
 import axios from 'axios'
 
 // 全局的actions
+// todo 管理员登录时，将 is_admin 设置为 true
 
 // questionList
-export const getQuestionList = ({commit, state}) => {
-  commit(types.REQUEST_QUESTION_LIST, {
-    questionList: api.getQuestionList()
-  })
+export const getNaire = ({commit, state}, data) => {
   console.log('commit REQUEST_QUESTION_LIST')
+  return axios.post('/api/naire/detail', {
+    n_id: data.n_id
+  })
 }
 // 新增问卷
 export const createNaire = ({commit, state}, data) => {
@@ -22,7 +23,7 @@ export const saveNewNaire = ({commit, state}, data) => {
   // const params = new URLSearchParams()
   // params.append('naire', JSON.stringify(state.naire))
   // params.append('status', state.status)
-  // console.log('commit SAVE_NEW_NAIRE', state.naire)
+  console.log('commit SAVE_NEW_NAIRE')
 
   return axios.post('/api/naire/save', {
     naire: state.naire,

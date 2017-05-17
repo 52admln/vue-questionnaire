@@ -6,7 +6,7 @@ import List from '@/components/list/list'
 import Edit from '@/components/edit/edit'
 import View from '@/components/view/view'
 import User from '@/components/user/user'
-import Preview from '@/components/preview/preview'
+import Error from '@/components/common/error/error'
 
 Vue.use(Router)
 
@@ -50,13 +50,13 @@ let router = new Router({
           path: 'user',
           component: User,
           meta: {requiresAuth: true}
-        },
-        {
-          path: 'preview/:id',
-          component: Preview,
-          meta: {requiresAuth: true}
         }
       ]
+    },
+    {
+      path: '/404',
+      name: '404页面',
+      component: Error
     },
     {
       path: '*',

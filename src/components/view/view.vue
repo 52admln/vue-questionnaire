@@ -11,7 +11,8 @@
         </div>
         <questionList :question-list="this.naire.topic">
           <Row type="flex" justify="center" align="middle" class="code-row-bg">
-            <Button type="primary">提交问卷</Button>
+            <Button type="primary" v-if="isAdmin" @click="window.history.go(-1)">返回</Button>
+            <Button type="primary" :disabled="isAdmin">提交问卷</Button>
           </Row>
         </questionList>
       </div>
@@ -28,7 +29,9 @@
   export default {
     data () {
       return {
-        naire: {}
+        naire: {
+          topic: []
+        }
       }
     },
     filters: {
@@ -40,10 +43,39 @@
         return Y + M + D
       }
     },
+    watch: {
+      // 如果路由有变化，会再次执行该方法
+      '$route': 'fetchData'
+    },
+    methods: {
+      fetchData () {
+        this.$store.dispatch('getNaire', {
+          n_id: this.$route.params.id
+        }).then((response) => {
+          if (response.data.err === 0) {
+            this.$store.commit('REQUEST_QUESTION_LIST', {
+              naire: response.data.data
+            })
+            // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
+            this.naire = response.data.data
+          } else {
+            this.$Message.error(response.data.data)
+            this.$router.push('/404')
+          }
+        })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('获取问卷，请重试')
+          })
+      }
+    },
+    computed: {
+      isAdmin () {
+        return this.$store.getters.isAdmin
+      }
+    },
     created () {
-      this.$store.dispatch('getQuestionList')
-      // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
-      this.naire = JSON.parse(this.$store.getters.naire)
+      this.fetchData()
     },
     components: {
       questionList
@@ -83,9 +115,11 @@
   .view-layout .content {
     padding: 20px;
   }
+
   .view-layout .intro {
     font-size: 14px;
   }
+
   .view-layout .footer {
     margin-top: 10px;
     padding-top: 10px;
