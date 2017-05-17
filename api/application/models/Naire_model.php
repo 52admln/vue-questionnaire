@@ -16,7 +16,7 @@ class Naire_model extends CI_Model
 		// 获取参数 naire id
 		// JSON 反序列化
 		$n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
-		if($n_id == '') {
+		if ($n_id == '') {
 			return array("err" => 1, "data" => "请传入参数值");
 		}
 		$naire = $this->db->query("select * from naire where naire.n_id = {$n_id}")
@@ -29,7 +29,7 @@ class Naire_model extends CI_Model
 //		echo var_dump($naire);
 //		echo var_dump($questions);
 //		echo var_dump($options);
-		if(empty($naire) || empty($questions) || empty($options)) {
+		if (empty($naire) || empty($questions) || empty($options)) {
 			return array("err" => 1, "data" => "未获取到相应问卷");
 		}
 		$result = array(
@@ -48,7 +48,7 @@ class Naire_model extends CI_Model
 					$temp[] = array(
 						"o_id" => $optionval['o_id'],
 						"content" => $optionval['o_value'],
-						"isAddition" => $optionval['o_isaddtion']
+						"isAddition" => $optionval['o_isaddtion'] == "1" ? true : false
 					);
 				}
 			}
@@ -56,7 +56,7 @@ class Naire_model extends CI_Model
 				$result['topic'][] = array(
 					"q_id" => $questionval["q_id"],
 					"question" => $questionval["q_content"],
-					"isRequired" => $questionval["q_isrequire"],
+					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
 					"type" => $questionval["q_type"],
 					"description" => $questionval["q_description"],
 					"selectContent" => "",
@@ -67,7 +67,7 @@ class Naire_model extends CI_Model
 				$result['topic'][] = array(
 					"q_id" => $questionval["q_id"],
 					"question" => $questionval["q_content"],
-					"isRequired" => $questionval["q_isrequire"],
+					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
 					"type" => $questionval["q_type"],
 					"description" => $questionval["q_description"],
 					"selectMultipleContent" => array(),
@@ -78,7 +78,7 @@ class Naire_model extends CI_Model
 				$result['topic'][] = array(
 					"q_id" => $questionval["q_id"],
 					"question" => $questionval["q_content"],
-					"isRequired" => $questionval["q_isrequire"],
+					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
 					"type" => $questionval["q_type"],
 					"description" => $questionval["q_description"],
 					"selectContent" => "",
@@ -110,14 +110,15 @@ class Naire_model extends CI_Model
 
 		if ($status == 'create') {
 			// 执行插入操作
-			if ($naire['deadline'] == '' || $naire['title'] == '' || $naire['status'] == '') {
-				return array("err" => 1, "data" => '表单项必填字段不能为空');
+			if (is_null($naire['deadline']) || is_null($naire['title']) || is_null($naire['status'])) {
+				return array("err" => 1, "data" => "问卷(naire)必填字段不能为空");
 			}
 			$insert_naire_data = array(
 				'n_deadline' => $naire['deadline'],
 				'n_title' => $naire['title'],
 				'n_status' => $naire['status'],
-				'n_intro' => $naire['intro']
+				'n_intro' => $naire['intro'],
+				'n_creattime' => time()
 			);
 			$this->db->insert('naire', $insert_naire_data);
 			$naire_id = $this->db->insert_id();
@@ -125,15 +126,15 @@ class Naire_model extends CI_Model
 			foreach ($naire['topic'] as $topickey => $topicval) {
 
 				// 题目内容
-				if ($topicval['question'] == '' || $topicval['type'] == '' || $topicval['isRequired'] == '') {
-					return array("err" => 1, "data" => '表单项必填字段不能为空');
+				if (is_null($topicval['question']) || is_null($topicval['type']) || is_null($topicval['isRequired'])) {
+					return array("err" => 1, "data" => '问题(question)必填字段不能为空');
 				}
 				// print_r($topicval['question']);
 				$insert_question_data = array(
 					'q_content' => $topicval['question'],
 					'q_type' => $topicval['type'],
 					'n_id' => $naire_id,
-					'q_isrequire' => $topicval['isRequired'],
+					'q_isrequire' => $topicval['isRequired'] == "true" ? 1 : 0,
 					'q_description' => $topicval['description']
 				);
 
@@ -144,14 +145,14 @@ class Naire_model extends CI_Model
 					foreach ($topicval['options'] as $optionkey => $optionval) {
 						// 选项内容 $optionval['content']
 						// 选项是否需要填写附加内容 $optionval['isAddition']
-						if ($optionval['content'] == '' || $optionval['isAddition'] == '') {
-							return array("err" => 1, "data" => '表单项必填字段不能为空');
+						if (is_null($optionval['content']) || is_null($optionval['isAddition'])) {
+							return array("err" => 1, "data" => '选项(option)必填字段不能为空');
 						}
 						$insert_option_data = array(
 							'o_value' => $optionval['content'],
 							'n_id' => $naire_id,
 							'q_id' => $question_id,
-							'o_isaddtion' => $optionval['isAddition']
+							'o_isaddtion' => $optionval['isAddition'] == "true" ? 1 : 0
 						);
 						$this->db->insert('options', $insert_option_data);
 						//print_r($optionval['isAddition'] == 1 ? 'true' : 'false');
@@ -162,9 +163,17 @@ class Naire_model extends CI_Model
 			return array("err" => 0, "data" => '新建问卷成功');
 
 		} else {
-			// 执行更新操作
+			// todo 执行更新操作
 		}
 
 		return array("err" => 0, "data" => '新建问卷成功');
 	}
+
+	public function submit_naire()
+	{
+		$result = json_decode($this->input->raw_input_stream, true)['result'];
+		print_r($result);
+	}
+
+
 }

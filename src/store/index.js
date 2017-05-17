@@ -12,7 +12,7 @@ export default new Vuex.Store({
   // 将各组件分别模块化存入 Store
   state: {
     naire: {},
-    isAdmin: false,
+    isAdmin: true,
     status: 'create' // create or update
   },
   actions,

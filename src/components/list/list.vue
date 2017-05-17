@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  import { formatDate } from '../../utils'
+
   export default {
     data () {
       return {
@@ -31,11 +33,17 @@
           },
           {
             title: '结束时间',
-            key: 'n_deadline'
+            key: 'n_deadline',
+            render (row, column, index) {
+              return formatDate(row.n_deadline)
+            }
           },
           {
             title: '创建时间',
-            key: 'n_creattime'
+            key: 'n_creattime',
+            render (row, column, index) {
+              return formatDate(row.n_creattime)
+            }
           },
           {
             title: '状态',

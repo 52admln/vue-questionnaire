@@ -71,7 +71,6 @@
 
   .layout-content {
     margin: 15px;
-    overflow: hidden;
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     min-height: 500px;

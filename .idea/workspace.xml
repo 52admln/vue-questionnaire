@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8f6936f-27ac-4727-ad41-0ced38230e62" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/error/error.vue" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/preview/preview.vue" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/Naire.php" afterPath="$PROJECT_DIR$/api/application/controllers/Naire.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/Naire_model.php" afterPath="$PROJECT_DIR$/api/application/models/Naire_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/index.js" afterPath="$PROJECT_DIR$/src/api/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/resource.js" afterPath="$PROJECT_DIR$/src/api/resource.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/questionList/questionList.vue" afterPath="$PROJECT_DIR$/src/components/common/questionList/questionList.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/edit/edit.vue" afterPath="$PROJECT_DIR$/src/components/edit/edit.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/layout.vue" afterPath="$PROJECT_DIR$/src/components/layout/layout.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/list/list.vue" afterPath="$PROJECT_DIR$/src/components/list/list.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/view/view.vue" afterPath="$PROJECT_DIR$/src/components/view/view.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="$PROJECT_DIR$/src/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/actions.js" afterPath="$PROJECT_DIR$/src/store/actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/getters.js" afterPath="$PROJECT_DIR$/src/store/getters.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/index.js" afterPath="$PROJECT_DIR$/src/store/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/mutations.js" afterPath="$PROJECT_DIR$/src/store/mutations.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,19 +40,20 @@
           <file leaf-file-name="edit.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/edit/edit.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3373">
-                  <caret line="342" column="8" lean-forward="true" selection-start-line="342" selection-start-column="8" selection-end-line="342" selection-end-column="8" />
+                <state relative-caret-position="361">
+                  <caret line="33" column="59" lean-forward="false" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
                   <folding>
                     <element signature="n#Row#1;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#style#0;n#Col#0;n#Row#0;n#questionList#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#Button#0;n#Row#0;n#questionList#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                    <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#Modal#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="e#11524#11672#0" expanded="false" />
-                    <element signature="e#11720#11870#0" expanded="false" />
-                    <element signature="e#12756#12801#0" expanded="false" />
-                    <element signature="e#12831#12879#0" expanded="false" />
-                    <element signature="e#12909#12957#0" expanded="false" />
+                    <element signature="e#11554#11702#0" expanded="false" />
+                    <element signature="e#11750#11900#0" expanded="false" />
+                    <element signature="e#12786#12831#0" expanded="false" />
+                    <element signature="e#12861#12909#0" expanded="false" />
+                    <element signature="e#12939#12987#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -68,29 +66,45 @@
           <file leaf-file-name="list.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/list/list.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="409">
-                  <caret line="71" column="30" lean-forward="true" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+                <state relative-caret-position="266">
+                  <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="error.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/common/error/error.vue">
+          <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/utils.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="381">
-                  <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-                  <folding />
+                <state relative-caret-position="20">
+                  <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#0#37#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="view.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="view.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/view/view.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="365">
-                  <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-                  <folding />
+                <state relative-caret-position="319">
+                  <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#836#908#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/store/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="280">
+                  <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -98,9 +112,28 @@
           <file leaf-file-name="questionList.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/common/questionList/questionList.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="52" column="12" lean-forward="true" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
-                  <folding />
+                <state relative-caret-position="500">
+                  <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+                  <folding>
+                    <element signature="n#style#0;n#Input#0;n#Radio#0;n#Radio-group#0;n#div#0;n#div#1;n#Row#0;n#Row#0;n#template#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Naire_model.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/api/application/models/Naire_model.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="842">
+                  <caret line="154" column="87" lean-forward="false" selection-start-line="154" selection-start-column="87" selection-end-line="154" selection-end-column="87" />
+                  <folding>
+                    <marker date="1495033959000" expanded="true" signature="418:457" ph="select * fro... naire" />
+                    <marker date="1495033959000" expanded="true" signature="418:464" ph="select * fro... naire" />
+                    <marker date="1495033959000" expanded="true" signature="521:566" ph="select * fro... question" />
+                    <marker date="1495033959000" expanded="true" signature="521:573" ph="select * fro... question" />
+                    <marker date="1495033959000" expanded="true" signature="628:671" ph="select * fro... options" />
+                    <marker date="1495033959000" expanded="true" signature="628:678" ph="select * fro... options" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -108,27 +141,10 @@
           <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/store/actions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="260">
-                  <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+                <state relative-caret-position="758">
+                  <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="25" />
                   <folding>
                     <element signature="e#34#75#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Naire_model.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/api/application/models/Naire_model.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="236">
-                  <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-                  <folding>
-                    <marker date="1495022660000" expanded="true" signature="417:456" ph="select * fro... naire" />
-                    <marker date="1495022660000" expanded="true" signature="417:463" ph="select * fro... naire" />
-                    <marker date="1495022660000" expanded="true" signature="520:565" ph="select * fro... question" />
-                    <marker date="1495022660000" expanded="true" signature="520:572" ph="select * fro... question" />
-                    <marker date="1495022660000" expanded="true" signature="627:670" ph="select * fro... options" />
-                    <marker date="1495022660000" expanded="true" signature="627:677" ph="select * fro... options" />
                   </folding>
                 </state>
               </provider>
@@ -141,8 +157,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -160,6 +176,7 @@
       <find>date</find>
       <find>getter</find>
       <find>textarea</find>
+      <find>.layout-content</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -197,27 +214,28 @@
         <option value="$PROJECT_DIR$/api/application/controllers/demo.php" />
         <option value="$PROJECT_DIR$/src/components/user/user.vue" />
         <option value="$PROJECT_DIR$/src/components/edit/new.vue" />
-        <option value="$PROJECT_DIR$/src/components/layout/layout.vue" />
         <option value="$PROJECT_DIR$/src/store/modules/question.list.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/preview/preview.vue" />
-        <option value="$PROJECT_DIR$/api/application/controllers/Naire.php" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/store/mutation-types.js" />
         <option value="$PROJECT_DIR$/src/store/modules/naire.js" />
-        <option value="$PROJECT_DIR$/src/components/edit/edit.vue" />
-        <option value="$PROJECT_DIR$/api/application/models/Naire_model.php" />
         <option value="$PROJECT_DIR$/src/api/index.js" />
         <option value="$PROJECT_DIR$/src/api/resource.js" />
         <option value="$PROJECT_DIR$/src/store/mutations.js" />
         <option value="$PROJECT_DIR$/src/components/common/error/error.vue" />
         <option value="$PROJECT_DIR$/src/router/index.js" />
-        <option value="$PROJECT_DIR$/src/components/list/list.vue" />
         <option value="$PROJECT_DIR$/src/store/actions.js" />
-        <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/store/getters.js" />
-        <option value="$PROJECT_DIR$/src/components/common/questionList/questionList.vue" />
+        <option value="$PROJECT_DIR$/src/store/index.js" />
+        <option value="$PROJECT_DIR$/api/application/controllers/Naire.php" />
+        <option value="$PROJECT_DIR$/src/components/layout/layout.vue" />
+        <option value="$PROJECT_DIR$/src/components/list/list.vue" />
+        <option value="$PROJECT_DIR$/src/utils.js" />
         <option value="$PROJECT_DIR$/src/components/view/view.vue" />
+        <option value="$PROJECT_DIR$/src/components/common/questionList/questionList.vue" />
+        <option value="$PROJECT_DIR$/src/components/edit/edit.vue" />
+        <option value="$PROJECT_DIR$/api/application/models/Naire_model.php" />
       </list>
     </option>
   </component>
@@ -306,196 +324,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="router" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="list" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionList" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="error" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1006,7 +834,7 @@
       <workItem from="1494138830560" duration="34087000" />
       <workItem from="1494506687988" duration="1258000" />
       <workItem from="1494577759150" duration="74279000" />
-      <workItem from="1494944764027" duration="12478000" />
+      <workItem from="1494944764027" duration="17093000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -1085,11 +913,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495021984783</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="完善预览问卷功能">
+      <created>1495025850349</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1495025850349</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147642000" />
+    <option name="totallyTimeSpent" value="152257000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1152,7 +987,8 @@
     <MESSAGE value="modules 出现bug，改为全局 store" />
     <MESSAGE value="完善问卷添加功能" />
     <MESSAGE value="完善问卷添加页面表单验证" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善问卷添加页面表单验证" />
+    <MESSAGE value="完善预览问卷功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善预览问卷功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1172,13 +1008,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1389,25 +1218,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/layout/layout.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1461,16 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="997">
@@ -1484,7 +1289,7 @@
         <state relative-caret-position="260">
           <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1497,79 +1302,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/models/Naire_model.php">
+    <entry file="file://$PROJECT_DIR$/src/components/common/error/error.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding>
-            <marker date="1495022660000" expanded="true" signature="417:456" ph="select * fro... naire" />
-            <marker date="1495022660000" expanded="true" signature="417:463" ph="select * fro... naire" />
-            <marker date="1495022660000" expanded="true" signature="520:565" ph="select * fro... question" />
-            <marker date="1495022660000" expanded="true" signature="520:572" ph="select * fro... question" />
-            <marker date="1495022660000" expanded="true" signature="627:670" ph="select * fro... options" />
-            <marker date="1495022660000" expanded="true" signature="627:677" ph="select * fro... options" />
-          </folding>
+        <state relative-caret-position="540">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="758">
+          <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="25" />
           <folding>
             <element signature="e#34#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/error/error.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/layout/layout.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="424">
+          <caret line="78" column="24" lean-forward="true" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/list/list.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="71" column="30" lean-forward="true" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+        <state relative-caret-position="266">
+          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/questionList/questionList.vue">
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="52" column="12" lean-forward="true" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/edit/edit.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3373">
-          <caret line="342" column="8" lean-forward="true" selection-start-line="342" selection-start-column="8" selection-end-line="342" selection-end-column="8" />
+        <state relative-caret-position="280">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
           <folding>
-            <element signature="n#Row#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#Col#0;n#Row#0;n#questionList#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#Row#0;n#questionList#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#Modal#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#11524#11672#0" expanded="false" />
-            <element signature="e#11720#11870#0" expanded="false" />
-            <element signature="e#12756#12801#0" expanded="false" />
-            <element signature="e#12831#12879#0" expanded="false" />
-            <element signature="e#12909#12957#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#37#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/view/view.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="319">
+          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="e#836#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/questionList/questionList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#Input#0;n#Radio#0;n#Radio-group#0;n#div#0;n#div#1;n#Row#0;n#Row#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/edit/edit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="33" column="59" lean-forward="false" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+          <folding>
+            <element signature="n#Row#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#Col#0;n#Row#0;n#questionList#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Button#0;n#Row#0;n#questionList#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#Modal#2;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#11554#11702#0" expanded="false" />
+            <element signature="e#11750#11900#0" expanded="false" />
+            <element signature="e#12786#12831#0" expanded="false" />
+            <element signature="e#12861#12909#0" expanded="false" />
+            <element signature="e#12939#12987#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/models/Naire_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="842">
+          <caret line="154" column="87" lean-forward="false" selection-start-line="154" selection-start-column="87" selection-end-line="154" selection-end-column="87" />
+          <folding>
+            <marker date="1495033959000" expanded="true" signature="418:457" ph="select * fro... naire" />
+            <marker date="1495033959000" expanded="true" signature="418:464" ph="select * fro... naire" />
+            <marker date="1495033959000" expanded="true" signature="521:566" ph="select * fro... question" />
+            <marker date="1495033959000" expanded="true" signature="521:573" ph="select * fro... question" />
+            <marker date="1495033959000" expanded="true" signature="628:671" ph="select * fro... options" />
+            <marker date="1495033959000" expanded="true" signature="628:678" ph="select * fro... options" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -22,7 +22,7 @@
               <Input v-model="topic.additional"
                      placeholder="请输入理由"
                      style="width: 300px"
-                     :disabled="!(option.isAddition && topic.selectContent === option.o_id )"
+                     v-show="option.isAddition && topic.selectContent === option.o_id "
                      v-if="option.isAddition"
               ></Input>
               <div class="option-action" v-show="isPreview" @click="delOption(index, opIndex)">

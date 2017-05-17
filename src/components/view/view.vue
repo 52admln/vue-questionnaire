@@ -7,12 +7,17 @@
       <div class="content">
         <div class="intro">
           <p>问卷介绍：{{naire.intro}}</p>
-          <p>截止日期：{{naire.deadline | formatDate}}</p>
+          <p>截止日期：{{naire.deadline | timeFormat}}</p>
         </div>
         <questionList :question-list="this.naire.topic">
           <Row type="flex" justify="center" align="middle" class="code-row-bg">
-            <Button type="primary" v-if="isAdmin" @click="window.history.go(-1)">返回</Button>
-            <Button type="primary" :disabled="isAdmin">提交问卷</Button>
+            <Button type="success"
+                    v-if="isAdmin"
+                    @click="goBack">返回管理平台
+            </Button>
+            <Button type="primary"
+                    @click="submitNaire">提交问卷
+            </Button>
           </Row>
         </questionList>
       </div>
@@ -25,6 +30,7 @@
 
 <script>
   import questionList from '@/components/common/questionList/questionList'
+  import { formatDate } from '../../utils'
 
   export default {
     data () {
@@ -35,12 +41,8 @@
       }
     },
     filters: {
-      formatDate (value) {
-        const date = new Date(value)
-        const Y = date.getFullYear() + '-'
-        const M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
-        const D = date.getDate() + ' '
-        return Y + M + D
+      timeFormat (value) {
+        return formatDate(value)
       }
     },
     watch: {
@@ -66,6 +68,41 @@
           .catch((error) => {
             console.log(error)
             this.$Message.error('获取问卷，请重试')
+          })
+      },
+      goBack () {
+        this.$router.push('/platform')
+      },
+      submitNaire () {
+        console.log(this.naire)
+
+        const nId = this.naire.n_id
+        const result = []
+        this.naire.topic.forEach((question, index) => {
+          const curQues = {
+            n_id: nId,
+            q_id: question.q_id,
+            o_id: question.selectContent,
+            o_addition: question.additional
+          }
+          result.push(curQues)
+        })
+
+        this.$http.post('/api/naire/submit', {
+          result: result
+        })
+          .then((response) => {
+            console.log(response.data)
+            // 影响行数大于0
+            if (response.data.err === 0 && response.data.data > 0) {
+              this.$Message.success('修改成功')
+            } else {
+              this.$Message.error(response.data.data)
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('修改失败，请重试')
           })
       }
     },
@@ -125,5 +162,9 @@
     padding-top: 10px;
     text-align: center;
     border-top: 1px dotted #eee;
+  }
+
+  .code-row-bg button {
+    margin: 0 10px;
   }
 </style>

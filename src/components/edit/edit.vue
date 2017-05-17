@@ -29,9 +29,9 @@
     <questionList :question-list="naire.topic" :is-preview="true">
       <Row>
         <Col span="4" style="margin-right: 10px;">
-        <Date-picker type="date" placeholder="截止日期"
+        <Date-picker type="datetime" placeholder="截止日期"
                      v-model="deadline"
-                     :editable="false" placement="top"
+                     :editable="false" placement="right-end"
                      :options="dateOption">
         </Date-picker>
         </Col>
@@ -226,7 +226,7 @@
         },
         set (value) {
           console.log(value)
-          this.$store.commit('UPDATE_DEADLINE', value)
+          this.$store.commit('UPDATE_DEADLINE', new Date(value).getTime())
         }
       }
     },

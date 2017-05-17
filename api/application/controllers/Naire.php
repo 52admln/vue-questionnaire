@@ -30,4 +30,11 @@ class Naire extends CI_Controller
 		$result = $this->naire_model->save_naire();
 		echo json_encode($result);
 	}
+
+	public function submit ()
+	{
+		$this->load->model('naire_model');
+		$result = $this->naire_model->submit_naire();
+		echo json_encode($result);
+	}
 }
