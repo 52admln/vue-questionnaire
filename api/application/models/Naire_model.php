@@ -100,9 +100,12 @@ class Naire_model extends CI_Model
 		// JSON 反序列化
 		$naire = json_decode($this->input->raw_input_stream, true)['naire'];
 		$status = json_decode($this->input->raw_input_stream, true)['status'];
-		/*
+
 		if ($status == 'create') {
 			// 执行插入操作
+			if ($naire['deadline'] == '' || $naire['title'] == '' || $naire['status'] == '') {
+				return array("err" => 1, "data" => '表单项必填字段不能为空');
+			}
 			$insert_naire_data = array(
 				'n_deadline' => $naire['deadline'],
 				'n_title' => $naire['title'],
@@ -115,6 +118,9 @@ class Naire_model extends CI_Model
 			foreach ($naire['topic'] as $topickey => $topicval) {
 
 				// 题目内容
+				if ($topicval['question'] == '' || $topicval['type'] == '' || $topicval['isRequired'] == '') {
+					return array("err" => 1, "data" => '表单项必填字段不能为空');
+				}
 				// print_r($topicval['question']);
 				$insert_question_data = array(
 					'q_content' => $topicval['question'],
@@ -123,6 +129,7 @@ class Naire_model extends CI_Model
 					'q_isrequire' => $topicval['isRequired'],
 					'q_description' => $topicval['description']
 				);
+
 				$this->db->insert('question', $insert_question_data);
 				$question_id = $this->db->insert_id();
 				if (!empty($topicval['options']) && $topicval['type'] != '文本') {
@@ -130,6 +137,9 @@ class Naire_model extends CI_Model
 					foreach ($topicval['options'] as $optionkey => $optionval) {
 						// 选项内容 $optionval['content']
 						// 选项是否需要填写附加内容 $optionval['isAddition']
+						if ($optionval['content'] == '' || $optionval['isAddition'] == '') {
+							return array("err" => 1, "data" => '表单项必填字段不能为空');
+						}
 						$insert_option_data = array(
 							'o_value' => $optionval['content'],
 							'n_id' => $naire_id,
@@ -147,7 +157,7 @@ class Naire_model extends CI_Model
 		} else {
 			// 执行更新操作
 		}
-		*/
+
 		return array("err" => 0, "data" => '新建问卷成功');
 	}
 }

@@ -5,6 +5,7 @@
       <Form :model="naire" :label-width="80">
         <Form-item label="问卷名">
           <Input v-model="title"
+                 ref="title"
                  placeholder="问卷名">
           </Input>
         </Form-item>
@@ -221,7 +222,7 @@
       },
       deadline: {
         get () {
-          return this.$store.getters.deadline
+          return this.$store.getters.naire.deadline
         },
         set (value) {
           console.log(value)
@@ -238,23 +239,71 @@
       '$route': 'fetchData'
     },
     methods: {
+      warning (nodesc, title, desc) {
+        this.$Notice.warning({
+          title: title,
+          desc: nodesc ? '' : desc
+        })
+      },
+      error (nodesc, title, desc) {
+        this.$Notice.error({
+          title: title,
+          desc: nodesc ? '' : desc
+        })
+      },
+      validQuestion (target) {
+        if (target.question === '') {
+          this.warning(false, '题目', '请输入问题内容')
+          return false
+        }
+        if (target.options.length < 1) {
+          this.warning(false, '选项', '选项至少增加一个')
+          return false
+        }
+        let valid = target.options.some((item, index) => {
+          return item.content === ''
+        })
+        if (valid) {
+          this.warning(false, '选项内容', '请输入选项内容')
+          return false
+        }
+        return true
+      },
+      validNaire () {
+        if (this.title === '') {
+          this.warning(false, '问卷标题', '请输入问卷标题')
+          this.$refs.title.focus()
+          return false
+        }
+        if (this.deadline === '') {
+          this.warning(false, '截止时间', '请选择问卷截止时间')
+          return false
+        }
+        if (this.naire.topic.length < 1) {
+          this.warning(false, '问卷题目', '请至少添加一道问卷题目')
+          return false
+        }
+        return true
+      },
       updateIntro (e) {
         this.$store.commit('UPDATE_INTRO', e.target.value)
       },
       handleSave () {
-        let _axios = this.$store.dispatch('saveNewNaire')
-        _axios.then((response) => {
-          console.log(response.data)
-          if (response.data.err === 0) {
-            this.$Message.success(response.data.data)
-          } else {
-            this.$Message.error(response.data.data)
-          }
-        })
-          .catch((error) => {
-            console.log(error)
-            this.$Message.error('新建失败，请重试')
+        if (this.validNaire) {
+          let _axios = this.$store.dispatch('saveNewNaire')
+          _axios.then((response) => {
+            console.log(response.data)
+            if (response.data.err === 0) {
+              this.$Message.success(response.data.data)
+            } else {
+              this.$Message.error(response.data.data)
+            }
           })
+            .catch((error) => {
+              console.log(error)
+              this.$Message.error('新建失败，请重试')
+            })
+        }
       },
       // 新建题目
       addRadio () {
@@ -321,37 +370,27 @@
       },
       // 提交题目
       submitRadio (name) {
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            const data = Object.assign({}, this.addRadio_form)
-            this.$store.dispatch('addQuestion', data)
-            this.addRadio_modal = false
-          } else {
-            this.$Message.error('表单填写有误!')
-          }
-        })
+        if (this.validQuestion(this.addRadio_form)) {
+          const data = Object.assign({}, this.addRadio_form)
+          this.$store.dispatch('addQuestion', data)
+          this.addRadio_modal = false
+        }
       },
       submitCheckbox (name) {
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            const data = Object.assign({}, this.addCheckbox_form)
-            this.$store.dispatch('addQuestion', data)
-            this.addCheckbox_modal = false
-          } else {
-            this.$Message.error('表单填写有误!')
-          }
-        })
+        if (this.validQuestion(this.addCheckbox_form)) {
+          const data = Object.assign({}, this.addCheckbox_form)
+          this.$store.dispatch('addQuestion', data)
+          this.addCheckbox_modal = false
+        }
       },
       submitTextarea (name) {
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            const data = Object.assign({}, this.addTextarea_form)
-            this.$store.dispatch('addQuestion', data)
-            this.addTextarea_modal = false
-          } else {
-            this.$Message.error('表单填写有误!')
-          }
-        })
+        if (this.addTextarea_form.question === '') {
+          this.warning(false, '题目', '请输入问题内容')
+          return
+        }
+        const data = Object.assign({}, this.addTextarea_form)
+        this.$store.dispatch('addQuestion', data)
+        this.addTextarea_modal = false
       },
       // 关闭弹框
       closeRadioModal () {
