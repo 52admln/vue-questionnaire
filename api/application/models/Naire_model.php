@@ -110,7 +110,7 @@ class Naire_model extends CI_Model
 
 		if ($status == 'create') {
 			// 执行插入操作
-			if (is_null($naire['deadline']) || is_null($naire['title']) || is_null($naire['status'])) {
+			if ($naire['deadline'] === '' || $naire['title'] === '' || $naire['status'] === '') {
 				return array("err" => 1, "data" => "问卷(naire)必填字段不能为空");
 			}
 			$insert_naire_data = array(
@@ -126,7 +126,7 @@ class Naire_model extends CI_Model
 			foreach ($naire['topic'] as $topickey => $topicval) {
 
 				// 题目内容
-				if (is_null($topicval['question']) || is_null($topicval['type']) || is_null($topicval['isRequired'])) {
+				if ($topicval['question'] === '' || $topicval['type'] === '' || $topicval['isRequired'] === '') {
 					return array("err" => 1, "data" => '问题(question)必填字段不能为空');
 				}
 				// print_r($topicval['question']);
@@ -145,7 +145,7 @@ class Naire_model extends CI_Model
 					foreach ($topicval['options'] as $optionkey => $optionval) {
 						// 选项内容 $optionval['content']
 						// 选项是否需要填写附加内容 $optionval['isAddition']
-						if (is_null($optionval['content']) || is_null($optionval['isAddition'])) {
+						if ($optionval['content'] === '' || $optionval['isAddition'] === '') {
 							return array("err" => 1, "data" => '选项(option)必填字段不能为空');
 						}
 						$insert_option_data = array(
@@ -169,11 +169,69 @@ class Naire_model extends CI_Model
 		return array("err" => 0, "data" => '新建问卷成功');
 	}
 
+	// 提交问卷
 	public function submit_naire()
 	{
 		$result = json_decode($this->input->raw_input_stream, true)['result'];
-		print_r($result);
+
+		foreach ($result as $key => $val) {
+//			[n_id] => 12
+//            [q_id] => 41
+//            [o_id] => 52
+//            [o_addition] =>
+			// todo 用户 u_id 获取
+			// 如果是多选题，需要再次 foreach
+			if (is_array($val['o_id'])) {
+				foreach ($val['o_id'] as $o_key => $o_val) {
+					$option_data = array(
+						'n_id' => $val['n_id'],
+						'u_id' => 1,
+						'q_id' => $val['q_id'],
+						'o_id' => $o_val,
+						'o_addtion' => $val['o_addition'],
+					);
+					$query = $this->db->insert('result', $option_data);
+					if (!$query) {
+						return array("err" => 1, "data" => '写入数据发生错误');
+					}
+				}
+			} else {
+				$result_data = array(
+					'n_id' => $val['n_id'],
+					'u_id' => 1,
+					'q_id' => $val['q_id'],
+					'o_id' => is_null($val['o_id']) ? '' : $val['o_id'],
+					'o_addtion' => $val['o_addition'],
+				);
+				$query = $this->db->insert('result', $result_data);
+				if (!$query) {
+					return array("err" => 1, "data" => '写入数据发生错误');
+				}
+			}
+
+		}
+		return array("err" => 0, "data" => '问卷提交成功');
 	}
 
+	// 删除问卷
+	public function del_naire()
+	{
+		$n_id = $this->input->post_get('n_id', TRUE);
+		// 删除多表中的数据
+		$del_tables = array('naire', 'question', 'options', 'result');
+		$this->db->where('n_id', $n_id);
+		$this->db->delete($del_tables);
+		$result = $this->db->affected_rows();
+
+//		$this->db->query("DELETE FROM users WHERE users.u_id={$user_id}");
+//		$rows = $this->db->affected_rows();
+
+		if ($result != 0) {
+			$error = 0; // OK
+		} else {
+			$error = 1; // ERROR
+		}
+		return array('err' => $error, "data" => $result);
+	}
 
 }

@@ -31,10 +31,19 @@ class Naire extends CI_Controller
 		echo json_encode($result);
 	}
 
-	public function submit ()
+	// 提交问卷
+	public function submit()
 	{
 		$this->load->model('naire_model');
 		$result = $this->naire_model->submit_naire();
+		echo json_encode($result);
+	}
+
+	// 删除问卷
+	public function del()
+	{
+		$this->load->model('naire_model');
+		$result = $this->naire_model->del_naire();
 		echo json_encode($result);
 	}
 }

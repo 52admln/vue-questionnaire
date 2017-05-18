@@ -252,44 +252,46 @@
         })
       },
       validQuestion (target) {
+        let isPassed = true
         if (target.question === '') {
           this.warning(false, '题目', '请输入问题内容')
-          return false
+          isPassed = false
         }
         if (target.options.length < 1) {
           this.warning(false, '选项', '选项至少增加一个')
-          return false
+          isPassed = false
         }
         let valid = target.options.some((item, index) => {
-          return item.content === ''
+          isPassed = (item.content === '')
         })
         if (valid) {
           this.warning(false, '选项内容', '请输入选项内容')
-          return false
+          isPassed = false
         }
-        return true
+        return isPassed
       },
       validNaire () {
+        let isPassed = true
         if (this.title === '') {
           this.warning(false, '问卷标题', '请输入问卷标题')
           this.$refs.title.focus()
-          return false
+          isPassed = false
         }
         if (this.deadline === '') {
           this.warning(false, '截止时间', '请选择问卷截止时间')
-          return false
+          isPassed = false
         }
         if (this.naire.topic.length < 1) {
           this.warning(false, '问卷题目', '请至少添加一道问卷题目')
-          return false
+          isPassed = false
         }
-        return true
+        return isPassed
       },
       updateIntro (e) {
         this.$store.commit('UPDATE_INTRO', e.target.value)
       },
       handleSave () {
-        if (this.validNaire) {
+        if (this.validNaire()) {
           let _axios = this.$store.dispatch('saveNewNaire')
           _axios.then((response) => {
             console.log(response.data)

@@ -54,7 +54,7 @@
             align: 'center'
           },
           {
-            title: '用户 ID',
+            title: 'ID',
             key: 'u_id'
           },
           {
@@ -79,7 +79,8 @@
           },
           {
             title: '身份证号',
-            key: 'u_identity'
+            key: 'u_identity',
+            ellipsis: true
           },
           {
             title: '出生日期',
@@ -101,8 +102,7 @@
         confirm
         title="您确认删除这条内容吗？"
         width="200"
-        @on-ok="remove(${index})"
-        @on-cancel="cancel">
+        @on-ok="remove(${index})">
                       <i-button type="error" size="small">删除</i-button> </Poptip>`
 
                 .trim()
@@ -144,9 +144,6 @@
             console.log(error)
             this.$Message.error('删除失败')
           })
-      },
-      cancel () {
-        console.log('remove')
       },
       changePage (curPage) {
         // 从服务端获取数据

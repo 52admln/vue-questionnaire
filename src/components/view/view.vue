@@ -1,30 +1,30 @@
 <template>
   <div class="view-layout">
-    <div class="main">
-      <div class="header">
-        <h1>{{naire.title}}</h1>
-      </div>
-      <div class="content">
-        <div class="intro">
-          <p>问卷介绍：{{naire.intro}}</p>
-          <p>截止日期：{{naire.deadline | timeFormat}}</p>
-        </div>
-        <questionList :question-list="this.naire.topic">
-          <Row type="flex" justify="center" align="middle" class="code-row-bg">
-            <Button type="success"
-                    v-if="isAdmin"
-                    @click="goBack">返回管理平台
-            </Button>
-            <Button type="primary"
-                    @click="submitNaire">提交问卷
-            </Button>
-          </Row>
-        </questionList>
-      </div>
-      <div class="footer">
-        <p>Timu蜗壳工作室</p>
-      </div>
+  <div class="main">
+    <div class="header">
+      <h1>{{naire.title}}</h1>
     </div>
+    <div class="content">
+      <div class="intro">
+        <p>问卷介绍：{{naire.intro}}</p>
+        <p>截止日期：{{naire.deadline | timeFormat}}</p>
+      </div>
+      <questionList :question-list="this.naire.topic">
+        <Row type="flex" justify="center" align="middle" class="code-row-bg">
+          <Button type="success"
+                  v-if="isAdmin"
+                  @click="goBack">返回管理平台
+          </Button>
+          <Button type="primary"
+                  @click="submitNaire">提交问卷
+          </Button>
+        </Row>
+      </questionList>
+    </div>
+    <div class="footer">
+      <p>Timu蜗壳工作室</p>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -79,13 +79,31 @@
         const nId = this.naire.n_id
         const result = []
         this.naire.topic.forEach((question, index) => {
-          const curQues = {
-            n_id: nId,
-            q_id: question.q_id,
-            o_id: question.selectContent,
-            o_addition: question.additional
+          if (question.type === '单选') {
+            const curQues = {
+              n_id: nId,
+              q_id: question.q_id,
+              o_id: question.selectContent,
+              o_addition: question.additional
+            }
+            result.push(curQues)
+          } else if (question.type === '多选') {
+            const curQues = {
+              n_id: nId,
+              q_id: question.q_id,
+              o_id: question.selectMultipleContent,
+              o_addition: question.additional
+            }
+            result.push(curQues)
+          } else {
+            const curQues = {
+              n_id: nId,
+              q_id: question.q_id,
+              o_id: '',
+              o_addition: question.selectContent
+            }
+            result.push(curQues)
           }
-          result.push(curQues)
         })
 
         this.$http.post('/api/naire/submit', {
@@ -94,8 +112,9 @@
           .then((response) => {
             console.log(response.data)
             // 影响行数大于0
-            if (response.data.err === 0 && response.data.data > 0) {
-              this.$Message.success('修改成功')
+            if (response.data.err === 0) {
+              this.$Message.success(response.data.data)
+              this.$router.push('/complete')
             } else {
               this.$Message.error(response.data.data)
             }
@@ -123,9 +142,9 @@
 <style>
   .view-layout {
     width: 100%;
-    height: 100%;
     padding: 20px 0;
     background-color: rgb(237, 240, 248);
+    overflow: hidden;
   }
 
   .view-layout .main {
@@ -139,13 +158,15 @@
   }
 
   .view-layout .header {
-    padding: 15px 20px;
+    padding: 30px 20px;
     height: auto;
     min-height: 33px;
     border-bottom: 2px dotted #eee;
   }
 
   .view-layout .header h1 {
+    width: 500px;
+    margin: 0 auto;
     text-align: center;
   }
 
@@ -155,6 +176,7 @@
 
   .view-layout .intro {
     font-size: 14px;
+    text-indent: 2em;
   }
 
   .view-layout .footer {

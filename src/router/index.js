@@ -7,6 +7,7 @@ import Edit from '@/components/edit/edit'
 import View from '@/components/view/view'
 import User from '@/components/user/user'
 import Error from '@/components/common/error/error'
+import Complete from '@/components/common/complete/complete'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ let router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/complete',
+      name: 'complete',
+      component: Complete
     },
     {
       path: '/view/:id',
