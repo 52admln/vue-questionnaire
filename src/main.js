@@ -20,5 +20,3 @@ new Vue({
   store,
   ...App
 }).$mount('#app')
-
-router.push('/platform')

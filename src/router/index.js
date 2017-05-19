@@ -14,6 +14,11 @@ Vue.use(Router)
 let router = new Router({
   routes: [
     {
+      path: '/',
+      name: 'index',
+      redirect: '/platform'
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login

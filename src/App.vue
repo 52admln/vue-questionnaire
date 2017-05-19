@@ -16,6 +16,7 @@
   }
 
   body {
+    min-width: 800px;
     min-height: 100%;
     max-height: 100%;
   }

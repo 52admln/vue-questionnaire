@@ -115,9 +115,9 @@ class Naire_model extends CI_Model
 			}
 			$insert_naire_data = array(
 				'n_deadline' => $naire['deadline'],
-				'n_title' => $naire['title'],
+				'n_title' => trim($naire['title']),
 				'n_status' => $naire['status'],
-				'n_intro' => $naire['intro'],
+				'n_intro' => trim($naire['intro']),
 				'n_creattime' => time()
 			);
 			$this->db->insert('naire', $insert_naire_data);
@@ -131,11 +131,11 @@ class Naire_model extends CI_Model
 				}
 				// print_r($topicval['question']);
 				$insert_question_data = array(
-					'q_content' => $topicval['question'],
+					'q_content' => trim($topicval['question']),
 					'q_type' => $topicval['type'],
 					'n_id' => $naire_id,
 					'q_isrequire' => $topicval['isRequired'] == "true" ? 1 : 0,
-					'q_description' => $topicval['description']
+					'q_description' => trim($topicval['description'])
 				);
 
 				$this->db->insert('question', $insert_question_data);
@@ -149,7 +149,7 @@ class Naire_model extends CI_Model
 							return array("err" => 1, "data" => '选项(option)必填字段不能为空');
 						}
 						$insert_option_data = array(
-							'o_value' => $optionval['content'],
+							'o_value' => trim($optionval['content']),
 							'n_id' => $naire_id,
 							'q_id' => $question_id,
 							'o_isaddtion' => $optionval['isAddition'] == "true" ? 1 : 0
@@ -188,7 +188,7 @@ class Naire_model extends CI_Model
 						'u_id' => 1,
 						'q_id' => $val['q_id'],
 						'o_id' => $o_val,
-						'o_addtion' => $val['o_addition'],
+						'o_addtion' => trim($val['o_addition']),
 					);
 					$query = $this->db->insert('result', $option_data);
 					if (!$query) {
