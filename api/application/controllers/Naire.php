@@ -8,7 +8,6 @@ class Naire extends CI_Controller
 	public function index()
 	{
 		$this->load->model('naire_model');
-
 		$result = $this->naire_model->get_naire_list();
 		echo json_encode($result);
 	}
@@ -18,7 +17,6 @@ class Naire extends CI_Controller
 	{
 		// todo 获取参数 naire id
 		$this->load->model('naire_model');
-
 		$result = $this->naire_model->get_naires();
 		echo json_encode($result);
 	}
@@ -44,6 +42,12 @@ class Naire extends CI_Controller
 	{
 		$this->load->model('naire_model');
 		$result = $this->naire_model->del_naire();
+		echo json_encode($result);
+	}
+
+	public function statis() {
+		$this->load->model('naire_model');
+		$result = $this->naire_model->statis_naire();
 		echo json_encode($result);
 	}
 }

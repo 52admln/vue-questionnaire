@@ -6,6 +6,7 @@
       </div>
       <div class="content">
         <p>无法找到该页面，请检查链接是否正确。</p>
+        <p>2秒后将跳转至首页。</p>
       </div>
     </div>
     <div class="footer">
@@ -21,6 +22,11 @@
       error () {
         return this.$route.path.replace('/', '')
       }
+    },
+    created () {
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 1000)
     }
   }
 </script>
@@ -28,7 +34,6 @@
 <style scoped>
   .view-layout {
     width: 100%;
-    height: 100%;
     padding: 20px 0;
     background-color: rgb(237, 240, 248);
   }

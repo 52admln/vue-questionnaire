@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { formatDate } from '../../utils'
+  import { formatDate } from '../../common/js/utils'
   const OK = 0 // OK
   export default {
     data () {
@@ -65,7 +65,7 @@
             width: 280,
             align: 'center',
             render (row, column, index) {
-              return `<i-button size="small" @click="preview(${row.n_id})">预览</i-button> <i-button type="success" size="small">获取地址</i-button> <i-button type="warning" size="small">统计</i-button> <i-button type="primary" size="small">编辑</i-button>
+              return `<i-button size="small" @click="preview(${row.n_id})">预览</i-button> <i-button type="success" size="small">获取地址</i-button> <i-button type="warning" size="small" @click="statis(${row.n_id})">统计</i-button> <i-button type="primary" size="small">编辑</i-button>
            <Poptip
                   placement="left"
                   confirm
@@ -90,7 +90,7 @@
         })
           .then((response) => {
             console.log(response.data.data)
-            if (response.data.data > 0 && response.data.err === OK) {
+            if (response.data.err === OK) {
               this.$Message.success('删除成功')
               this.naireList.splice(index, 1)
               this.getData()
@@ -100,6 +100,9 @@
             console.log(error)
             this.$Message.error('删除失败')
           })
+      },
+      statis (nid) {
+        this.$router.push('/platform/statis/result/' + nid)
       },
       newNaire () {
         this.$router.push('/platform/edit')

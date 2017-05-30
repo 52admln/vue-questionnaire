@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller
 {
 
-
 	// 获取所有用户
-	public function index() {
+	public function index()
+	{
 		$this->load->model('user_model');
 
 		$result = $this->user_model->get_users();
@@ -32,9 +32,10 @@ class User extends CI_Controller
 		$err_code = 0;
 
 		if (!$this->upload->do_upload('userfile')) {
+			// 上传需要给 读写 权限
 			$error = array('error' => $this->upload->display_errors());
 			$err_code = 1;
-			$msg = '上传文件出错，请重试';
+			$msg = '上传文件出错，请重试' . $error;
 		} else {
 			$data = array('upload_data' => $this->upload->data());
 			// 存储上传的信息
@@ -88,7 +89,7 @@ class User extends CI_Controller
 			$msg = "插入成功" . $succ_result . "条数据，插入失败" . $error_result . "条数据。";
 		}
 
-		echo json_encode(array("err" => $err_code, "msg" => $msg ));
+		echo json_encode(array("err" => $err_code, "msg" => $msg));
 	}
 
 	// 删除用户

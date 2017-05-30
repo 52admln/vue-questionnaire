@@ -37,7 +37,7 @@
         </Col>
         <Col span="12">
         <Button style="margin-right: 10px;" @click="handleSave">保存问卷</Button>
-        <Button type="success">发布问卷</Button>
+        <Button type="success" @click="handlePublish">发布问卷</Button>
         </Col>
       </Row>
     </questionList>
@@ -251,6 +251,7 @@
           desc: nodesc ? '' : desc
         })
       },
+      // 校验填写项是否正确填写
       validQuestion (target) {
         let isPassed = true
         if (target.question === '') {
@@ -262,7 +263,7 @@
           isPassed = false
         }
         let valid = target.options.some((item, index) => {
-          isPassed = (item.content === '')
+          return (item.content === '')
         })
         if (valid) {
           this.warning(false, '选项内容', '请输入选项内容')
@@ -277,7 +278,7 @@
           this.$refs.title.focus()
           isPassed = false
         }
-        if (this.deadline === '') {
+        if (this.deadline === '' || !this.deadline) {
           this.warning(false, '截止时间', '请选择问卷截止时间')
           isPassed = false
         }
@@ -287,24 +288,20 @@
         }
         return isPassed
       },
+      // 用于问卷介绍的 v-model 双向数据绑定
       updateIntro (e) {
         this.$store.commit('UPDATE_INTRO', e.target.value)
       },
       handleSave () {
         if (this.validNaire()) {
-          let _axios = this.$store.dispatch('saveNewNaire')
-          _axios.then((response) => {
-            console.log(response.data)
-            if (response.data.err === 0) {
-              this.$Message.success(response.data.data)
-            } else {
-              this.$Message.error(response.data.data)
-            }
-          })
-            .catch((error) => {
-              console.log(error)
-              this.$Message.error('新建失败，请重试')
-            })
+          this.$store.dispatch('changeNaireStatus', 0)
+          this.saveNaire('保存失败，请重试')
+        }
+      },
+      handlePublish () {
+        if (this.validNaire()) {
+          this.$store.dispatch('changeNaireStatus', 1)
+          this.saveNaire('发布失败，请重试')
         }
       },
       // 新建题目
@@ -404,6 +401,7 @@
       closeTextareaModal () {
         this.addTextarea_modal = false
       },
+      // 当传入id值时，获取问卷详情，用于编辑
       fetchData () {
         if (this.$route.params.id) {
 //        this.$store.dispatch('getNaire')
@@ -423,6 +421,23 @@
           this.$store.dispatch('createNaire', newNaire)
           this.$store.dispatch('changeStatus', 'create')
         }
+      },
+      // 保存问卷和发布问卷
+      saveNaire (message) {
+        let _axios = this.$store.dispatch('saveNewNaire')
+        _axios.then((response) => {
+          console.log(response.data)
+          if (response.data.err === 0) {
+            this.$Message.success(response.data.data)
+            this.$router.push('/platform/list')
+          } else {
+            this.$Message.error(response.data.data)
+          }
+        })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error(message)
+          })
       }
     },
     components: {

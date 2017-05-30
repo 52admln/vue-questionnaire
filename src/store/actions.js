@@ -24,7 +24,6 @@ export const saveNewNaire = ({commit, state}, data) => {
   // params.append('naire', JSON.stringify(state.naire))
   // params.append('status', state.status)
   console.log('commit SAVE_NEW_NAIRE')
-
   return axios.post('/api/naire/save', {
     naire: state.naire,
     status: state.status
@@ -52,4 +51,9 @@ export const delOption = ({commit, state}, data) => {
 export const changeStatus = ({commit, state}, data) => {
   commit(types.CHANGE_STATUS, data)
   console.log('commit CHANGE_STATUS')
+}
+
+export const changeNaireStatus = ({commit, state}, data) => {
+  commit(types.CHANGE_NAIRE_STATUS, data)
+  console.log('commit CHANGE_NAIRE_STATUS')
 }

@@ -11,10 +11,6 @@
 </script>
 
 <style>
-  html, body, #app {
-    height: 100%;
-  }
-
   body {
     min-width: 800px;
     min-height: 100%;

@@ -95,6 +95,10 @@ export default {
     console.log(state, data)
     state.status = data
   },
+  [types.CHANGE_NAIRE_STATUS] (state, data) {
+    console.log(state, data)
+    state.naire.status = data
+  },
   [types.UPDATE_TITLE] (state, data) {
     // state.title = data
     state.naire = { ...state.naire, title: data }

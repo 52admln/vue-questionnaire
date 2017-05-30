@@ -7,6 +7,7 @@ import store from './store'
 import axios from 'axios'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'   // 使用 CSS
+// import IEcharts from 'vue-echarts-v3/src/full.vue';
 
 Vue.use(iView)
 

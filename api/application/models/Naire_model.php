@@ -16,6 +16,7 @@ class Naire_model extends CI_Model
 		// 获取参数 naire id
 		// JSON 反序列化
 		$n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
+
 		if ($n_id == '') {
 			return array("err" => 1, "data" => "请传入参数值");
 		}
@@ -29,7 +30,7 @@ class Naire_model extends CI_Model
 //		echo var_dump($naire);
 //		echo var_dump($questions);
 //		echo var_dump($options);
-		if (empty($naire) || empty($questions) || empty($options)) {
+		if (empty($naire) || empty($questions)) {
 			return array("err" => 1, "data" => "未获取到相应问卷");
 		}
 		$result = array(
@@ -81,7 +82,7 @@ class Naire_model extends CI_Model
 					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
 					"type" => $questionval["q_type"],
 					"description" => $questionval["q_description"],
-					"selectContent" => "",
+					"selectContent" => ""
 				);
 			}
 		}
@@ -89,10 +90,9 @@ class Naire_model extends CI_Model
 		return array("err" => 0, "data" => $result);
 
 	}
-
+	// 获取问卷列表
 	public function get_naire_list()
 	{
-
 		$query = $this->db->get('naire');
 		if (!$query) {
 			$err = 1;
@@ -101,7 +101,7 @@ class Naire_model extends CI_Model
 		}
 		return array("err" => $err, "data" => $query->result_array());
 	}
-
+	// 保存问卷
 	public function save_naire()
 	{
 		// JSON 反序列化
@@ -118,7 +118,7 @@ class Naire_model extends CI_Model
 				'n_title' => trim($naire['title']),
 				'n_status' => $naire['status'],
 				'n_intro' => trim($naire['intro']),
-				'n_creattime' => time()
+				'n_creattime' => self::getMillisecond()
 			);
 			$this->db->insert('naire', $insert_naire_data);
 			$naire_id = $this->db->insert_id();
@@ -164,11 +164,9 @@ class Naire_model extends CI_Model
 
 		} else {
 			// todo 执行更新操作
+
 		}
-
-		return array("err" => 0, "data" => '新建问卷成功');
 	}
-
 	// 提交问卷
 	public function submit_naire()
 	{
@@ -212,7 +210,6 @@ class Naire_model extends CI_Model
 		}
 		return array("err" => 0, "data" => '问卷提交成功');
 	}
-
 	// 删除问卷
 	public function del_naire()
 	{
@@ -223,15 +220,24 @@ class Naire_model extends CI_Model
 		$this->db->delete($del_tables);
 		$result = $this->db->affected_rows();
 
-//		$this->db->query("DELETE FROM users WHERE users.u_id={$user_id}");
+//		$this->db->query("DELETE FROM naire, question, options, result  WHERE n_id={$n_id}");
 //		$rows = $this->db->affected_rows();
 
-		if ($result != 0) {
-			$error = 0; // OK
-		} else {
-			$error = 1; // ERROR
-		}
-		return array('err' => $error, "data" => $result);
+		return array('err' => 0, "data" => $result);
+	}
+	// 问卷统计
+	public function statis_naire() {
+
+
+
+
+	}
+
+
+	// 获得毫秒级的时间戳
+	private function getMillisecond() {
+		list($t1, $t2) = explode(' ', microtime());
+		return (float)sprintf('%.0f',(floatval($t1)+floatval($t2))*1000);
 	}
 
 }

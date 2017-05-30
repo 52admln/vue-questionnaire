@@ -21,7 +21,6 @@
 <style scoped>
   .view-layout {
     width: 100%;
-    height: 100%;
     padding: 20px 0;
     background-color: rgb(237, 240, 248);
   }

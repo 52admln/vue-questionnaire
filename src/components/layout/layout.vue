@@ -26,6 +26,18 @@
       </i-col>
       <i-col :span="19" class="layout-content-right">
         <div class="layout-header">
+          <div class="header-nav" v-if="this.$route.name === 'Static'">
+            <Menu mode="horizontal" theme="light" :active-name="subActive" @on-select="selectMenu">
+                <Menu-item name="result">
+                  <Icon type="pie-graph"></Icon>
+                  结果统计
+                </Menu-item>
+                <Menu-item name="cross-analysis">
+                  <Icon type="shuffle"></Icon>
+                  交叉分析
+                </Menu-item>
+            </Menu>
+          </div>
           <a @click="logout" class="header-logout">注销</a>
         </div>
         <div class="layout-content">
@@ -43,6 +55,11 @@
 
 <script>
   export default {
+    data () {
+      return {
+        subActive: 'result'
+      }
+    },
     computed: {
       defaultActive () {
         console.log(this.$route.matched[1])
@@ -56,6 +73,21 @@
     methods: {
       logout () {
         console.log('logout')
+      },
+      selectMenu (name) {
+        console.log('select')
+        switch (name) {
+          case 'cross-analysis':
+            this.subActive = name
+            this.$router.push('/platform/statis/cross-analysis/' + this.$route.params.id)
+            break
+          case 'result':
+            this.subActive = name
+            this.$router.push('/platform/statis/result/' + this.$route.params.id)
+            break
+          default:
+            break
+        }
       }
     }
   }
@@ -114,6 +146,11 @@
     height: 60px;
     background: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    overflow: hidden;
+  }
+
+  .header-nav {
+    float: left;
   }
 
   .layout-logo-left {

@@ -6,6 +6,9 @@ import List from '@/components/list/list'
 import Edit from '@/components/edit/edit'
 import View from '@/components/view/view'
 import User from '@/components/user/user'
+import Statis from '@/components/statis/statis'
+import Result from '@/components/statis/result'
+import crossAnalysis from '@/components/statis/cross-analysis'
 import Error from '@/components/common/error/error'
 import Complete from '@/components/common/complete/complete'
 
@@ -61,6 +64,25 @@ let router = new Router({
           path: 'user',
           component: User,
           meta: {requiresAuth: true}
+        },
+        {
+          path: 'statis',
+          name: 'Static',
+          component: Statis,
+          children: [
+            {
+              path: 'result/:id',
+              name: 'Static',
+              component: Result,
+              meta: {requiresAuth: true}
+            },
+            {
+              path: 'cross-analysis/:id',
+              name: 'Static',
+              component: crossAnalysis,
+              meta: {requiresAuth: true}
+            }
+          ]
         }
       ]
     },

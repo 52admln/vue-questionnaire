@@ -9,6 +9,7 @@ class User_model extends CI_Model
 		// Your own constructor code
 		$this->load->database();
 	}
+
 	// 获取用户
 	public function get_users()
 	{
@@ -59,7 +60,8 @@ class User_model extends CI_Model
 	}
 
 	// 批量上传
-	public function upload($data) {
+	public function upload($data)
+	{
 		// 如果学号冲突，则不添加此用户
 		$is_exist = $this->db->get_where('users', array('u_number' => $data[4]));
 		if ($is_exist->num_rows() > 0) {
@@ -67,9 +69,9 @@ class User_model extends CI_Model
 		}
 		$insert_data = array(
 			'u_major' => $data[0],
-			'u_name' =>  $data[1],
-			'u_sex' =>  $data[2],
-			'u_class' =>  $data[3],
+			'u_name' => $data[1],
+			'u_sex' => $data[2],
+			'u_class' => $data[3],
 			'u_number' => $data[4],
 			'u_birthday' => $data[5],
 			'u_nation' => $data[6],

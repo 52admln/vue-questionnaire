@@ -30,7 +30,7 @@
 
 <script>
   import questionList from '@/components/common/questionList/questionList'
-  import { formatDate } from '../../utils'
+  import { formatDate } from '../../common/js/utils'
 
   export default {
     data () {
@@ -51,6 +51,7 @@
     },
     methods: {
       fetchData () {
+        console.log(this.$route.params.id)
         this.$store.dispatch('getNaire', {
           n_id: this.$route.params.id
         }).then((response) => {
@@ -140,11 +141,12 @@
 </script>
 
 <style>
+
   .view-layout {
-    width: 100%;
-    padding: 20px 0;
     background-color: rgb(237, 240, 248);
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
   }
 
   .view-layout .main {
