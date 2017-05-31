@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: 2017-05-14 14:51:26
+-- Generation Time: 2017-05-31 21:02:50
 -- 服务器版本： 5.5.42
 -- PHP Version: 5.6.10
 
@@ -42,20 +42,19 @@ INSERT INTO `admin` (`a_id`, `a_username`, `a_password`) VALUES
 CREATE TABLE `naire` (
   `n_id` int(11) NOT NULL COMMENT '问卷id',
   `a_id` int(11) NOT NULL COMMENT '管理员id',
-  `n_creattime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `n_deadline` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '截止时间',
+  `n_creattime` varchar(14) NOT NULL COMMENT '创建时间',
+  `n_deadline` varchar(14) NOT NULL COMMENT '截止时间',
   `n_title` varchar(255) NOT NULL COMMENT '问卷标题',
   `n_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '发布状态',
   `n_intro` text COMMENT '问卷介绍'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='问卷表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='问卷表';
 
 --
 -- 转存表中的数据 `naire`
 --
 
 INSERT INTO `naire` (`n_id`, `a_id`, `n_creattime`, `n_deadline`, `n_title`, `n_status`, `n_intro`) VALUES
-(1, 1, '2017-05-14 06:32:34', '2017-05-30 16:00:00', '问卷1', 0, '问卷介绍11111'),
-(2, 1, '2017-05-14 06:32:34', '2017-04-30 16:00:00', '问卷2', 0, '问卷介绍22222');
+(22, 0, '1495628024980', '1496160000000', '杭州科技职业技术学院信息工程学院毕业生就业自我评价跟踪问卷调查表', 1, '同学，你好！\n为了能够更多地了解毕业生的信息，更好的服务于今后毕业生就业工作，学院特发出毕业生就业自我评价跟踪调查表，请如实填写。谢谢配合！');
 
 -- --------------------------------------------------------
 
@@ -69,17 +68,31 @@ CREATE TABLE `options` (
   `n_id` int(11) NOT NULL COMMENT '问卷ID',
   `q_id` int(11) NOT NULL COMMENT '题目ID',
   `o_isaddtion` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否有附加内容'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='题目选项表';
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COMMENT='题目选项表';
 
 --
 -- 转存表中的数据 `options`
 --
 
 INSERT INTO `options` (`o_id`, `o_value`, `n_id`, `q_id`, `o_isaddtion`) VALUES
-(1, '选项1', 1, 1, 1),
-(2, '选项2', 1, 1, 0),
-(3, '选项33', 1, 2, 0),
-(4, '选项44', 1, 2, 0);
+(74, '2013年6月', 22, 57, 0),
+(75, '2014年6月', 22, 57, 0),
+(76, '2015年6月', 22, 57, 0),
+(77, '2016年6月', 22, 57, 0),
+(78, '群众', 22, 58, 0),
+(79, '共青团员', 22, 58, 0),
+(80, '中共党员', 22, 58, 0),
+(81, '其他', 22, 58, 0),
+(82, '电子技术', 22, 59, 0),
+(83, '电路与电工', 22, 59, 0),
+(84, 'C语言', 22, 59, 0),
+(85, 'Protel 制图', 22, 59, 0),
+(86, 'CAD制图', 22, 59, 0),
+(87, '单片机应用', 22, 59, 0),
+(88, '嵌入式应用', 22, 59, 0),
+(89, '电子产品工艺与管理', 22, 59, 0),
+(90, '推荐', 22, 60, 0),
+(91, '不推荐', 22, 60, 1);
 
 -- --------------------------------------------------------
 
@@ -93,17 +106,19 @@ CREATE TABLE `question` (
   `q_type` varchar(10) NOT NULL COMMENT '题目类型（单选、多选、填空）',
   `n_id` int(11) NOT NULL COMMENT '问卷ID',
   `q_isrequire` tinyint(1) NOT NULL COMMENT '是否为必填项',
-  `q_description` text NOT NULL COMMENT '问题描述'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='题目表';
+  `q_description` text COMMENT '问题描述'
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='题目表';
 
 --
 -- 转存表中的数据 `question`
 --
 
 INSERT INTO `question` (`q_id`, `q_content`, `q_type`, `n_id`, `q_isrequire`, `q_description`) VALUES
-(1, '题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1题目内容1', '单选', 1, 1, ''),
-(2, '多选题1多选题1多选1题多选1题多选题多1选题多选题多选题1多选题1', '多选', 1, 0, '问题描述11111111'),
-(5, '文本题目11文本题目文本题111目文本11题目文本题目文本题目222', '文本', 1, 1, '问题描述11111111');
+(56, '最近一份工作到岗时间', '文本', 22, 1, ''),
+(57, '毕业时间', '单选', 22, 1, ''),
+(58, '政治面貌', '单选', 22, 1, ''),
+(59, '你认为哪些课程内容教学还需要加深？', '多选', 22, 1, ''),
+(60, '你对母校是否推荐？', '单选', 22, 1, '不推荐的理由: （1）就业不好（2）师生交流不够（3）收费太高（4）学校管理太严（5）食堂服务与饭菜质量不好（6）专业辅导员不友好（7）住宿条件与管理不好（8）文娱体育设施不全（9）图书与教学实验设施不好（10）校风学风不好（11）校园偏僻交通不便');
 
 -- --------------------------------------------------------
 
@@ -118,6 +133,41 @@ CREATE TABLE `result` (
   `o_id` int(11) DEFAULT NULL COMMENT '选项ID',
   `o_addtion` text COMMENT '附加文字'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `result`
+--
+
+INSERT INTO `result` (`u_id`, `n_id`, `q_id`, `o_id`, `o_addtion`) VALUES
+(1, 22, 56, 0, '2016.11.22'),
+(1, 22, 57, 74, ''),
+(1, 22, 58, 79, ''),
+(1, 22, 59, 82, ''),
+(1, 22, 59, 84, ''),
+(1, 22, 59, 83, ''),
+(1, 22, 59, 85, ''),
+(1, 22, 60, 90, ''),
+(1, 22, 56, 0, '2017.5.21'),
+(1, 22, 57, 76, ''),
+(1, 22, 58, 80, ''),
+(1, 22, 59, 89, ''),
+(1, 22, 59, 88, ''),
+(1, 22, 59, 87, ''),
+(1, 22, 59, 82, ''),
+(1, 22, 59, 83, ''),
+(1, 22, 59, 84, ''),
+(1, 22, 59, 85, ''),
+(1, 22, 59, 86, ''),
+(1, 22, 60, 91, '就业不好'),
+(1, 22, 56, 0, '2015.11.30'),
+(1, 22, 57, 75, ''),
+(1, 22, 58, 79, ''),
+(1, 22, 59, 82, ''),
+(1, 22, 59, 83, ''),
+(1, 22, 59, 84, ''),
+(1, 22, 59, 85, ''),
+(1, 22, 59, 89, ''),
+(1, 22, 60, 90, '');
 
 -- --------------------------------------------------------
 
@@ -136,7 +186,7 @@ CREATE TABLE `users` (
   `u_nation` varchar(10) NOT NULL COMMENT '民族',
   `u_password` varchar(40) NOT NULL COMMENT '密码',
   `u_major` varchar(200) NOT NULL COMMENT '专业名称'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 --
 -- 转存表中的数据 `users`
@@ -144,8 +194,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`u_id`, `u_name`, `u_sex`, `u_class`, `u_number`, `u_identity`, `u_birthday`, `u_nation`, `u_password`, `u_major`) VALUES
 (1, '陈程', 0, '计算机1505', '2015002529', '33062199611223015', '19961122', '汉族', 'a9c6272e1446483f94192d621f0c54fc0e92d70f', '计算机应用'),
-(2, '王晶', 1, '计算机1506', '2015002419', '3306219951022301X', '19951022', '汉族', 'b3d5e79219be413507f545c70500c0a964392c3b', '计算机应用'),
-(4, '兰亭', 0, '计算机1503', '2015002319', '33062199311022045', '19931102', '汉族', 'd7d3459c665337a01d64072505a0a217ae7a9fe3', '计算机应用');
+(2, '王晶', 0, '计算机1506', '2015002419', '3306219951022301X', '19951022', '汉族', 'b3d5e79219be413507f545c70500c0a964392c3b', '计算机应用'),
+(3, '兰亭', 0, '计算机1503', '2015002319', '33062199311022045', '19931102', '汉族', 'd7d3459c665337a01d64072505a0a217ae7a9fe3', '计算机应用');
 
 --
 -- Indexes for dumped tables
@@ -194,19 +244,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `naire`
 --
 ALTER TABLE `naire`
-  MODIFY `n_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '问卷id',AUTO_INCREMENT=3;
+  MODIFY `n_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '问卷id',AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选项ID',AUTO_INCREMENT=5;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选项ID',AUTO_INCREMENT=92;
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '题目ID',AUTO_INCREMENT=6;
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '题目ID',AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',AUTO_INCREMENT=5;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',AUTO_INCREMENT=4;
