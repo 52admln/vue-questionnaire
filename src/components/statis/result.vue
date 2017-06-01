@@ -1,5 +1,5 @@
 <template>
-  <div class="result">
+  <div class="result" v-if="hasReady">
     <h2>{{ statisData.naire.title }}</h2>
     <p>
       <Tag type="border" :color="statisData.naire.status === 0 ? 'red' : 'green'">
@@ -17,7 +17,11 @@
       <!-- v-for 数据库返回相应格式 -->
       <Table size="small" :columns="columnsStatis" :data="question.options"
              v-if="question.type === '单选' || question.type === '多选'"></Table>
-      <Table height="400" size="small" :columns="columnsStatisText" :data="question.answerList" v-if="question.type === '文本'"></Table>
+      <Table height="400" size="small" :columns="columnsStatisText" :data="question.answerList"
+             v-if="question.type === '文本'"></Table>
+      <h3 class="addtion-title" v-if="question.type === '单选' && question.addtionContent.length > 0">附加理由列表：</h3>
+      <Table height="200" size="small" :columns="columnsAddtion" :data="question.addtionContent"
+             v-if="question.type === '单选' && question.addtionContent.length > 0"></Table>
       <div class="echarts" v-if="question.type === '单选' || question.type === '多选'">
         <div :id="'chart-'+ question.q_id" :style="{width: '100%', height: '400px'}"></div>
       </div>
@@ -32,6 +36,7 @@
   export default {
     data () {
       return {
+        hasReady: false,
         chartIndex: 0,
         statisData: {
           'naire': {
@@ -87,6 +92,17 @@
             }
           ]
         },
+        columnsAddtion: [
+          {
+            title: '编号',
+            type: 'index',
+            width: 80
+          },
+          {
+            title: '附加理由',
+            key: 'content'
+          }
+        ],
         columnsStatis: [
           {
             title: '选项',
@@ -211,6 +227,7 @@
           if (response.data.err === 0) {
             this.statisData = Object.assign({}, response.data.data)
             this.getChartsData(response.data.data)
+            this.hasReady = true
           } else {
             this.$Message.error('获取失败，请重试')
             this.$router.go(-1)
@@ -238,5 +255,8 @@
   .line {
     padding: 5px 0 10px 0;
     border-bottom: 2px dotted #eee;
+  }
+  .addtion-title {
+    padding: 10px 0;
   }
 </style>

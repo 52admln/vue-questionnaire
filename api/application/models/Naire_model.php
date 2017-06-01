@@ -265,9 +265,9 @@ class Naire_model extends CI_Model
 		// 再遍历题目表，拿到题目id，去遍历选项表
 		foreach ($questions as $questionkey => $questionval) {
 //		  echo var_dump($val);
-			$temp = [];
+			$temp = []; // 待添加的选项
 			$charts = []; // 每个选项的个数
-
+			$addtionContent = []; // 附加理由
 			// 用于图表显示
 			// 查询该题目总调查人数
 			// select *,count(*) as total from result where n_id = {$naire[0]["n_id"]} and q_id = {$questionval["q_id"]} group by q_id
@@ -281,7 +281,20 @@ class Naire_model extends CI_Model
 					// select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} and o_id = {$optionval['o_id']}
 					$count = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} and o_id = {$optionval['o_id']}")->result_array()[0]["total"];
 					$charts[] = $count;
-					$percent =( $count / $total * 100 ). "%" ;
+					$percent = round(($count / $total * 100), 2) . "%";
+					// todo 查询附加理由的内容
+					// select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id and options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = {$optionval['o_id']}
+
+
+					$addtionData = $this->db->query("select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id and options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = 1 and result.o_id = {$optionval['o_id']}")->result_array();
+					foreach ($addtionData as $addtionitem => $addtionval) {
+						if ($addtionval["o_addtion"] != "") {
+//							print_r($addtionval["o_addtion"]);
+							$addtionContent[] = array(
+								"content" => $addtionval["o_addtion"]);
+						}
+					}
+
 
 					$temp[] = array(
 						"o_id" => $optionval['o_id'],
@@ -304,7 +317,8 @@ class Naire_model extends CI_Model
 					"selectContent" => "",
 					"additional" => "",
 					"options" => $temp,
-					"charts" => $charts
+					"charts" => $charts,
+					"addtionContent" => $addtionContent
 				);
 				// 多选题
 			} else if ($questionval["q_type"] == '多选') {
