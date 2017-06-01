@@ -11,7 +11,7 @@
       </div>
       </Col>
       <Col span="18">
-      <h3>{{ topic.question }}{{topic.isRequired ? "（必填）" : "（选填）"}}</h3>
+      <h3>（{{ topic.type }}） {{ topic.question }}{{topic.isRequired ? "（必填）" : "（选填）"}}</h3>
       <p class="question-desc" v-if="topic.description !== ''">说明：{{ topic.description }}</p>
       <div class="question-options">
         <div v-if="topic.type === '单选'">

@@ -90,6 +90,7 @@ class Naire_model extends CI_Model
 		return array("err" => 0, "data" => $result);
 
 	}
+
 	// 获取问卷列表
 	public function get_naire_list()
 	{
@@ -101,6 +102,7 @@ class Naire_model extends CI_Model
 		}
 		return array("err" => $err, "data" => $query->result_array());
 	}
+
 	// 保存问卷
 	public function save_naire()
 	{
@@ -167,6 +169,7 @@ class Naire_model extends CI_Model
 
 		}
 	}
+
 	// 提交问卷
 	public function submit_naire()
 	{
@@ -210,6 +213,7 @@ class Naire_model extends CI_Model
 		}
 		return array("err" => 0, "data" => '问卷提交成功');
 	}
+
 	// 删除问卷
 	public function del_naire()
 	{
@@ -225,19 +229,130 @@ class Naire_model extends CI_Model
 
 		return array('err' => 0, "data" => $result);
 	}
+
 	// 问卷统计
-	public function statis_naire() {
+	public function statis_naire()
+	{
+		// 获取参数 naire id
+		// JSON 反序列化
+		$n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
 
+		if ($n_id == '') {
+			return array("err" => 1, "data" => "请传入参数值");
+		}
+		$naire = $this->db->query("select * from naire where naire.n_id = {$n_id}")
+			->result_array();
+		$questions = $this->db->query("select * from question where question.n_id = {$n_id}")
+			->result_array();
+		$options = $this->db->query("select * from options where options.n_id = {$n_id}")
+			->result_array();
 
+//		echo var_dump($naire);
+//		echo var_dump($questions);
+//		echo var_dump($options);
+		if (empty($naire) || empty($questions)) {
+			return array("err" => 1, "data" => "未获取到相应问卷");
+		}
+		// 先遍历 问卷表，拿到问卷id
+		$result["naire"] = array(
+			"n_id" => $naire[0]["n_id"],
+			"title" => $naire[0]["n_title"],
+			"creattime" => $naire[0]["n_creattime"],
+			"deadline" => $naire[0]["n_deadline"],
+			"status" => $naire[0]["n_status"],
+			"intro" => $naire[0]["n_intro"]
+		);
+		// 再遍历题目表，拿到题目id，去遍历选项表
+		foreach ($questions as $questionkey => $questionval) {
+//		  echo var_dump($val);
+			$temp = [];
+			$charts = []; // 每个选项的个数
 
+			// 用于图表显示
+			// 查询该题目总调查人数
+			// select *,count(*) as total from result where n_id = {$naire[0]["n_id"]} and q_id = {$questionval["q_id"]} group by q_id
+			$total = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} group by q_id")->result_array()[0]["total"];
+
+			foreach ($options as $optionitem => $optionval) {
+				// 如果题目id 等于 选项表当中的题目id，则将该选项添加到临时数组中
+				if ($questionval['q_id'] == $optionval['q_id']) {
+
+					// 查询每个选项在数据库中的个数
+					// select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} and o_id = {$optionval['o_id']}
+					$count = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} and o_id = {$optionval['o_id']}")->result_array()[0]["total"];
+					$charts[] = $count;
+					$percent =( $count / $total * 100 ). "%" ;
+
+					$temp[] = array(
+						"o_id" => $optionval['o_id'],
+						"content" => $optionval['o_value'],
+						"isAddition" => $optionval['o_isaddtion'] == "1" ? true : false,
+						"count" => $count,
+						"percent" => $percent
+					);
+					$optionList[] = $optionval['o_value'];
+				}
+			}
+			// 单选题
+			if ($questionval["q_type"] == '单选') {
+				$result['questions'][] = array(
+					"q_id" => $questionval["q_id"],
+					"question" => $questionval["q_content"],
+					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
+					"type" => $questionval["q_type"],
+					"description" => $questionval["q_description"],
+					"selectContent" => "",
+					"additional" => "",
+					"options" => $temp,
+					"charts" => $charts
+				);
+				// 多选题
+			} else if ($questionval["q_type"] == '多选') {
+				$result['questions'][] = array(
+					"q_id" => $questionval["q_id"],
+					"question" => $questionval["q_content"],
+					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
+					"type" => $questionval["q_type"],
+					"description" => $questionval["q_description"],
+					"selectMultipleContent" => array(),
+					"additional" => "",
+					"options" => $temp,
+					"charts" => $charts
+				);
+				// 文本题
+			} else if ($questionval["q_type"] == '文本') {
+				// 拿问答题提交内容
+				$answerList = [];
+				$answerData = $this->db->query("select * from result where n_id = {$naire[0]["n_id"]} and q_id = {$questionval["q_id"]} ")->result_array();
+				foreach ($answerData as $item => $val) {
+//					print_r($val["o_addtion"]);
+					$answerList[] = array(
+						"content" => $val["o_addtion"]
+					);
+				}
+				$result['questions'][] = array(
+					"q_id" => $questionval["q_id"],
+					"question" => $questionval["q_content"],
+					"isRequired" => $questionval["q_isrequire"] == "1" ? true : false,
+					"type" => $questionval["q_type"],
+					"description" => $questionval["q_description"],
+					"selectContent" => "",
+					"answerList" => $answerList
+				);
+
+			}
+		}
+
+		return array("err" => 0, "data" => $result);
 
 	}
 
 
 	// 获得毫秒级的时间戳
-	private function getMillisecond() {
+	private function getMillisecond()
+	{
 		list($t1, $t2) = explode(' ', microtime());
-		return (float)sprintf('%.0f',(floatval($t1)+floatval($t2))*1000);
+		return (float)sprintf('%.0f', (floatval($t1) + floatval($t2)) * 1000);
 	}
 
 }

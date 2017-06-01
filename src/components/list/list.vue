@@ -51,12 +51,13 @@
           {
             title: '状态',
             key: 'n_status',
-            width: '90',
+            width: '100',
             render (row, column, index) {
               const deadline = new Date(row.n_deadline).getTime() // 获取截止时间
               const curtime = new Date().getTime() // 获取当前时间
               const status = curtime > deadline ? '已截止' : row.n_status === '0' ? '未发布' : '已发布'
-              return `${status}`
+              const color = row.n_status === 0 ? 'red' : 'green'
+              return `<Tag type="border" color="${color}">${status}</Tag>`.trim()
             }
           },
           {

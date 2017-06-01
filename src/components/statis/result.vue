@@ -1,19 +1,25 @@
 <template>
   <div class="result">
     <h2>{{ statisData.naire.title }}</h2>
-    <h4>{{ statisData.naire.intro }}</h4>
-    <p>截止日期：{{ statisData.naire.deadline | timeFormat}}</p>
+    <p>
+      <Tag type="border" :color="statisData.naire.status === 0 ? 'red' : 'green'">
+        {{ statisData.naire.status === 0 ? '未发布' : '已发布' }}
+      </Tag>
+    </p>
+    <p>创建日期： {{ statisData.naire.creattime | timeFormat }} | 截止日期：{{ statisData.naire.deadline | timeFormat}}</p>
     <div class="line"></div>
     <!-- v-for -->
     <div class="question-item" v-for="(question, index) in statisData.questions">
       <div class="title">
-        <h3>Q{{index + 1}}: {{question.content}}</h3>
-        <h5>{{ question.desc }}</h5>
+        <h3>Q{{index + 1}}: （{{ question.type }}）{{ question.question}}{{question.isRequired ? "（必填）" : "（选填）"}}</h3>
+        <h5>{{ question.description }}</h5>
       </div>
       <!-- v-for 数据库返回相应格式 -->
-      <Table size="small" :columns="columnsStatis" :data="question.options"></Table>
-      <div class="echarts">
-        <div :id="'chart-'+index" :style="{width: '100%', height: '400px'}"></div>
+      <Table size="small" :columns="columnsStatis" :data="question.options"
+             v-if="question.type === '单选' || question.type === '多选'"></Table>
+      <Table height="400" size="small" :columns="columnsStatisText" :data="question.answerList" v-if="question.type === '文本'"></Table>
+      <div class="echarts" v-if="question.type === '单选' || question.type === '多选'">
+        <div :id="'chart-'+ question.q_id" :style="{width: '100%', height: '400px'}"></div>
       </div>
     </div>
   </div>
@@ -26,7 +32,15 @@
   export default {
     data () {
       return {
+        chartIndex: 0,
         statisData: {
+          'naire': {
+            'title': '',
+            'intro': '',
+            'deadline': 0
+          }
+        },
+        statisData1: {
           'naire': {
             'title': '问卷名称',
             'intro': '问卷描述',
@@ -36,6 +50,7 @@
             {
               'content': '题目内容',
               'desc': '题目说明',
+              'q_id': 57,
               'options': [
                 {
                   'content': '选项1',
@@ -54,6 +69,7 @@
             {
               'content': '题目内容',
               'desc': '题目说明',
+              'q_id': 58,
               'options': [
                 {
                   'content': '选项1',
@@ -87,18 +103,29 @@
             width: '150'
           }
         ],
-        chartsOptions: [
+        columnsStatisText: [
           {
+            title: '编号',
+            type: 'index',
+            width: 80
+          },
+          {
+            title: '提交内容',
+            key: 'content'
+          }
+        ],
+        chartsOptions: {
+          '57': {
             questionTitle: 'Q1',
             Axis: ['A', 'B'],
             series: [5, 20]
           },
-          {
+          '58': {
             questionTitle: 'Q2',
             Axis: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
             series: [50, 100]
           }
-        ]
+        }
       }
     },
     filters: {
@@ -108,6 +135,7 @@
     },
     methods: {
       drawChart (index) {
+        console.log(index)
         let _chart = echarts.init(document.getElementById('chart-' + index))
         _chart.setOption({
           title: {
@@ -143,18 +171,55 @@
             data: this.chartsOptions[index].series
           }]
         })
+      },
+      getChartsData (data) {
+        // 题目，选项数组，选项的小计
+        data.questions.forEach((item, quesIndex) => {
+          if (item.type === '单选' || item.type === '多选') {
+            let tempObj = {}
+            tempObj.questionTitle = 'Q' + (quesIndex + 1)
+            tempObj.Axis = []
+            item.options.forEach((option, index) => {
+              tempObj.Axis.push(option.content)
+            })
+            tempObj.series = item.charts
+            this.chartsOptions[item.q_id] = Object.assign({}, tempObj)
+            console.log(item.q_id)
+          }
+        })
       }
     },
-    mounted () {
+    updated () {
       // todo 通过 Ajax 获取数据
       // todo 如果字符串超过 30 个字符，变为 ...
-      // 临时测试 数据长度为 2 个
-      for (let i = 0; i < 2; i++) {
-        this.drawChart(i)
-      }
+
+      this.statisData.questions.forEach((item, index) => {
+        if (item.type === '单选' || item.type === '多选') {
+          this.drawChart(item.q_id)
+        }
+      })
     },
-    created () {
+    beforeCreate () {
       // todo 获取数据，push 到 chartOptions 中
+      // 获取 问卷id
+      this.$http.post('/api/naire/statis', {
+        n_id: this.$route.params.id
+      })
+        .then((response) => {
+          console.log(response.data)
+          // 影响行数大于0
+          if (response.data.err === 0) {
+            this.statisData = Object.assign({}, response.data.data)
+            this.getChartsData(response.data.data)
+          } else {
+            this.$Message.error('获取失败，请重试')
+            this.$router.go(-1)
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+          this.$Message.error('修改失败，请重试')
+        })
     }
   }
 </script>
