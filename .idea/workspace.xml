@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f8f6936f-27ac-4727-ad41-0ced38230e62" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/Naire.php" afterPath="$PROJECT_DIR$/api/application/controllers/Naire.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/Naire_model.php" afterPath="$PROJECT_DIR$/api/application/models/Naire_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/statis/result.vue" afterPath="$PROJECT_DIR$/src/components/statis/result.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,10 +31,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.49105367">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="result.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="result.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/statis/result.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="534">
+                <state relative-caret-position="4260">
                   <caret line="259" column="20" lean-forward="false" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
                   <folding>
                     <element signature="e#1576#1605#0" expanded="true" />
@@ -46,8 +47,8 @@
           <file leaf-file-name="questionList.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/common/questionList/questionList.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+                <state relative-caret-position="400">
+                  <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -56,11 +57,24 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/router/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1780">
-                  <caret line="88" column="5" lean-forward="false" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+                <state relative-caret-position="397">
+                  <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="13">
+                    <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+                    <folding />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -72,8 +86,8 @@
           <file leaf-file-name="Naire.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="26" />
+                <state relative-caret-position="1100">
+                  <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="50" />
                   <folding />
                 </state>
               </provider>
@@ -82,32 +96,32 @@
           <file leaf-file-name="Naire_model.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/api/application/models/Naire_model.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="520">
-                  <caret line="295" column="4" lean-forward="true" selection-start-line="295" selection-start-column="4" selection-end-line="295" selection-end-column="4" />
+                <state relative-caret-position="481">
+                  <caret line="370" column="8" lean-forward="false" selection-start-line="370" selection-start-column="8" selection-end-line="370" selection-end-column="8" />
                   <folding>
                     <element signature="n#get_naire_list#0;n#Naire_model#0;n#!!top" expanded="false" />
                     <element signature="n#save_naire#0;n#Naire_model#0;n#!!top" expanded="false" />
                     <element signature="n#submit_naire#0;n#Naire_model#0;n#!!top" expanded="false" />
                     <element signature="n#del_naire#0;n#Naire_model#0;n#!!top" expanded="false" />
-                    <marker date="1496327290000" expanded="true" signature="419:458" ph="select * fro... naire" />
-                    <marker date="1496327290000" expanded="true" signature="419:465" ph="select * fro... naire" />
-                    <marker date="1496327290000" expanded="true" signature="522:567" ph="select * fro... question" />
-                    <marker date="1496327290000" expanded="true" signature="522:574" ph="select * fro... question" />
-                    <marker date="1496327290000" expanded="true" signature="629:672" ph="select * fro... options" />
-                    <marker date="1496327290000" expanded="true" signature="629:679" ph="select * fro... options" />
-                    <marker date="1496327290000" expanded="true" signature="6655:6712" ph="DELETE FROM " />
-                    <marker date="1496327290000" expanded="true" signature="6655:6719" ph="DELETE FROM " />
-                    <marker date="1496327290000" expanded="true" signature="7066:7105" ph="select * fro... naire" />
-                    <marker date="1496327290000" expanded="true" signature="7169:7214" ph="select * fro... question" />
-                    <marker date="1496327290000" expanded="true" signature="7276:7319" ph="select * fro... options" />
-                    <marker date="1496327290000" expanded="true" signature="8199:8207" ph="select * fro... result" />
-                    <marker date="1496327290000" expanded="true" signature="8199:8318" ph="select *,cou... result" />
-                    <marker date="1496327290000" expanded="true" signature="8702:8819" ph="select *,cou... result" />
-                    <marker date="1496327290000" expanded="true" signature="8702:8839" ph="select *,cou... result" />
-                    <marker date="1496327290000" expanded="true" signature="9216:9387" ph="select *,cou... result" />
-                    <marker date="1496327290000" expanded="true" signature="9216:9407" ph="select * fro... result" />
-                    <marker date="1496327290000" expanded="true" signature="9216:9427" ph="select * fro... result" />
-                    <marker date="1496327290000" expanded="true" signature="11066:11131" ph="select * fro... result" />
+                    <marker date="1496370896000" expanded="true" signature="419:458" ph="select * fro... naire" />
+                    <marker date="1496370896000" expanded="true" signature="419:465" ph="select * fro... naire" />
+                    <marker date="1496370896000" expanded="true" signature="522:567" ph="select * fro... question" />
+                    <marker date="1496370896000" expanded="true" signature="522:574" ph="select * fro... question" />
+                    <marker date="1496370896000" expanded="true" signature="629:672" ph="select * fro... options" />
+                    <marker date="1496370896000" expanded="true" signature="629:679" ph="select * fro... options" />
+                    <marker date="1496370896000" expanded="true" signature="6655:6712" ph="DELETE FROM " />
+                    <marker date="1496370896000" expanded="true" signature="6655:6719" ph="DELETE FROM " />
+                    <marker date="1496370896000" expanded="true" signature="7066:7105" ph="select * fro... naire" />
+                    <marker date="1496370896000" expanded="true" signature="7169:7214" ph="select * fro... question" />
+                    <marker date="1496370896000" expanded="true" signature="7276:7319" ph="select * fro... options" />
+                    <marker date="1496370896000" expanded="true" signature="8199:8207" ph="select * fro... result" />
+                    <marker date="1496370896000" expanded="true" signature="8199:8318" ph="select *,cou... result" />
+                    <marker date="1496370896000" expanded="true" signature="8702:8819" ph="select *,cou... result" />
+                    <marker date="1496370896000" expanded="true" signature="8702:8839" ph="select *,cou... result" />
+                    <marker date="1496370896000" expanded="true" signature="9216:9387" ph="select *,cou... result" />
+                    <marker date="1496370896000" expanded="true" signature="9216:9407" ph="select * fro... result" />
+                    <marker date="1496370896000" expanded="true" signature="9216:9427" ph="select * fro... result" />
+                    <marker date="1496370896000" expanded="true" signature="11066:11131" ph="select * fro... result" />
                   </folding>
                 </state>
               </provider>
@@ -116,7 +130,7 @@
           <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/store/actions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1100">
+                <state relative-caret-position="1120">
                   <caret line="56" column="35" lean-forward="false" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
                   <folding>
                     <element signature="e#34#75#0" expanded="true" />
@@ -150,7 +164,7 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/store/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
+                <state relative-caret-position="260">
                   <caret line="13" column="14" lean-forward="false" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
@@ -216,7 +230,6 @@
         <option value="$PROJECT_DIR$/src/components/login/login.vue" />
         <option value="$PROJECT_DIR$/data.json" />
         <option value="$PROJECT_DIR$/src/components/edit/home.vue" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/store/mutation.js" />
         <option value="$PROJECT_DIR$/src/components/common/questionList.vue" />
         <option value="$PROJECT_DIR$/api/application/models/naire_model.php" />
@@ -249,7 +262,6 @@
         <option value="$PROJECT_DIR$/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/App.vue" />
-        <option value="$PROJECT_DIR$/api/application/controllers/Naire.php" />
         <option value="$PROJECT_DIR$/src/components/view/view.vue" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/statis/statis.vue" />
@@ -260,8 +272,10 @@
         <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/components/common/questionList/questionList.vue" />
         <option value="$PROJECT_DIR$/src/components/list/list.vue" />
-        <option value="$PROJECT_DIR$/api/application/models/Naire_model.php" />
         <option value="$PROJECT_DIR$/src/components/statis/result.vue" />
+        <option value="$PROJECT_DIR$/api/application/controllers/Naire.php" />
+        <option value="$PROJECT_DIR$/api/application/models/Naire_model.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -313,8 +327,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -773,7 +785,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1232,7 +1246,8 @@
       <workItem from="1495287679289" duration="386000" />
       <workItem from="1495547480941" duration="25640000" />
       <workItem from="1496142448801" duration="70000" />
-      <workItem from="1496234888076" duration="17446000" />
+      <workItem from="1496234888076" duration="18837000" />
+      <workItem from="1496380363715" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -1346,11 +1361,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496325554454</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="增加附加理由表格显示">
+      <created>1496327526876</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1496327526876</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204274000" />
+    <option name="totallyTimeSpent" value="205728000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1372,20 +1394,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19765739" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18659128" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18901454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1452,7 +1474,8 @@
     <MESSAGE value="todo 问卷结果统计" />
     <MESSAGE value="完成问卷结果统计" />
     <MESSAGE value="完善问卷结果统计" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善问卷结果统计" />
+    <MESSAGE value="增加附加理由表格显示" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加附加理由表格显示" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1472,13 +1495,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/prod.env.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1588,7 +1604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1602,7 +1617,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="260">
           <caret line="13" column="14" lean-forward="false" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -1620,7 +1635,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
+        <state relative-caret-position="1120">
           <caret line="56" column="35" lean-forward="false" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
           <folding>
             <element signature="e#34#75#0" expanded="true" />
@@ -1681,7 +1696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1714,14 +1728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/view/view.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2167">
@@ -1744,7 +1750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="71" lean-forward="false" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,7 +1757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1760,7 +1764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1768,68 +1771,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="596">
           <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1780">
-          <caret line="88" column="5" lean-forward="false" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/questionList/questionList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        <state relative-caret-position="400">
+          <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/statis/result.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4260">
+          <caret line="259" column="20" lean-forward="false" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
+          <folding>
+            <element signature="e#1576#1605#0" expanded="true" />
+            <element signature="e#1919#3114#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/application/models/Naire_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="295" column="4" lean-forward="true" selection-start-line="295" selection-start-column="4" selection-end-line="295" selection-end-column="4" />
+        <state relative-caret-position="481">
+          <caret line="370" column="8" lean-forward="false" selection-start-line="370" selection-start-column="8" selection-end-line="370" selection-end-column="8" />
           <folding>
             <element signature="n#get_naire_list#0;n#Naire_model#0;n#!!top" expanded="false" />
             <element signature="n#save_naire#0;n#Naire_model#0;n#!!top" expanded="false" />
             <element signature="n#submit_naire#0;n#Naire_model#0;n#!!top" expanded="false" />
             <element signature="n#del_naire#0;n#Naire_model#0;n#!!top" expanded="false" />
-            <marker date="1496327290000" expanded="true" signature="419:458" ph="select * fro... naire" />
-            <marker date="1496327290000" expanded="true" signature="419:465" ph="select * fro... naire" />
-            <marker date="1496327290000" expanded="true" signature="522:567" ph="select * fro... question" />
-            <marker date="1496327290000" expanded="true" signature="522:574" ph="select * fro... question" />
-            <marker date="1496327290000" expanded="true" signature="629:672" ph="select * fro... options" />
-            <marker date="1496327290000" expanded="true" signature="629:679" ph="select * fro... options" />
-            <marker date="1496327290000" expanded="true" signature="6655:6712" ph="DELETE FROM " />
-            <marker date="1496327290000" expanded="true" signature="6655:6719" ph="DELETE FROM " />
-            <marker date="1496327290000" expanded="true" signature="7066:7105" ph="select * fro... naire" />
-            <marker date="1496327290000" expanded="true" signature="7169:7214" ph="select * fro... question" />
-            <marker date="1496327290000" expanded="true" signature="7276:7319" ph="select * fro... options" />
-            <marker date="1496327290000" expanded="true" signature="8199:8207" ph="select * fro... result" />
-            <marker date="1496327290000" expanded="true" signature="8199:8318" ph="select *,cou... result" />
-            <marker date="1496327290000" expanded="true" signature="8702:8819" ph="select *,cou... result" />
-            <marker date="1496327290000" expanded="true" signature="8702:8839" ph="select *,cou... result" />
-            <marker date="1496327290000" expanded="true" signature="9216:9387" ph="select *,cou... result" />
-            <marker date="1496327290000" expanded="true" signature="9216:9407" ph="select * fro... result" />
-            <marker date="1496327290000" expanded="true" signature="9216:9427" ph="select * fro... result" />
-            <marker date="1496327290000" expanded="true" signature="11066:11131" ph="select * fro... result" />
+            <marker date="1496370896000" expanded="true" signature="419:458" ph="select * fro... naire" />
+            <marker date="1496370896000" expanded="true" signature="419:465" ph="select * fro... naire" />
+            <marker date="1496370896000" expanded="true" signature="522:567" ph="select * fro... question" />
+            <marker date="1496370896000" expanded="true" signature="522:574" ph="select * fro... question" />
+            <marker date="1496370896000" expanded="true" signature="629:672" ph="select * fro... options" />
+            <marker date="1496370896000" expanded="true" signature="629:679" ph="select * fro... options" />
+            <marker date="1496370896000" expanded="true" signature="6655:6712" ph="DELETE FROM " />
+            <marker date="1496370896000" expanded="true" signature="6655:6719" ph="DELETE FROM " />
+            <marker date="1496370896000" expanded="true" signature="7066:7105" ph="select * fro... naire" />
+            <marker date="1496370896000" expanded="true" signature="7169:7214" ph="select * fro... question" />
+            <marker date="1496370896000" expanded="true" signature="7276:7319" ph="select * fro... options" />
+            <marker date="1496370896000" expanded="true" signature="8199:8207" ph="select * fro... result" />
+            <marker date="1496370896000" expanded="true" signature="8199:8318" ph="select *,cou... result" />
+            <marker date="1496370896000" expanded="true" signature="8702:8819" ph="select *,cou... result" />
+            <marker date="1496370896000" expanded="true" signature="8702:8839" ph="select *,cou... result" />
+            <marker date="1496370896000" expanded="true" signature="9216:9387" ph="select *,cou... result" />
+            <marker date="1496370896000" expanded="true" signature="9216:9407" ph="select * fro... result" />
+            <marker date="1496370896000" expanded="true" signature="9216:9427" ph="select * fro... result" />
+            <marker date="1496370896000" expanded="true" signature="11066:11131" ph="select * fro... result" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/statis/result.vue">
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="259" column="20" lean-forward="false" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
+        <state relative-caret-position="397">
+          <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
           <folding>
-            <element signature="e#1576#1605#0" expanded="true" />
-            <element signature="e#1919#3114#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="13">
+            <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
