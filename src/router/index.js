@@ -72,13 +72,13 @@ let router = new Router({
           children: [
             {
               path: 'result/:id',
-              name: 'Static',
+              name: 'Statis result',
               component: Result,
               meta: {requiresAuth: true}
             },
             {
               path: 'cross-analysis/:id',
-              name: 'Static',
+              name: 'Statis analysis',
               component: crossAnalysis,
               meta: {requiresAuth: true}
             }
@@ -97,6 +97,28 @@ let router = new Router({
       redirect: '/404'
     }
   ]
+})
+
+// JWT 用户权限校验，判断 TOKEN 是否在 localStorage 当中
+// 对象解构，等于 {name} === to.name
+router.beforeEach((to, from, next) => {
+  // 获取 JWT Token
+  if (to.meta.requiresAuth) {
+    // 判断该路由是否需要登录权限
+    console.log('store token:' + localStorage.getItem('USER_NAME'))
+    if (localStorage.getItem('USER_NAME')) {
+      // 通过vuex state获取当前的token是否存在
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {redirect: to.fullPath}
+        // 将跳转的路由path作为参数，登录成功后跳转到该路由
+      })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

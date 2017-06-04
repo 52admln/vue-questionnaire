@@ -10,7 +10,7 @@
           <Input type="password" v-model="formValidate.password"></Input>
         </Form-item>
         <Form-item>
-          <Button type="primary" html-type="submit" @click="handleSubmit('formValidate')" long>立即登录</Button>
+          <Button type="primary" html-type="submit" @click.prevent="handleSubmit('formValidate')" long>立即登录</Button>
         </Form-item>
       </Form>
     </div>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  const OK = 0  // 成功状态
   export default {
     data () {
       return {
@@ -47,8 +48,33 @@
       handleSubmit (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$Message.success('登录成功!')
-            this.$router.push('/platform')
+            const params = new URLSearchParams()
+            params.append('username', this.formValidate.username)
+            params.append('password', this.formValidate.password)
+            this.$http.post('/api/admin/login', params)
+              .then((response) => {
+                console.log(response.data)
+                if (response.data.err === OK) {
+                  this.$Message.success('登录成功!')
+                  console.log(response.data)
+                  const data = {
+                    username: this.formValidate.username,
+                    token: response.data.token
+                  }
+                  this.$store.dispatch('login', data)
+                  // dispatch action，从action commit 到mutation更新登录状态
+//                  this.$store.dispatch('login', this.formValidate.username);
+                  this.$router.push('/platform')
+                } else {
+                  this.$Message.error('帐号或密码有误!')
+                }
+              })
+              .catch((error) => {
+                console.log(error)
+                this.$Message.error('网络请求有误，请稍后重试!')
+              })
+          } else {
+            this.$Message.error('表单填写有误!')
           }
         })
       }

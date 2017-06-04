@@ -3,20 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-	// 管理员登录
-	public function login()
-	{
-
-	}
 
 	// 获取所有用户
 	public function index()
 	{
 		$this->load->model('user_model');
-
-		$result = $this->user_model->get_users();
-
-		echo json_encode($result);
+		$header = $this->input->get_request_header('Authorization', TRUE);
+		list($token) = sscanf($header, 'token %s');
+		if ($header != '' && jwt_helper::validate($token)) {
+			$result = $this->user_model->get_users();
+			echo json_encode($result);
+		} else {
+			show_error("Permission denied", 401, "Please check your token.");
+		}
 	}
 
 
@@ -101,9 +100,14 @@ class User extends CI_Controller
 	public function del()
 	{
 		$this->load->model('user_model');
-
-		$result = $this->user_model->del_user();
-		echo json_encode($result);
+		$header = $this->input->get_request_header('Authorization', TRUE);
+		list($token) = sscanf($header, 'token %s');
+		if ($header != '' && jwt_helper::validate($token)) {
+			$result = $this->user_model->del_user();
+			echo json_encode($result);
+		} else {
+			show_error("Permission denied", 401, "Please check your token.");
+		}
 
 	}
 

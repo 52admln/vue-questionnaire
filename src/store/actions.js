@@ -57,3 +57,16 @@ export const changeNaireStatus = ({commit, state}, data) => {
   commit(types.CHANGE_NAIRE_STATUS, data)
   console.log('commit CHANGE_NAIRE_STATUS')
 }
+
+export const login = ({commit}, data) => {
+  console.log('commit USER_LOGIN')
+  commit(types.USER_LOGIN, {
+    username: data.username,
+    token: data.token
+  })
+}
+
+export const logout = ({commit}) => {
+  console.log('commit LOG_OUT')
+  commit(types.LOG_OUT)
+}

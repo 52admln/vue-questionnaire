@@ -26,19 +26,19 @@
       </i-col>
       <i-col :span="19" class="layout-content-right">
         <div class="layout-header">
-          <div class="header-nav" v-if="this.$route.name === 'Static'">
+          <div class="header-nav" v-if="this.$route.matched[1].path === '/platform/statis'">
             <Menu mode="horizontal" theme="light" :active-name="subActive" @on-select="selectMenu">
-                <Menu-item name="result">
-                  <Icon type="pie-graph"></Icon>
-                  结果统计
-                </Menu-item>
-                <Menu-item name="cross-analysis">
-                  <Icon type="shuffle"></Icon>
-                  交叉分析
-                </Menu-item>
+              <Menu-item name="result">
+                <Icon type="pie-graph"></Icon>
+                结果统计
+              </Menu-item>
+              <Menu-item name="cross-analysis">
+                <Icon type="shuffle"></Icon>
+                交叉分析
+              </Menu-item>
             </Menu>
           </div>
-          <a @click="logout" class="header-logout">注销</a>
+          <a @click="logout" class="header-logout">注销 {{ userName }}</a>
         </div>
         <div class="layout-content">
           <div class="layout-content-main">
@@ -68,11 +68,17 @@
         } else {
           return this.$route.path
         }
+      },
+      userName () {
+        return this.$store.getters.getUser
       }
     },
     methods: {
       logout () {
         console.log('logout')
+        this.$store.dispatch('logout')
+        this.$Message.warning('已登出!')
+        this.$router.push('/login')
       },
       selectMenu (name) {
         console.log('select')
