@@ -362,6 +362,15 @@ class Naire_model extends CI_Model
 	}
 
 
+	public function cross_analysis()
+	{
+		// 需要接收两个参数，一个题目的id，一个是题目的id
+		// 交叉分析
+		// 第一列选项内容， 表头也是选项内容
+		// 用户可以添加多个条件，然后进行分别匹配，渲染出结果
+		
+	}
+
 	// 获得毫秒级的时间戳
 	private function getMillisecond()
 	{

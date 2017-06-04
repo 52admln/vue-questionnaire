@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+	// 管理员登录
+	public function login()
+	{
+
+	}
 
 	// 获取所有用户
 	public function index()

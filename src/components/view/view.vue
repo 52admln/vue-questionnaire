@@ -1,30 +1,31 @@
 <template>
   <div class="view-layout">
-  <div class="main">
-    <div class="header">
-      <h1>{{naire.title}}</h1>
-    </div>
-    <div class="content">
-      <div class="intro">
-        <p>问卷介绍：{{naire.intro}}</p>
-        <p>截止日期：{{naire.deadline | timeFormat}}</p>
+    <Spin size="large" fix v-if="spinShow"></Spin>
+    <div class="main">
+      <div class="header">
+        <h1>{{naire.title}}</h1>
       </div>
-      <questionList :question-list="this.naire.topic">
-        <Row type="flex" justify="center" align="middle" class="code-row-bg">
-          <Button type="success"
-                  v-if="isAdmin"
-                  @click="goBack">返回管理平台
-          </Button>
-          <Button type="primary"
-                  @click="submitNaire">提交问卷
-          </Button>
-        </Row>
-      </questionList>
+      <div class="content">
+        <div class="intro">
+          <p>问卷介绍：{{naire.intro}}</p>
+          <p>截止日期：{{naire.deadline | timeFormat}}</p>
+        </div>
+        <questionList :question-list="this.naire.topic">
+          <Row type="flex" justify="center" align="middle" class="code-row-bg">
+            <Button type="success"
+                    v-if="isAdmin"
+                    @click="goBack">返回管理平台
+            </Button>
+            <Button type="primary"
+                    @click="submitNaire">提交问卷
+            </Button>
+          </Row>
+        </questionList>
+      </div>
+      <div class="footer">
+        <p>Timu蜗壳工作室</p>
+      </div>
     </div>
-    <div class="footer">
-      <p>Timu蜗壳工作室</p>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -37,7 +38,8 @@
       return {
         naire: {
           topic: []
-        }
+        },
+        spinShow: true
       }
     },
     filters: {
@@ -50,6 +52,12 @@
       '$route': 'fetchData'
     },
     methods: {
+      error (nodesc, title, desc) {
+        this.$Notice.error({
+          title: title,
+          desc: nodesc ? '' : desc
+        })
+      },
       fetchData () {
         console.log(this.$route.params.id)
         this.$store.dispatch('getNaire', {
@@ -61,6 +69,7 @@
             })
             // 通过 JSON 序列化将数组不再为引用，避免出现在 store 外修改 state 的内容
             this.naire = response.data.data
+            this.spinShow = false
           } else {
             this.$Message.error(response.data.data)
             this.$router.push('/404')
@@ -74,9 +83,50 @@
       goBack () {
         this.$router.push('/platform')
       },
+      validateNaire () {
+        let _flag = true
+        let _addtion = false
+        let _isfinished = true
+        this.naire.topic.forEach((item, index) => {
+          if (item.isRequired) {
+            if (item.type === '文本') {
+              if (!item.selectContent.trim().length > 0) {
+                _flag = false
+              }
+            }
+            if (item.type === '单选') {
+              const _isAddtion = item.options.some((option, index) => {
+                return option.isAddition && option.o_id === item.selectContent
+              })
+              // 有附加理由的情况
+              if (_isAddtion && !item.additional.trim().length > 0) {
+                _addtion = true
+              }
+              if (!item.selectContent.trim().length > 0) {
+                _flag = false
+              }
+            }
+            if (item.type === '多选') {
+              if (!item.selectMultipleContent.length > 0) {
+                _flag = false
+              }
+            }
+          }
+        })
+        if (!_flag) {
+          this.error(true, '您还有必填项未填，请检查后提交！', '')
+          _isfinished = false
+        }
+        if (_addtion) {
+          this.error(true, '请填写附加理由', '')
+          _isfinished = false
+        }
+        return _isfinished
+      },
       submitNaire () {
-        console.log(this.naire)
-
+        if (!this.validateNaire()) {
+          return
+        }
         const nId = this.naire.n_id
         const result = []
         this.naire.topic.forEach((question, index) => {
@@ -85,7 +135,7 @@
               n_id: nId,
               q_id: question.q_id,
               o_id: question.selectContent,
-              o_addition: question.additional
+              o_addition: question.additional.trim()
             }
             result.push(curQues)
           } else if (question.type === '多选') {
@@ -93,7 +143,7 @@
               n_id: nId,
               q_id: question.q_id,
               o_id: question.selectMultipleContent,
-              o_addition: question.additional
+              o_addition: question.additional.trim()
             }
             result.push(curQues)
           } else {
@@ -101,7 +151,7 @@
               n_id: nId,
               q_id: question.q_id,
               o_id: '',
-              o_addition: question.selectContent
+              o_addition: question.selectContent.trim()
             }
             result.push(curQues)
           }
@@ -140,12 +190,11 @@
   }
 </script>
 
-<style>
+<style scoped>
 
   .view-layout {
     background-color: rgb(237, 240, 248);
     width: 100%;
-    height: 100%;
     padding: 20px 0;
   }
 

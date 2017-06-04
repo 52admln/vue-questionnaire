@@ -33,7 +33,22 @@ npm run build
 
 ## 问题
 
+1. 问卷统计
 
+```
+// 查询单个选项的所选个数
+select *,count(*) as total from result where n_id = 22 and q_id = 59 and o_id = 82
+```
+
+```
+// 查询题目的总人数
+select *,count(*) as total from result where n_id = 22 group by q_id
+```
+
+```
+// 百分比
+( 单个选项的个数 / 总人数 * 100 )  
+```
 
 
 

@@ -50,4 +50,10 @@ class Naire extends CI_Controller
 		$result = $this->naire_model->statis_naire();
 		echo json_encode($result);
 	}
+
+	public function crossanalysis() {
+		$this->load->model('naire_model');
+		$result=$this->naire_model->cross_analysis();
+		echo json_encode($result);
+	}
 }
