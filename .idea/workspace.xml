@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8f6936f-27ac-4727-ad41-0ced38230e62" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/application/controllers/Admin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/application/helpers/jwt_helper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/application/libraries/JWT.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/application/models/Admin_model.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/application/controllers/Welcome.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/autoload.php" afterPath="$PROJECT_DIR$/api/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/Naire.php" afterPath="$PROJECT_DIR$/api/application/controllers/Naire.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/User.php" afterPath="$PROJECT_DIR$/api/application/controllers/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/layout.vue" afterPath="$PROJECT_DIR$/src/components/layout/layout.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/login/login.vue" afterPath="$PROJECT_DIR$/src/components/login/login.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="$PROJECT_DIR$/src/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/actions.js" afterPath="$PROJECT_DIR$/src/store/actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/getters.js" afterPath="$PROJECT_DIR$/src/store/getters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/mutation-types.js" afterPath="$PROJECT_DIR$/src/store/mutation-types.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/mutations.js" afterPath="$PROJECT_DIR$/src/store/mutations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/list/list.vue" afterPath="$PROJECT_DIR$/src/components/list/list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/user/user.vue" afterPath="$PROJECT_DIR$/src/components/user/user.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,22 +28,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Naire.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
+      <file leaf-file-name="list.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/list/list.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1860">
-              <caret line="93" column="42" lean-forward="false" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="84">
+              <caret line="92" column="13" lean-forward="true" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
+              <folding>
+                <marker date="1496638445000" expanded="true" signature="2105:2439" ph="..." />
+                <marker date="1496638445000" expanded="true" signature="2472:3200" ph="..." />
+                <marker date="1496638445000" expanded="true" signature="2537:2674" ph="..." />
+                <marker date="1496638445000" expanded="true" signature="2728:3166" ph="..." />
+                <marker date="1496638445000" expanded="true" signature="3025:3045" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Admin.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/application/controllers/Admin.php">
+      <file leaf-file-name="user.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/user/user.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="80">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+              <folding>
+                <marker date="1496639384000" expanded="true" signature="2707:2912" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,7 +123,6 @@
         <option value="$PROJECT_DIR$/src/api/resource.js" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/utils.js" />
-        <option value="$PROJECT_DIR$/src/components/user/user.vue" />
         <option value="$PROJECT_DIR$/src/components/view/complete.vue" />
         <option value="$PROJECT_DIR$/src/components/view/view-layout.vue" />
         <option value="$PROJECT_DIR$/src/components/statisticall/statistical.vue" />
@@ -142,7 +135,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/statis/statis.vue" />
         <option value="$PROJECT_DIR$/src/components/statis/cross-analysis.vue" />
-        <option value="$PROJECT_DIR$/src/components/list/list.vue" />
         <option value="$PROJECT_DIR$/src/components/statis/result.vue" />
         <option value="$PROJECT_DIR$/api/application/models/Naire_model.php" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -163,6 +155,8 @@
         <option value="$PROJECT_DIR$/src/components/layout/layout.vue" />
         <option value="$PROJECT_DIR$/api/application/controllers/User.php" />
         <option value="$PROJECT_DIR$/api/application/controllers/Naire.php" />
+        <option value="$PROJECT_DIR$/src/components/list/list.vue" />
+        <option value="$PROJECT_DIR$/src/components/user/user.vue" />
       </list>
     </option>
   </component>
@@ -1227,7 +1221,7 @@
       <workItem from="1496142448801" duration="70000" />
       <workItem from="1496234888076" duration="18837000" />
       <workItem from="1496380363715" duration="394000" />
-      <workItem from="1496562752405" duration="10988000" />
+      <workItem from="1496562752405" duration="12827000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -1362,11 +1356,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496575663406</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="add 管理员登录，JWT鉴权">
+      <created>1496582475007</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1496582475007</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217047000" />
+    <option name="totallyTimeSpent" value="218886000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1439,7 +1440,8 @@
     <MESSAGE value="增加附加理由表格显示" />
     <MESSAGE value="update README.md" />
     <MESSAGE value="add 问卷提交必填项验证" />
-    <option name="LAST_COMMIT_MESSAGE" value="add 问卷提交必填项验证" />
+    <MESSAGE value="add 管理员登录，JWT鉴权" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 管理员登录，JWT鉴权" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1506,13 +1508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/user/user.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="140" column="13" lean-forward="true" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/view/view-layout.vue" />
     <entry file="file://$PROJECT_DIR$/src/common/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1574,16 +1569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/list/list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="53" column="22" lean-forward="false" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-          <folding>
-            <marker date="1496309700000" expanded="true" signature="2193:2457" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1840,6 +1825,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/controllers/Admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1848,11 +1841,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
+    <entry file="file://$PROJECT_DIR$/src/components/list/list.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="93" column="42" lean-forward="false" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
-          <folding />
+        <state relative-caret-position="84">
+          <caret line="92" column="13" lean-forward="true" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
+          <folding>
+            <marker date="1496638445000" expanded="true" signature="2105:2439" ph="..." />
+            <marker date="1496638445000" expanded="true" signature="2472:3200" ph="..." />
+            <marker date="1496638445000" expanded="true" signature="2537:2674" ph="..." />
+            <marker date="1496638445000" expanded="true" signature="2728:3166" ph="..." />
+            <marker date="1496638445000" expanded="true" signature="3025:3045" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/user/user.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding>
+            <marker date="1496639384000" expanded="true" signature="2707:2912" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

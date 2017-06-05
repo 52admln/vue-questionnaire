@@ -63,18 +63,33 @@
           {
             title: '操作',
             key: 'action',
-            width: 280,
+            width: 210,
             align: 'center',
             render (row, column, index) {
-              return `<i-button size="small" @click="preview(${row.n_id})">预览</i-button> <i-button type="success" size="small">获取地址</i-button> <i-button type="warning" size="small" @click="statis(${row.n_id})">统计</i-button> <i-button type="primary" size="small">编辑</i-button>
-           <Poptip
-                  placement="left"
-                  confirm
-                  title="您确认删除这条内容（包含题目和选项）吗？"
-                  width="200"
-                  @on-ok="remove(${index})">
-           <i-button type="error" size="small">删除</i-button>
-           </Poptip>`
+              const _publishText = row.n_status === '1' ? '停止发布' : '发布问卷'
+              return `<i-button type="warning" size="small" @click="statis(${row.n_id})">统计</i-button>
+                      <Poptip
+                            placement="left"
+                            confirm
+                            title="您确认删除这条内容（包含题目和选项）吗？"
+                            width="200"
+                            @on-ok="remove(${index})">
+                     <i-button type="error" size="small">删除</i-button>
+                     </Poptip>
+                      <Dropdown>
+                          <i-button type="primary" size="small">
+                              更多操作
+                              <Icon type="arrow-down-b"></Icon>
+                          </i-button>
+                          <Dropdown-menu slot="list">
+                              <Dropdown-item><span @click="preview(${row.n_id})">预览问卷</span></Dropdown-item>
+                              <Dropdown-item>获取地址</Dropdown-item>
+                              <Dropdown-item>查看回收情况</Dropdown-item>
+                              <Dropdown-item divided>编辑问卷</Dropdown-item>
+                              <Dropdown-item >${_publishText}</Dropdown-item>
+                          </Dropdown-menu>
+                      </Dropdown>
+                     `.trim()
             }
           }
         ],

@@ -2,7 +2,7 @@
   <div class="user">
     <Row type="flex" justify="start" style="padding-bottom: 10px;">
       <Col span="2" style="width: 100px">
-      <Button type="primary">新增用户</Button>
+      <Button type="primary" disabled>新增用户</Button>
       </Col>
       <Col span="2" style="width: 100px">
       <Upload
