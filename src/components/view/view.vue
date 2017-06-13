@@ -1,14 +1,44 @@
 <template>
   <div class="view-layout">
     <Spin size="large" fix v-if="spinShow"></Spin>
-    <div class="main">
+    <div class="main" v-if="isNotPublish">
+      <div class="header">
+        <h1>问卷未发布！</h1>
+      </div>
+      <div class="content">
+        <p>您所填写的问卷未发布，暂不能填写。</p>
+      </div>
+    </div>
+    <div class="main" v-else-if="isExpired">
+      <div class="header">
+        <h1>问卷已过期！</h1>
+      </div>
+      <div class="content">
+        <p>您所填写的问卷已到截止日期，暂不能填写。</p>
+      </div>
+    </div>
+    <div class="main" v-if="!isExpired">
       <div class="header">
         <h1>{{naire.title}}</h1>
       </div>
       <div class="content">
         <div class="intro">
-          <p>问卷介绍：{{naire.intro}}</p>
+          <p>{{naire.intro}}</p>
           <p>截止日期：{{naire.deadline | timeFormat}}</p>
+        </div>
+        <div class="user-info">
+          <Alert v-show="!isLogin">在填写表单之前，请先填写用户信息。</Alert>
+          <Form ref="userInfo" :model="userInfo" :rules="userInfoRule" inline>
+            <Form-item prop="name">
+              <Input v-model="userInfo.name" placeholder="请输入姓名"></Input>
+            </Form-item>
+            <Form-item prop="identity">
+              <Input v-model="userInfo.identity" placeholder="请输入身份证号"></Input>
+            </Form-item>
+            <Form-item>
+              <Button type="primary" @click="handleSubmit('userInfo')">点击确认</Button>
+            </Form-item>
+          </Form>
         </div>
         <questionList :question-list="this.naire.topic">
           <Row type="flex" justify="center" align="middle" class="code-row-bg">
@@ -39,7 +69,22 @@
         naire: {
           topic: []
         },
-        spinShow: true
+        spinShow: true,
+        isLogin: false,
+        userId: 0,
+        userInfo: {
+          name: '',
+          identity: ''
+        },
+        userInfoRule: {
+          name: [
+            {required: true, message: '请填写用户名', trigger: 'blur'}
+          ],
+          identity: [
+            {required: true, message: '请填写身份证', trigger: 'blur'},
+            {type: 'string', max: 18, min: 18, message: '身份证长度不正确', trigger: 'blur'}
+          ]
+        }
       }
     },
     filters: {
@@ -52,6 +97,51 @@
       '$route': 'fetchData'
     },
     methods: {
+      handleSubmit (name) {
+        this.$refs[name].validate((valid) => {
+          if (valid) {
+// 查找用户，返回用户id
+            this.$http.post('/api/user/getId', {
+              n_id: this.naire.n_id,
+              name: this.userInfo.name,
+              identity: this.userInfo.identity.toUpperCase()
+            })
+              .then((response) => {
+                console.log(response.data.data)
+                // 用户存在,服务器返回 u_id
+                if (response.data.err === 0 && !response.data.data.isFinished) {
+                  this.isLogin = true
+                  console.log(response.data.data.u_id)
+                  this.userId = response.data.data.u_id
+                  this.$Notice.open({
+                    title: '欢迎您 ' + response.data.data.name,
+                    desc: '请继续完成问卷内容吧！',
+                    duration: 5
+                  })
+                } else if (response.data.data.isFinished) {
+                  this.$Notice.warning({
+                    title: '已完成问卷',
+                    desc: '您已完成该问卷，请勿重复提交！',
+                    duration: 5
+                  })
+                  this.$router.push('/complete')
+                } else {
+                  this.$Notice.warning({
+                    title: '用户不存在',
+                    desc: '请确认姓名和身份证号后重试！',
+                    duration: 5
+                  })
+                }
+              })
+              .catch((error) => {
+                console.log(error)
+                this.$Message.error('用户登录失败，请重试')
+              })
+          } else {
+            this.$Message.error('请先填写用户信息!')
+          }
+        })
+      },
       error (nodesc, title, desc) {
         this.$Notice.error({
           title: title,
@@ -121,6 +211,10 @@
           this.error(true, '请填写附加理由', '')
           _isfinished = false
         }
+        if (!this.isLogin) {
+          this.error(true, '请先填写用户信息', '')
+          _isfinished = false
+        }
         return _isfinished
       },
       submitNaire () {
@@ -133,6 +227,7 @@
           if (question.type === '单选') {
             const curQues = {
               n_id: nId,
+              u_id: this.userId,
               q_id: question.q_id,
               o_id: question.selectContent,
               o_addition: question.additional.trim()
@@ -141,6 +236,7 @@
           } else if (question.type === '多选') {
             const curQues = {
               n_id: nId,
+              u_id: this.userId,
               q_id: question.q_id,
               o_id: question.selectMultipleContent,
               o_addition: question.additional.trim()
@@ -149,6 +245,7 @@
           } else {
             const curQues = {
               n_id: nId,
+              u_id: this.userId,
               q_id: question.q_id,
               o_id: '',
               o_addition: question.selectContent.trim()
@@ -156,7 +253,7 @@
             result.push(curQues)
           }
         })
-
+        console.log(result)
         this.$http.post('/api/naire/submit', {
           result: result
         })
@@ -172,13 +269,19 @@
           })
           .catch((error) => {
             console.log(error)
-            this.$Message.error('修改失败，请重试')
+            this.$Message.error('提交失败，请重试')
           })
       }
     },
     computed: {
       isAdmin () {
         return this.$store.getters.isAdmin
+      },
+      isExpired () {
+        return Number(this.naire.deadline) < new Date().getTime()
+      },
+      isNotPublish () {
+        return this.naire.status === 0
       }
     },
     created () {
@@ -194,8 +297,12 @@
 
   .view-layout {
     background-color: rgb(237, 240, 248);
+    min-height: 100%;
+    max-height: 100%;
+    height: 100%;
     width: 100%;
     padding: 20px 0;
+    overflow-y: scroll;
   }
 
   .view-layout .main {
@@ -239,5 +346,10 @@
 
   .code-row-bg button {
     margin: 0 10px;
+  }
+
+  .user-info {
+    width: 100%;
+    padding: 30px 30px 0 30px;
   }
 </style>

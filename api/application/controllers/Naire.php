@@ -75,7 +75,7 @@ class Naire extends CI_Controller
 		}
 
 	}
-
+	// 问卷统计
 	public function statis()
 	{
 		$this->load->model('naire_model');
@@ -96,6 +96,32 @@ class Naire extends CI_Controller
 		list($token) = sscanf($header, 'token %s');
 		if ($header != '' && jwt_helper::validate($token)) {
 			$result = $this->naire_model->cross_analysis();
+			echo json_encode($result);
+		} else {
+			show_error("Permission denied", 401, "Please check your token.");
+		}
+	}
+
+	// 查看统计情况
+	public function submitStatis()
+	{
+		$this->load->model('naire_model');
+		$header = $this->input->get_request_header('Authorization', TRUE);
+		list($token) = sscanf($header, 'token %s');
+		if ($header != '' && jwt_helper::validate($token)) {
+			$result = $this->naire_model->submit_statis();
+			echo json_encode($result);
+		} else {
+			show_error("Permission denied", 401, "Please check your token.");
+		}
+	}
+
+	public function changeStatus () {
+		$this->load->model('naire_model');
+		$header = $this->input->get_request_header('Authorization', TRUE);
+		list($token) = sscanf($header, 'token %s');
+		if ($header != '' && jwt_helper::validate($token)) {
+			$result = $this->naire_model->change_status();
 			echo json_encode($result);
 		} else {
 			show_error("Permission denied", 401, "Please check your token.");

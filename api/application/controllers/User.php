@@ -111,4 +111,11 @@ class User extends CI_Controller
 
 	}
 
+	// 获取用户id
+	public function getId(){
+		$this->load->model('user_model');
+		$result = $this->user_model->get_user_id();
+		echo json_encode($result);
+	}
+
 }

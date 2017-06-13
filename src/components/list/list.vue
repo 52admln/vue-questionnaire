@@ -6,6 +6,10 @@
       </Col>
     </Row>
     <Table border :context="self" :columns="columns7" :data="naireList"></Table>
+    <Modal v-model="showURL">
+      <Input v-model="url" ref="copyURL" :autofocus="true" :readonly="true"></Input>
+      <p>选中后，使用 Ctrl + C 复制。</p>
+    </Modal>
   </div>
 </template>
 
@@ -83,17 +87,19 @@
                           </i-button>
                           <Dropdown-menu slot="list">
                               <Dropdown-item><span @click="preview(${row.n_id})">预览问卷</span></Dropdown-item>
-                              <Dropdown-item>获取地址</Dropdown-item>
-                              <Dropdown-item>查看回收情况</Dropdown-item>
-                              <Dropdown-item divided>编辑问卷</Dropdown-item>
-                              <Dropdown-item >${_publishText}</Dropdown-item>
+                              <Dropdown-item><span @click="getURL(${row.n_id})">复制地址</span></Dropdown-item>
+                              <Dropdown-item><span @click="submitStatis(${row.n_id})">查看回收情况</span></Dropdown-item>
+                              <Dropdown-item divided disabled>编辑问卷</Dropdown-item>
+                              <Dropdown-item ><span @click="changeStatus(${row.n_id},${row.n_status})">${_publishText}</span></Dropdown-item>
                           </Dropdown-menu>
                       </Dropdown>
                      `.trim()
             }
           }
         ],
-        naireList: []
+        naireList: [],
+        url: '',
+        showURL: false
       }
     },
     methods: {
@@ -136,6 +142,33 @@
       },
       preview (index) {
         this.$router.push('/view/' + index)
+      },
+      submitStatis (nid) {
+        // 查看统计情况
+      },
+      getURL (nid) {
+        // 复制地址
+        this.showURL = true
+        this.url = window.location.origin + '/#/view/' + nid
+      },
+      changeStatus (nId, status) {
+        console.log(nId, status)
+        this.$http.get('/api/naire/changeStatus', {
+          params: {
+            n_id: nId
+          }
+        })
+          .then((response) => {
+            console.log(response.data.data)
+            if (response.data.err === OK && response.data.data > 0) {
+              this.$Message.success('问卷更改状态成功')
+              this.getData()
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('更改状态失败')
+          })
       }
     },
     created () {

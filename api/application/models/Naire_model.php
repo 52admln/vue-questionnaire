@@ -180,13 +180,13 @@ class Naire_model extends CI_Model
 //            [q_id] => 41
 //            [o_id] => 52
 //            [o_addition] =>
-			// todo 用户 u_id 获取
+			// 用户 u_id 获取
 			// 如果是多选题，需要再次 foreach
 			if (is_array($val['o_id'])) {
 				foreach ($val['o_id'] as $o_key => $o_val) {
 					$option_data = array(
 						'n_id' => $val['n_id'],
-						'u_id' => 1,
+						'u_id' => $val['u_id'],
 						'q_id' => $val['q_id'],
 						'o_id' => $o_val,
 						'o_addtion' => trim($val['o_addition']),
@@ -199,7 +199,7 @@ class Naire_model extends CI_Model
 			} else {
 				$result_data = array(
 					'n_id' => $val['n_id'],
-					'u_id' => 1,
+					'u_id' => $val['u_id'],
 					'q_id' => $val['q_id'],
 					'o_id' => is_null($val['o_id']) ? '' : $val['o_id'],
 					'o_addtion' => $val['o_addition'],
@@ -271,7 +271,14 @@ class Naire_model extends CI_Model
 			// 用于图表显示
 			// 查询该题目总调查人数
 			// select *,count(*) as total from result where n_id = {$naire[0]["n_id"]} and q_id = {$questionval["q_id"]} group by q_id
-			$total = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} group by q_id")->result_array()[0]["total"];
+			$total = 0;
+			$totalResult = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} group by q_id");
+
+			if($totalResult->num_rows() > 0) {
+				$total = $totalResult ->result_array()[0]["total"];
+			} else {
+				return array("err" => 1, "data" => "暂无用户提交问卷");
+			}
 
 			foreach ($options as $optionitem => $optionval) {
 				// 如果题目id 等于 选项表当中的题目id，则将该选项添加到临时数组中
@@ -282,9 +289,8 @@ class Naire_model extends CI_Model
 					$count = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} and o_id = {$optionval['o_id']}")->result_array()[0]["total"];
 					$charts[] = $count;
 					$percent = round(($count / $total * 100), 2) . "%";
-					// todo 查询附加理由的内容
+					// 查询附加理由的内容
 					// select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id and options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = {$optionval['o_id']}
-
 
 					$addtionData = $this->db->query("select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id and options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = 1 and result.o_id = {$optionval['o_id']}")->result_array();
 					foreach ($addtionData as $addtionitem => $addtionval) {
@@ -361,14 +367,73 @@ class Naire_model extends CI_Model
 
 	}
 
-
 	public function cross_analysis()
 	{
+		// todo
 		// 需要接收两个参数，一个题目的id，一个是题目的id
 		// 交叉分析
 		// 第一列选项内容， 表头也是选项内容
 		// 用户可以添加多个条件，然后进行分别匹配，渲染出结果
 		
+	}
+
+	// 查看回收情况
+	public function submit_statis () {
+		// 如果传入用户ID,返回当前用户的信息
+//		$currentUser = $this->input->post_get('u_id', TRUE);
+		$currentNaire = json_decode($this->input->raw_input_stream, true)['n_id'];
+		// 参数1: $currentPage 当前页码, 参数2: $pageSize 每页显示条数
+		// 如果有参数,则返回分页的数据,没有返回全部数据
+		$currentPage = $this->input->post_get('current', TRUE);
+		$pageSize = $this->input->post_get('page_size', TRUE);
+		$total_query = $this->db->get('users');
+		$total = $total_query->num_rows();
+
+		// 如果传入用户ID,返回当前用户的信息
+		if ($currentNaire != '') {
+			// 返回全部数据
+			$query = $this->db->where('u_id', $currentNaire)
+				->get('users');
+			if (!$query) {
+				$error = 1; // ERROR
+			} else {
+				$error = 0; // OK
+			}
+			return array('err' => $error, "data" => $query->result_array(), "total" => $total);
+		}
+
+		if ($currentPage == '' && $pageSize == '') {
+			// 返回全部数据
+			$query = $this->db->get('users');
+			if (!$query) {
+				$error = 1; // ERROR
+			} else {
+				$error = 0; // OK
+			}
+			return array('err' => $error, "data" => $query->result_array(), "total" => $total);
+		}
+		// 返回指定数据
+		$offsetRows = $pageSize * ($currentPage - 1); // 数据偏移量
+		$query = $this->db->limit($pageSize, $offsetRows)
+			->get('users');
+
+		if (!$query) {
+			$error = 1; // ERROR
+		} else {
+			$error = 0; // OK
+		}
+		return array('err' => $error, "data" => $query->result_array(), "total" => $total);
+
+	}
+
+	// 修改状态
+	public function change_status()
+	{
+		$n_id = $this->input->post_get('n_id', TRUE);
+		// 修改发布状态
+		$this->db->query("UPDATE naire SET n_status = (1-n_status) WHERE n_id='{$n_id}'");
+		$result = $this->db->affected_rows();
+		return array('err' => 0, "data" => $result);
 	}
 
 	// 获得毫秒级的时间戳

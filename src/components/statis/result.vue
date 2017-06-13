@@ -216,7 +216,7 @@
       })
     },
     beforeCreate () {
-      // todo 获取数据，push 到 chartOptions 中
+      // 获取数据，push 到 chartOptions 中
       // 获取 问卷id
       this.$http.post('/api/naire/statis', {
         n_id: this.$route.params.id
@@ -229,7 +229,7 @@
             this.getChartsData(response.data.data)
             this.hasReady = true
           } else {
-            this.$Message.error('获取失败，请重试')
+            this.$Message.error(response.data.data)
             this.$router.go(-1)
           }
         })
