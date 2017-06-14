@@ -10,6 +10,7 @@ import 'iview/dist/styles/iview.css'   // 使用 CSS
 // import IEcharts from 'vue-echarts-v3/src/full.vue';
 
 Vue.use(iView)
+
 // http request 拦截器
 axios.interceptors.request.use(
   config => {

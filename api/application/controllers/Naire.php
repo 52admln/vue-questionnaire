@@ -22,14 +22,8 @@ class Naire extends CI_Controller
 	{
 		// 获取参数 naire id
 		$this->load->model('naire_model');
-		$header = $this->input->get_request_header('Authorization', TRUE);
-		list($token) = sscanf($header, 'token %s');
-		if ($header != '' && jwt_helper::validate($token)) {
-			$result = $this->naire_model->get_naires();
-			echo json_encode($result);
-		} else {
-			show_error("Permission denied", 401, "Please check your token.");
-		}
+		$result = $this->naire_model->get_naires();
+		echo json_encode($result);
 	}
 
 	// 保存问卷
@@ -75,6 +69,7 @@ class Naire extends CI_Controller
 		}
 
 	}
+
 	// 问卷统计
 	public function statis()
 	{
@@ -116,7 +111,8 @@ class Naire extends CI_Controller
 		}
 	}
 
-	public function changeStatus () {
+	public function changeStatus()
+	{
 		$this->load->model('naire_model');
 		$header = $this->input->get_request_header('Authorization', TRUE);
 		list($token) = sscanf($header, 'token %s');

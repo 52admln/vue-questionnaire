@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import qs from 'qs'
   const OK = 0  // 成功状态
   export default {
     data () {
@@ -48,9 +49,10 @@
       handleSubmit (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            const params = new URLSearchParams()
-            params.append('username', this.formValidate.username)
-            params.append('password', this.formValidate.password)
+//            const params = new URLSearchParams()
+//            params.append('username', this.formValidate.username)
+//            params.append('password', this.formValidate.password)
+            const params = qs.stringify({ 'username': this.formValidate.username, 'password': this.formValidate.password })
             this.$http.post('/api/admin/login', params)
               .then((response) => {
                 console.log(response.data)

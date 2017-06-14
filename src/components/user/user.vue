@@ -22,13 +22,13 @@
     </Row>
     <Row>
       <Col span="24">
-      <Spin fix v-show="!loading">
+      <Spin fix v-if="loading">
         <Icon type="load-c" size=18  class="demo-spin-icon-load"></Icon>
         <div>数据加载中...</div>
       </Spin>
-      <Table border :context="self" :columns="tableColumns" :data="userData" v-show="loading"></Table>
+      <Table border :context="self" :columns="tableColumns" :data="userData" v-if="!loading"></Table>
       <div style="margin: 10px;overflow: hidden">
-        <div style="float: right;" v-show="loading">
+        <div style="float: right;" v-if="!loading">
           <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage"></Page>
         </div>
       </div>
@@ -148,6 +148,7 @@
       changePage (curPage) {
         // 从服务端获取数据
         console.log(curPage)
+        this.loading = true
         // 往后台传2各参数，每页显示条数和当前页码
         this.$http.get('/api/user', {
           params: {
@@ -158,6 +159,7 @@
           .then((response) => {
             this.userData = response.data.data
             this.total = response.data.total
+            this.loading = false
           })
           .catch((error) => {
             console.log(error)
@@ -174,7 +176,7 @@
           .then((response) => {
             this.userData = response.data.data
             this.total = response.data.total
-            this.loading = true
+            this.loading = false
           })
           .catch((error) => {
             console.log(error)

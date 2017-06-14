@@ -5,7 +5,11 @@
       <Button type="primary" @click="newNaire">新建问卷</Button>
       </Col>
     </Row>
-    <Table border :context="self" :columns="columns7" :data="naireList"></Table>
+    <Spin v-if="loading">
+      <Icon type="load-c" size=18  class="demo-spin-icon-load"></Icon>
+      <div>数据加载中...</div>
+    </Spin>
+    <Table border :context="self" :columns="columns7" :data="naireList" v-if="!loading"></Table>
     <Modal v-model="showURL">
       <Input v-model="url" ref="copyURL" :autofocus="true" :readonly="true"></Input>
       <p>选中后，使用 Ctrl + C 复制。</p>
@@ -20,6 +24,7 @@
     data () {
       return {
         self: this,
+        loading: true,
         columns7: [
           {
             type: 'selection',
@@ -133,7 +138,7 @@
         this.$http.get('/api/naire')
           .then((response) => {
             this.naireList = response.data.data
-            this.loading = true
+            this.loading = false
           })
           .catch((error) => {
             console.log(error)
@@ -180,5 +185,18 @@
 <style>
   .naire-btn {
     padding-bottom: 10px;
+  }
+  .demo-spin-icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+  }
+  @keyframes ani-demo-spin {
+    from { transform: rotate(0deg);}
+    50%  { transform: rotate(180deg);}
+    to   { transform: rotate(360deg);}
+  }
+  .demo-spin-col{
+    height: 100px;
+    position: relative;
+    border: 1px solid #eee;
   }
 </style>
