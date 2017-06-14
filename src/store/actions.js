@@ -3,7 +3,6 @@ import * as types from './mutation-types'
 import axios from 'axios'
 
 // 全局的actions
-// todo 管理员登录时，将 is_admin 设置为 true
 
 // questionList
 export const getNaire = ({commit, state}, data) => {
@@ -57,7 +56,7 @@ export const changeNaireStatus = ({commit, state}, data) => {
   commit(types.CHANGE_NAIRE_STATUS, data)
   console.log('commit CHANGE_NAIRE_STATUS')
 }
-
+// 管理员登录时，将 is_admin 设置为 true
 export const login = ({commit}, data) => {
   console.log('commit USER_LOGIN')
   commit(types.USER_LOGIN, {

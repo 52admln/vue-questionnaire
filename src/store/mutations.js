@@ -113,11 +113,13 @@ export default {
   },
   [types.USER_LOGIN] (state, payload) {
     console.log(payload.user)
+    state.isAdmin = true
     localStorage.setItem('USER_NAME', payload.username)
     localStorage.setItem('JWT_TOKEN', payload.token)
   },
   [types.LOG_OUT] (state) {
     console.log('logout')
+    state.isAdmin = false
     localStorage.removeItem('JWT_TOKEN')
     localStorage.removeItem('USER_NAME')
   }
