@@ -96,7 +96,7 @@
             width: 130,
             align: 'center',
             render (row, column, index) {
-              return `<i-button type="primary" size="small" @click="update(${index})">修改</i-button>
+              return `<i-button type="primary" size="small" @click="update(${index})" disabled>修改</i-button>
                     <Poptip
         placement="left"
         confirm
@@ -149,6 +149,7 @@
         // 从服务端获取数据
         console.log(curPage)
         this.loading = true
+        this.currentPage = curPage
         // 往后台传2各参数，每页显示条数和当前页码
         this.$http.get('/api/user', {
           params: {

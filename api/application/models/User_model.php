@@ -127,4 +127,11 @@ class User_model extends CI_Model
 			return array('err' => 1, "data" => "用户不存在");
 		}
 	}
+
+	public function get_class_list()
+	{
+		$query = $this->db->query('SELECT u_class FROM users GROUP BY u_class');
+		$result = $query->result_array();
+		return array('err' => 0, "data" => $result);
+	}
 }

@@ -6,13 +6,52 @@
       </Col>
     </Row>
     <Spin v-if="loading">
-      <Icon type="load-c" size=18  class="demo-spin-icon-load"></Icon>
+      <Icon type="load-c" size=18      class="demo-spin-icon-load"></Icon>
       <div>数据加载中...</div>
     </Spin>
     <Table border :context="self" :columns="columns7" :data="naireList" v-if="!loading"></Table>
+    <!-- 复制地址 -->
     <Modal v-model="showURL">
       <Input v-model="url" ref="copyURL" :autofocus="true" :readonly="true"></Input>
       <p>选中后，使用 Ctrl + C 复制。</p>
+    </Modal>
+    <!-- 查看回收情况 -->
+    <Modal
+      v-model="submitStatisModel"
+      title="查看回收情况"
+      :styles="{top: '40px'}"
+      width="800">
+      <Form :model="searchForm" inline>
+        <Form-item prop="user" style="width: 150px;">
+          <Select v-model="searchForm.status" placeholder="请选择状态">
+            <Option value="-1">全部</Option>
+            <Option value="1">已完成</Option>
+            <Option value="0">未完成</Option>
+          </Select>
+        </Form-item>
+        <Form-item prop="password" style="width: 250px;">
+          <Select v-model="searchForm.u_class" placeholder="请选择班级">
+            <Option value="all">全部</Option>
+            <Option v-if="classList.length > 0" v-for="(item, index) in classList" :value="item.u_class" :key="index">
+              {{ item.u_class }}
+            </Option>
+          </Select>
+        </Form-item>
+        <Form-item>
+          <Button type="primary" @click="handleSubmit">检索</Button>
+        </Form-item>
+      </Form>
+      <Spin v-if="submitStatisLoading">
+        <Icon type="load-c" size=18      class="demo-spin-icon-load"></Icon>
+        <div>数据加载中...</div>
+      </Spin>
+      <Table border :context="self" :columns="submitStatisColumns" :data="submitStatisData"
+             v-if="!submitStatisLoading"></Table>
+      <div style="margin: 10px;overflow: hidden">
+        <div style="float: right;" v-if="!submitStatisLoading">
+          <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage"></Page>
+        </div>
+      </div>
     </Modal>
   </div>
 </template>
@@ -25,6 +64,74 @@
       return {
         self: this,
         loading: true,
+        url: '',
+        showURL: false,
+        searchForm: {
+          u_class: '',
+          status: ''
+        },
+        classList: [],
+        sexList: [
+          {
+            value: '0',
+            label: '男'
+          },
+          {
+            value: '1',
+            label: '女'
+          }
+        ],
+        submitStatisModel: false,
+        submitStatisLoading: true,
+        submitStatisData: [],
+        submitStatisColumns: [
+          {
+            title: '用户ID',
+            key: 'u_id',
+            ellipsis: true
+          },
+          {
+            title: '学号',
+            key: 'u_number',
+            ellipsis: true
+          },
+          {
+            title: '姓名',
+            key: 'u_name',
+            ellipsis: true
+          },
+          {
+            title: '性别',
+            key: 'u_sex',
+            ellipsis: true,
+            render (row, column, index) {
+              const sex = row.u_sex === '1' ? '女' : '男'
+              return `${sex}`
+            }
+          },
+          {
+            title: '班级',
+            key: 'u_class',
+            ellipsis: true,
+            render (row, column, index) {
+              return row.u_class
+            }
+          },
+          {
+            title: '状态',
+            key: 'is_finished',
+            width: '100',
+            render (row, column, index) {
+              const status = row.is_finished === '1' ? '已完成' : '未完成'
+              const color = row.is_finished === '1' ? 'green' : 'red'
+              return `<Tag type="border" color="${color}">${status}</Tag>`.trim()
+            }
+          }
+        ],
+        currentId: 0,
+        currentPage: 1,
+        total: 5,
+        pageSize: 10,
         columns7: [
           {
             type: 'selection',
@@ -102,9 +209,7 @@
             }
           }
         ],
-        naireList: [],
-        url: '',
-        showURL: false
+        naireList: []
       }
     },
     methods: {
@@ -148,14 +253,24 @@
       preview (index) {
         this.$router.push('/view/' + index)
       },
-      submitStatis (nid) {
-        // 查看统计情况
-      },
       getURL (nid) {
         // 复制地址
         this.showURL = true
         this.url = window.location.origin + '/#/view/' + nid
       },
+      changePage (curPage) {
+        // 从服务端获取数据
+        console.log(curPage)
+        this.currentPage = curPage
+        this._fetchStatisData()
+      },
+      submitStatis (nid) {
+        // 查看统计情况
+        this.submitStatisModel = true
+        this.submitStatisLoading = true
+        this.getStatisData(nid)
+      },
+      // 修改问卷状态
       changeStatus (nId, status) {
         console.log(nId, status)
         this.$http.get('/api/naire/changeStatus', {
@@ -174,6 +289,56 @@
             console.log(error)
             this.$Message.error('更改状态失败')
           })
+      },
+      // 查看回收情况 数据获取
+      getStatisData (id) {
+        this.currentId = id
+        this._fetchStatisData()
+        this._getClass()
+      },
+      handleSubmit () {
+        console.log(this.searchForm)
+        this._fetchStatisData()
+      },
+      // 查看回收情况 数据获取
+      _fetchStatisData () {
+        this.submitStatisLoading = true
+        // 从服务端获取数据
+        // 往后台传2各参数，每页显示条数和当前页码
+        this.$http.get('/api/naire/submitStatis', {
+          params: {
+            n_id: this.currentId,
+            current: this.currentPage,
+            page_size: this.pageSize,
+            status: this.searchForm.status,
+            u_class: this.searchForm.u_class
+          }
+        })
+          .then((response) => {
+            console.log(response.data)
+            this.submitStatisData = response.data.data
+            this.total = response.data.total
+            this.submitStatisLoading = false
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('网络错误，请重试')
+          })
+      },
+      _getClass () {
+        this.$http.get('/api/user/getClass')
+          .then((response) => {
+            console.log(response.data)
+            if (response.data.err === OK) {
+              this.classList = response.data.data
+            } else {
+              this.$Message.error('获取班级列表失败，请重试')
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('网络错误，请重试')
+          })
       }
     },
     created () {
@@ -186,15 +351,24 @@
   .naire-btn {
     padding-bottom: 10px;
   }
-  .demo-spin-icon-load{
+
+  .demo-spin-icon-load {
     animation: ani-demo-spin 1s linear infinite;
   }
+
   @keyframes ani-demo-spin {
-    from { transform: rotate(0deg);}
-    50%  { transform: rotate(180deg);}
-    to   { transform: rotate(360deg);}
+    from {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
-  .demo-spin-col{
+
+  .demo-spin-col {
     height: 100px;
     position: relative;
     border: 1px solid #eee;

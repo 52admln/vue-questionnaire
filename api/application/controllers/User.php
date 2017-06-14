@@ -112,10 +112,24 @@ class User extends CI_Controller
 	}
 
 	// 获取用户id
-	public function getId(){
+	public function getId()
+	{
 		$this->load->model('user_model');
 		$result = $this->user_model->get_user_id();
 		echo json_encode($result);
+	}
+
+	public function getClass()
+	{
+		$this->load->model('user_model');
+		$header = $this->input->get_request_header('Authorization', TRUE);
+		list($token) = sscanf($header, 'token %s');
+		if ($header != '' && jwt_helper::validate($token)) {
+			$result = $this->user_model->get_class_list();
+			echo json_encode($result);
+		} else {
+			show_error("Permission denied", 401, "Please check your token.");
+		}
 	}
 
 }

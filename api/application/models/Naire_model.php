@@ -274,8 +274,8 @@ class Naire_model extends CI_Model
 			$total = 0;
 			$totalResult = $this->db->query("select *,count(*) as total from result where n_id = {$naire[0]['n_id']} and q_id = {$questionval['q_id']} group by q_id");
 
-			if($totalResult->num_rows() > 0) {
-				$total = $totalResult ->result_array()[0]["total"];
+			if ($totalResult->num_rows() > 0) {
+				$total = $totalResult->result_array()[0]["total"];
 			} else {
 				return array("err" => 1, "data" => "暂无用户提交问卷");
 			}
@@ -374,37 +374,42 @@ class Naire_model extends CI_Model
 		// 交叉分析
 		// 第一列选项内容， 表头也是选项内容
 		// 用户可以添加多个条件，然后进行分别匹配，渲染出结果
-		
+
 	}
 
 	// 查看回收情况
-	public function submit_statis () {
+	public function submit_statis()
+	{
 		// 如果传入用户ID,返回当前用户的信息
-//		$currentUser = $this->input->post_get('u_id', TRUE);
-		$currentNaire = json_decode($this->input->raw_input_stream, true)['n_id'];
+		$currentNaire = $this->input->post_get('n_id', TRUE);
+		if ($currentNaire == '') {
+			return array("err" => 1, "data" => "请传入问卷id");
+		}
+		$status = $this->input->post_get('status', TRUE);
+		$u_class = $this->input->post_get('u_class', TRUE);
+		$sql = "SELECT * FROM ( SELECT *, CASE WHEN id > 0 THEN 1 ELSE 0 END is_finished FROM (SELECT users.u_id,users.u_name,users.u_sex,users.u_class,users.u_number, result.u_id as id FROM result RIGHT JOIN users ON users.u_id = result.u_id AND result.n_id = {$currentNaire} GROUP BY users.u_id) as A ) as B WHERE 0=0 ";
+		if ($status != '' && $status >= 0) {
+			$sql = $sql . " AND is_finished = '{$status}' ";
+		}
+		if ($u_class != '' && $u_class != "all") {
+			$sql = $sql . " AND u_class = '{$u_class}' ";
+		}
+		/*
+		 * 统计是否已完成
+		 * SELECT *, CASE WHEN result > 0 THEN 1 ELSE 0 END is_finished FROM (SELECT users.u_id,users.u_name,users.u_sex,users.u_class,users.u_number,COUNT(*) as result FROM users LEFT JOIN result ON users.u_id = result.u_id AND result.n_id = 23 GROUP BY result.u_id) as A
+		 *
+		 * */
 		// 参数1: $currentPage 当前页码, 参数2: $pageSize 每页显示条数
 		// 如果有参数,则返回分页的数据,没有返回全部数据
 		$currentPage = $this->input->post_get('current', TRUE);
 		$pageSize = $this->input->post_get('page_size', TRUE);
-		$total_query = $this->db->get('users');
-		$total = $total_query->num_rows();
 
-		// 如果传入用户ID,返回当前用户的信息
-		if ($currentNaire != '') {
-			// 返回全部数据
-			$query = $this->db->where('u_id', $currentNaire)
-				->get('users');
-			if (!$query) {
-				$error = 1; // ERROR
-			} else {
-				$error = 0; // OK
-			}
-			return array('err' => $error, "data" => $query->result_array(), "total" => $total);
-		}
+		$total_query = $this->db->query($sql);
+		$total = $total_query->num_rows();
 
 		if ($currentPage == '' && $pageSize == '') {
 			// 返回全部数据
-			$query = $this->db->get('users');
+			$query = $this->db->query($sql);
 			if (!$query) {
 				$error = 1; // ERROR
 			} else {
@@ -414,8 +419,7 @@ class Naire_model extends CI_Model
 		}
 		// 返回指定数据
 		$offsetRows = $pageSize * ($currentPage - 1); // 数据偏移量
-		$query = $this->db->limit($pageSize, $offsetRows)
-			->get('users');
+		$query = $this->db->query($sql . " LIMIT {$offsetRows}, {$pageSize}");
 
 		if (!$query) {
 			$error = 1; // ERROR
