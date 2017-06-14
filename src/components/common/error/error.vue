@@ -6,7 +6,7 @@
       </div>
       <div class="content">
         <p>无法找到该页面，请检查链接是否正确。</p>
-        <p>2秒后将跳转至首页。</p>
+        <p>3秒后将跳转至首页。</p>
       </div>
     </div>
     <div class="footer">
@@ -26,7 +26,7 @@
     created () {
       setTimeout(() => {
         window.location.href = '/'
-      }, 1000)
+      }, 3000)
     }
   }
 </script>
