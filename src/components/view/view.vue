@@ -1,7 +1,7 @@
 <template>
   <div class="view-layout">
     <Spin size="large" fix v-if="spinShow"></Spin>
-    <div class="main" v-if="isNotPublish">
+    <div class="main" v-if="isNotPublish && !isAdmin">
       <div class="header">
         <h1>问卷未发布！</h1>
       </div>
@@ -9,7 +9,7 @@
         <p>您所填写的问卷未发布，暂不能填写。</p>
       </div>
     </div>
-    <div class="main" v-else-if="isExpired">
+    <div class="main" v-else-if="isExpired && !isAdmin">
       <div class="header">
         <h1>问卷已过期！</h1>
       </div>
@@ -17,7 +17,7 @@
         <p>您所填写的问卷已到截止日期，暂不能填写。</p>
       </div>
     </div>
-    <div class="main" v-if="!isExpired">
+    <div class="main" v-if="(!isExpired && !isNotPublish) || isAdmin">
       <div class="header">
         <h1>{{naire.title}}</h1>
       </div>
@@ -281,7 +281,7 @@
         return Number(this.naire.deadline) < new Date().getTime()
       },
       isNotPublish () {
-        return this.naire.status === 0
+        return this.naire.status === '0'
       }
     },
     created () {
