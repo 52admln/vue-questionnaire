@@ -112,7 +112,7 @@ export default {
     state.naire = {...state.naire, deadline: data}
   },
   [types.USER_LOGIN] (state, payload) {
-    console.log(payload.user)
+    console.log(payload.username)
     state.isAdmin = true
     localStorage.setItem('USER_NAME', payload.username)
     localStorage.setItem('JWT_TOKEN', payload.token)
