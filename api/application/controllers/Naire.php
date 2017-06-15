@@ -45,14 +45,8 @@ class Naire extends CI_Controller
 	public function submit()
 	{
 		$this->load->model('naire_model');
-		$header = $this->input->get_request_header('Authorization', TRUE);
-		list($token) = sscanf($header, 'token %s');
-		if ($header != '' && jwt_helper::validate($token)) {
-			$result = $this->naire_model->submit_naire();
-			echo json_encode($result);
-		} else {
-			show_error("Permission denied", 401, "Please check your token.");
-		}
+		$result = $this->naire_model->submit_naire();
+		echo json_encode($result);
 	}
 
 	// 删除问卷
