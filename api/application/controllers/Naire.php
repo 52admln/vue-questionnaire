@@ -78,6 +78,7 @@ class Naire extends CI_Controller
 		}
 	}
 
+	// 交叉分析
 	public function crossanalysis()
 	{
 		$this->load->model('naire_model');
@@ -85,6 +86,20 @@ class Naire extends CI_Controller
 		list($token) = sscanf($header, 'token %s');
 		if ($header != '' && jwt_helper::validate($token)) {
 			$result = $this->naire_model->cross_analysis();
+			echo json_encode($result);
+		} else {
+			show_error("Permission denied", 401, "Please check your token.");
+		}
+	}
+
+	// 样本数据
+	public function sourcedata() 
+	{
+		$this->load->model('naire_model');
+		$header = $this->input->get_request_header('Authorization', TRUE);
+		list($token) = sscanf($header, 'token %s');
+		if ($header != '' && jwt_helper::validate($token)) {
+			$result = $this->naire_model->source_data();
 			echo json_encode($result);
 		} else {
 			show_error("Permission denied", 401, "Please check your token.");

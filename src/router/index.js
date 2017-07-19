@@ -2,13 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/login/login'
 import Layout from '@/components/layout/layout'
+
 import List from '@/components/list/list'
 import Edit from '@/components/edit/edit'
 import View from '@/components/view/view'
 import User from '@/components/user/user'
+
 import Statis from '@/components/statis/statis'
 import Result from '@/components/statis/result'
 import crossAnalysis from '@/components/statis/cross-analysis'
+import SourceData from '@/components/statis/source-data'
+
 import Error from '@/components/common/error/error'
 import Complete from '@/components/common/complete/complete'
 
@@ -72,13 +76,19 @@ let router = new Router({
           children: [
             {
               path: 'result/:id',
-              name: 'Statis result',
+              name: '结果统计',
               component: Result,
               meta: {requiresAuth: true}
             },
             {
+              path: 'source/:id',
+              name: '样本数据',
+              component: SourceData,
+              meta: {requiresAuth: true}
+            },
+            {
               path: 'cross-analysis/:id',
-              name: 'Statis analysis',
+              name: '交叉分析',
               component: crossAnalysis,
               meta: {requiresAuth: true}
             }

@@ -32,6 +32,10 @@
                 <Icon type="pie-graph"></Icon>
                 结果统计
               </Menu-item>
+              <Menu-item name="source">
+                <Icon type="document-text"></Icon>
+                样本数据
+              </Menu-item>
               <Menu-item name="cross-analysis">
                 <Icon type="shuffle"></Icon>
                 交叉分析
@@ -90,6 +94,10 @@
           case 'result':
             this.subActive = name
             this.$router.push('/platform/statis/result/' + this.$route.params.id)
+            break
+          case 'source':
+            this.subActive = name
+            this.$router.push('/platform/statis/source/' + this.$route.params.id)
             break
           default:
             break
