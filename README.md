@@ -2,34 +2,33 @@
 
 > 简易问卷系统,目前功能正在逐步完善当中...
 
+## 功能
+1. 创建问卷、删除问卷、预览问卷
+2. 问卷结果统计，样本数据查看，已填写问卷用户查看
+3. 使用 Excel 批量导入用户
+4. 删除单个用户
+
+## Feature 
+1. 编辑问卷
+2. 问卷交叉分析
+3. 添加用户，搜索用户，批量删除用户
+
 ## 安装
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 服务热重载地址：localhost:8080
 npm run dev
 
-# build for production with minification
+# 为生产环境打包成压缩版本
 npm run build
 
 ```
 
 ## API
-
-## 路由
-
-`/login` 登录
-
-`/platform/list` 问卷列表
-
-`/platform/new` 新建问卷
-
-`/platform/new/edit` 编辑问卷
-
-`/view` 问卷展示
-
+待完善...
 
 ## 问题
 
