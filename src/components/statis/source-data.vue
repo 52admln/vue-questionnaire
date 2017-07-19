@@ -100,7 +100,7 @@
             this.statisData = Object.assign({}, response.data.data)
             // todo 前端分页
             // this.statisData.user_result = this.statisData.user_result.splice(0, 10)
-            // this.createColumn()
+            this.createColumn()
             this.hasReady = true
           } else {
             this.$Message.error(response.data.data)
