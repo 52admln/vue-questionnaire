@@ -398,7 +398,7 @@ class Naire_model extends CI_Model
         $users = $this->db->query("SELECT users.u_id, users.u_name, users.u_class, users.u_number FROM users, result WHERE users.u_id = result.u_id and result.n_id = {$n_id} GROUP BY result.u_id")
             ->result_array();
         // 用户答案结果
-        $user_result = $this->db->query("(SELECT users.u_id, question.q_id, question.q_content, question.q_type, options.o_value, result.o_id, result.o_addtion, options.o_isaddtion from result, question, users, options WHERE result.o_id = options.o_id and question.q_id = result.q_id and users.u_id = result.u_id and result.n_id = {$n_id} ) UNION (SELECT users.u_id, question.q_id, question.q_content, question.q_type, options.o_value, result.o_id, result.o_addtion, options.o_isaddtion from result, question, users, options WHERE result.o_id = 0 and question.q_id = result.q_id and users.u_id = result.u_id and result.n_id = {$n_id} GROUP BY result.u_id)")
+        $user_result = $this->db->query("(SELECT users.u_id, question.q_id, question.q_content, question.q_type, options.o_value, result.o_id, result.o_addtion, options.o_isaddtion from result, question, users, options WHERE result.o_id = options.o_id and question.q_id = result.q_id and users.u_id = result.u_id and result.n_id = {$n_id} ) UNION ALL (SELECT users.u_id, question.q_id, question.q_content, question.q_type, options.o_value, result.o_id, result.o_addtion, options.o_isaddtion from result, question, users, options WHERE result.o_id = 0 and question.q_id = result.q_id and users.u_id = result.u_id and result.n_id = {$n_id} GROUP BY result.u_id)")
             ->result_array();
 
 //		echo var_dump($naire);
@@ -443,14 +443,21 @@ class Naire_model extends CI_Model
                 // 同一个用户
                 if ($user_result_val["u_id"] == $users_val["u_id"]) {
 
-                    if($user_result_val["q_id"] == $q_id && $user_result_val["q_type"] == "多选") {
-                        $curAnswer.="、".$user_result_val["o_value"];
-                    } else if ($user_result_val["q_type"] == "填空") {
+                    if ($user_result_val["q_id"] == $q_id && $user_result_val["q_type"] == "多选") { // 多选题
+                        $curAnswer .= "、" . $user_result_val["o_value"];
+                    } else if ($user_result_val["q_type"] == "文本") { // 文本题目
                         $curAnswer = $user_result_val["o_addtion"];
+                    } else if ($user_result_val["q_type"] == "单选") { // 单选题
+                        if ($user_result_val["o_addtion"] == "") {
+                            $curAnswer = $user_result_val["o_value"];
+                        } else {
+                            $curAnswer = $user_result_val["o_value"] . "，附加理由：" . $user_result_val["o_addtion"];
+                        }
+
                     } else {
                         $curAnswer = $user_result_val["o_value"];
                     }
-                    $result_temp["q_".$user_result_val["q_id"]] = $curAnswer;
+                    $result_temp["q_" . $user_result_val["q_id"]] = $curAnswer;
 
                     $q_id = $user_result_val["q_id"];
 

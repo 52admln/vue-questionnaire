@@ -15,12 +15,19 @@
             </p>
             <p>创建日期： {{ statisData.naire.creattime | timeFormat
                 }} | 截止日期：{{ statisData.naire.deadline | timeFormat}}</p>
-            <div class="line" ></div>
+            <div class="line"></div>
             <div class="source-data-table">
                 <Table size="small"
                        :stripe="true"
                        :columns="columnsStatis"
-                       :data="statisData.user_result"> </Table>
+                       :data="curResult"></Table>
+                <!-- 分页 -->
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;" v-if="hasReady">
+                        <Page :total="total" :current="currentPage" :page-size="pageSize"
+                              @on-change="changePage"></Page>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -34,6 +41,9 @@
     data () {
       return {
         hasReady: false,
+        currentPage: 1,
+        total: 5,
+        pageSize: 10,
         statisData: {
           'naire': {
             'title': '',
@@ -43,29 +53,29 @@
         },
         columnsStatis: [
           {
-            title: '编号',
+            title: '序号',
             type: 'index',
-            width: 200
+            width: 100
           },
           {
             title: '姓名',
             key: 'u_name',
             fixed: 'left',
             ellipsis: false,
-            width: 200
+            width: 100
           },
           {
             title: '班级',
             key: 'u_class',
-            width: 200
+            width: 100
           },
           {
             title: '学号',
             key: 'u_number',
-            width: 200
+            width: 120
           }
         ],
-        userResult: []
+        curResult: []
       }
     },
     filters: {
@@ -74,6 +84,12 @@
       }
     },
     methods: {
+      changePage (curPage) {
+        console.log(curPage)
+        let offsetRows = this.pageSize * (curPage - 1) // 数据偏移量
+        this.currentPage = curPage
+        this.curResult = this.statisData.user_result.slice(offsetRows, this.pageSize + offsetRows)
+      },
       // 根据返回的题目列表，创建表格表头
       createColumn () {
         const tempObj = {
@@ -98,9 +114,10 @@
           console.log(response.data)
           if (response.data.err === 0) {
             this.statisData = Object.assign({}, response.data.data)
-            // todo 前端分页
-            // this.statisData.user_result = this.statisData.user_result.splice(0, 10)
-            this.createColumn()
+            // 前端分页
+            this.curResult = this.statisData.user_result.slice(0, this.pageSize)
+            this.total = this.statisData.user_result.length // 总数据量
+            this.createColumn() // 创建表头
             this.hasReady = true
           } else {
             this.$Message.error(response.data.data)
