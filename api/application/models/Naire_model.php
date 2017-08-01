@@ -292,7 +292,7 @@ class Naire_model extends CI_Model
                     // 查询附加理由的内容
                     // select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id and options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = {$optionval['o_id']}
 
-                    $addtionData = $this->db->query("select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id and options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = 1 and result.o_id = {$optionval['o_id']}")->result_array();
+                    $addtionData = $this->db->query("select * from result, options where result.n_id = {$naire[0]['n_id']} and result.o_id = options.o_id and result.q_id = {$questionval['q_id']}  and options.o_isaddtion = 1 and result.o_id = {$optionval['o_id']}")->result_array();
                     foreach ($addtionData as $addtionitem => $addtionval) {
                         if ($addtionval["o_addtion"] != "") {
 //							print_r($addtionval["o_addtion"]);
@@ -300,6 +300,8 @@ class Naire_model extends CI_Model
                                 "content" => $addtionval["o_addtion"]);
                         }
                     }
+
+
 
 
                     $temp[] = array(
