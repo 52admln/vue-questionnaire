@@ -104,6 +104,7 @@ class User_model extends CI_Model
 		return array('err' => $error, "data" => $rows);
 	}
 
+	// 获取用户ID
 	public function get_user_id()
 	{
 		$name = json_decode($this->input->raw_input_stream, true)['name'];
@@ -128,6 +129,7 @@ class User_model extends CI_Model
 		}
 	}
 
+	// 获取班级列表
 	public function get_class_list()
 	{
 		$query = $this->db->query('SELECT u_class FROM users GROUP BY u_class');

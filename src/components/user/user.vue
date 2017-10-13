@@ -2,7 +2,7 @@
   <div class="user">
     <Row type="flex" justify="start" style="padding-bottom: 10px;">
       <Col span="2" style="width: 100px">
-      <Button type="primary" disabled>新增用户</Button>
+      <Button type="primary" @click="handleAdd">新增用户</Button>
       </Col>
       <Col span="2" style="width: 100px">
       <Upload
@@ -79,8 +79,7 @@
           },
           {
             title: '身份证号',
-            key: 'u_identity',
-            ellipsis: true
+            key: 'u_identity'
           },
           {
             title: '出生日期',

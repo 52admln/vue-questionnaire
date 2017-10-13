@@ -176,6 +176,7 @@ class Naire_model extends CI_Model
         $result = json_decode($this->input->raw_input_stream, true)['result'];
 
         foreach ($result as $key => $val) {
+
 //			[n_id] => 12
 //            [q_id] => 41
 //            [o_id] => 52
@@ -377,6 +378,8 @@ class Naire_model extends CI_Model
         // 交叉分析
         // 第一列选项内容， 表头也是选项内容
         // 用户可以添加多个条件，然后进行分别匹配，渲染出结果
+
+
 
     }
 

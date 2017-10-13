@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
+  <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$APPLICATION_HOME_DIR$/bin" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$APPLICATION_HOME_DIR$/bin" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

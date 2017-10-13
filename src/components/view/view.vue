@@ -47,7 +47,7 @@
                     @click="goBack">返回管理平台
             </Button>
             <Button type="primary"
-                    @click="submitNaire">提交问卷
+                    @click="submitNaire" :disabled="finished">提交问卷
             </Button>
           </Row>
         </questionList>
@@ -69,6 +69,7 @@
         naire: {
           topic: []
         },
+        finished: false,
         spinShow: true,
         isLogin: false,
         userId: 0,
@@ -254,6 +255,8 @@
           }
         })
         console.log(result)
+        // 防止重复提交
+        this.finished = true
         this.$http.post('/api/naire/submit', {
           result: result
         })
@@ -265,11 +268,13 @@
               this.$router.push('/complete')
             } else {
               this.$Message.error(response.data.data)
+              this.finished = false
             }
           })
           .catch((error) => {
             console.log(error)
             this.$Message.error('提交失败，请重试')
+            this.finished = false
           })
       }
     },

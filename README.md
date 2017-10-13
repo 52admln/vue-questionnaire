@@ -8,7 +8,7 @@
 3. 使用 Excel 批量导入用户
 4. 删除单个用户
 
-## Feature 
+## TODO
 1. 编辑问卷
 2. 问卷交叉分析
 3. 添加用户，搜索用户，批量删除用户
@@ -30,25 +30,3 @@ npm run build
 ## 后台配置
 数据库文件： `api/database.sql`，使用前请先导入。
 CI框架数据库连接配置信息请先设置。
-
-## 问题
-
-1. 问卷统计
-
-```
-// 查询单个选项的所选个数
-select *,count(*) as total from result where n_id = 22 and q_id = 59 and o_id = 82
-```
-
-```
-// 查询题目的总人数
-select *,count(*) as total from result where n_id = 22 group by q_id
-```
-
-```
-// 百分比
-( 单个选项的个数 / 总人数 * 100 )  
-```
-
-
-
