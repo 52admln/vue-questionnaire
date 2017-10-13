@@ -42,18 +42,28 @@
       <file leaf-file-name="cross-analysis.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/statis/cross-analysis.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1036">
-              <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+            <state relative-caret-position="337">
+              <caret line="117" column="27" lean-forward="true" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="source-data.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="layout.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/layout/layout.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="65" column="6" lean-forward="true" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="source-data.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/statis/source-data.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
+            <state relative-caret-position="3472">
+              <caret line="124" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,8 +72,8 @@
       <file leaf-file-name="statis.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/statis/statis.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+            <state relative-caret-position="336">
+              <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -72,21 +82,21 @@
       <file leaf-file-name="result.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/statis/result.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            <state relative-caret-position="253">
+              <caret line="198" column="28" lean-forward="true" selection-start-line="198" selection-start-column="28" selection-end-line="198" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/user/user.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="273">
+              <caret line="207" column="26" lean-forward="true" selection-start-line="207" selection-start-column="26" selection-end-line="207" selection-end-column="26" />
               <folding>
                 <element signature="e#1524#2961#0" expanded="false" />
-                <marker date="1505270165000" expanded="true" signature="2693:2898" ph="..." />
+                <marker date="1507878643315" expanded="true" signature="2693:2898" ph="..." />
               </folding>
             </state>
           </provider>
@@ -150,16 +160,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Naire.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2436">
-              <caret line="87" column="56" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -195,6 +195,7 @@
       <find>addtionContent</find>
       <find>jwt</find>
       <find>cross_analysis</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -236,7 +237,6 @@
         <option value="$PROJECT_DIR$/src/components/edit/edit.vue" />
         <option value="$PROJECT_DIR$/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/src/components/statis/statis.vue" />
-        <option value="$PROJECT_DIR$/src/components/statis/cross-analysis.vue" />
         <option value="$PROJECT_DIR$/src/components/common/questionList/questionList.vue" />
         <option value="$PROJECT_DIR$/src/components/common/complete/complete.vue" />
         <option value="$PROJECT_DIR$/api/application/controllers/Admin.php" />
@@ -256,17 +256,18 @@
         <option value="$PROJECT_DIR$/api/application/controllers/Naire.php" />
         <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/components/list/list.vue" />
-        <option value="$PROJECT_DIR$/src/components/statis/result.vue" />
-        <option value="$PROJECT_DIR$/src/components/statis/source-data.vue" />
         <option value="$APPLICATION_CONFIG_DIR$/phpstorm.vmoptions" />
         <option value="$PROJECT_DIR$/api/application/helpers/jwt_helper.php" />
         <option value="$PROJECT_DIR$/api/application/controllers/User.php" />
         <option value="$PROJECT_DIR$/config/index.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/api/application/models/User_model.php" />
-        <option value="$PROJECT_DIR$/src/components/user/user.vue" />
         <option value="$PROJECT_DIR$/api/application/models/Naire_model.php" />
         <option value="$PROJECT_DIR$/src/components/view/view.vue" />
+        <option value="$PROJECT_DIR$/src/components/statis/result.vue" />
+        <option value="$PROJECT_DIR$/src/components/statis/source-data.vue" />
+        <option value="$PROJECT_DIR$/src/components/statis/cross-analysis.vue" />
+        <option value="$PROJECT_DIR$/src/components/user/user.vue" />
       </list>
     </option>
   </component>
@@ -385,6 +386,13 @@
               <item name="vue-questionnaire" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="vue-questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-questionnaire" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="layout" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="vue-questionnaire" type="b2602c69:ProjectViewProjectNode" />
@@ -582,7 +590,7 @@
       <workItem from="1505982400810" duration="186000" />
       <workItem from="1506760795732" duration="1897000" />
       <workItem from="1507774999015" duration="406000" />
-      <workItem from="1507878284839" duration="8000" />
+      <workItem from="1507878284839" duration="325000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -812,7 +820,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288787000" />
+    <option name="totallyTimeSpent" value="289104000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -825,6 +833,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2578125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -950,13 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/layout/layout.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1062">
-          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -1167,14 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/statis/statis.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2436">
@@ -1187,25 +1181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3976">
           <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/user/user.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-          <folding>
-            <element signature="e#1524#2961#0" expanded="false" />
-            <marker date="1505270165000" expanded="true" signature="2693:2898" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/statis/result.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1269,19 +1244,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/statis/cross-analysis.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/statis/statis.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1036">
-          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        <state relative-caret-position="336">
+          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/statis/result.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="198" column="28" lean-forward="true" selection-start-line="198" selection-start-column="28" selection-end-line="198" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/statis/source-data.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
+        <state relative-caret-position="3472">
+          <caret line="124" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/statis/cross-analysis.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="117" column="27" lean-forward="true" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/layout/layout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="65" column="6" lean-forward="true" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/user/user.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="207" column="26" lean-forward="true" selection-start-line="207" selection-start-column="26" selection-end-line="207" selection-end-column="26" />
+          <folding>
+            <element signature="e#1524#2961#0" expanded="false" />
+            <marker date="1507878643315" expanded="true" signature="2693:2898" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

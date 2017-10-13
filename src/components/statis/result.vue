@@ -112,7 +112,7 @@
     },
     methods: {
       drawChart (index) {
-        console.log(index)
+//        console.log(index)
         let _chart = echarts.init(document.getElementById('chart-' + index))
         _chart.setOption({
           title: {
@@ -161,7 +161,7 @@
             })
             tempObj.series = item.charts
             this.chartsOptions[item.q_id] = Object.assign({}, tempObj)
-            console.log(item.q_id)
+//            console.log(item.q_id)
           }
         })
       }
@@ -183,7 +183,7 @@
         n_id: this.$route.params.id
       })
         .then((response) => {
-          console.log(response.data)
+//          console.log(response.data)
           // 影响行数大于0
           if (response.data.err === 0) {
             this.statisData = Object.assign({}, response.data.data)

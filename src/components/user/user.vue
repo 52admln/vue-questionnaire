@@ -207,6 +207,9 @@
       handleError (error, file, fileList) {
         console.log(error)
         this.$Message.error('上传出错')
+      },
+      handleAdd () {
+        console.log('add')
       }
     },
     created () {

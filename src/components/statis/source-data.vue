@@ -111,7 +111,7 @@
         n_id: this.$route.params.id
       })
         .then((response) => {
-          console.log(response.data)
+//          console.log(response.data)
           if (response.data.err === 0) {
             this.statisData = Object.assign({}, response.data.data)
             // 前端分页
