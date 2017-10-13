@@ -303,8 +303,6 @@ class Naire_model extends CI_Model
                     }
 
 
-
-
                     $temp[] = array(
                         "o_id" => $optionval['o_id'],
                         "content" => $optionval['o_value'],
@@ -370,6 +368,44 @@ class Naire_model extends CI_Model
 
     }
 
+    //
+    public function get_questions()
+    {
+        // 获取参数 naire id
+        // JSON 反序列化
+        $n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
+
+        if ($n_id == '') {
+            return array("err" => 1, "data" => "请传入参数值");
+        }
+        // 问卷信息
+        $naire = $this->db->query("select * from naire where naire.n_id = {$n_id}")
+            ->result_array();
+        $questions = $this->db->query("select q_id as value, q_content as label from question where question.n_id = {$n_id} and (question.q_type = '单选' or question.q_type = '多选')")
+            ->result_array();
+
+        if (empty($naire)) {
+            return array("err" => 1, "data" => "未获取到相应问卷");
+        }
+
+        // 问卷信息 先遍历 问卷表，拿到问卷id
+        $result["naire"] = array(
+            "n_id" => $naire[0]["n_id"],
+            "title" => $naire[0]["n_title"],
+            "creattime" => $naire[0]["n_creattime"],
+            "deadline" => $naire[0]["n_deadline"],
+            "status" => $naire[0]["n_status"],
+            "intro" => $naire[0]["n_intro"]
+        );
+
+        $result["questions"] = $questions;
+
+        return array("err" => 0, "data" => $result);
+
+
+
+    }
+
     // 交叉分析
     public function cross_analysis()
     {
@@ -379,6 +415,34 @@ class Naire_model extends CI_Model
         // 第一列选项内容， 表头也是选项内容
         // 用户可以添加多个条件，然后进行分别匹配，渲染出结果
 
+
+        // 获取参数 naire id
+        // JSON 反序列化
+        $n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
+        $x_id = json_decode($this->input->raw_input_stream, true)['x_id'];
+        $y_id = json_decode($this->input->raw_input_stream, true)['y_id'];
+
+
+        if (empty($n_id) || empty($x_id) || empty($y_id)) {
+            return array("err" => 1, "data" => "请传入参数值");
+        }
+
+        // 表头
+        $table_column = $this->db->query("select * from options where options.q_id = {$y_id}")
+            ->result_array();
+
+        $cross_result = $this->db->query("select t1.o_value as x_value, t1.o_id as x_id,t2.o_id as y_id, count(*) as count from (select result.u_id, result.q_id, result.o_id, options.o_value from result, options where result.n_id = {$n_id} and options.o_id = result.o_id) as t1, (select result.u_id, result.q_id, result.o_id, options.o_value from result, options where result.n_id = {$n_id} and options.o_id = result.o_id) as t2 where t1.u_id = t2.u_id and t1.q_id = {$x_id} and t2.q_id = {$y_id} group by t1.o_id, t2.o_id")->result_array();
+
+
+        if (empty($cross_result)) {
+            return array("err" => 1, "data" => "暂无用户提交问卷");
+        }
+
+        // 返回结构
+        $result["cross_result"] = $cross_result;
+        $result["column"] = $table_column;
+
+        return array("err" => 0, "data" => $result);
 
 
     }

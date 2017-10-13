@@ -28,15 +28,15 @@
         <div class="layout-header">
           <div class="header-nav" v-if="this.$route.matched[1].path === '/platform/statis'">
             <Menu mode="horizontal" theme="light" :active-name="subActive" @on-select="selectMenu">
-              <Menu-item name="result">
+              <Menu-item name="结果统计">
                 <Icon type="pie-graph"></Icon>
                 结果统计
               </Menu-item>
-              <Menu-item name="source">
+              <Menu-item name="样本数据">
                 <Icon type="document-text"></Icon>
                 样本数据
               </Menu-item>
-              <Menu-item name="cross-analysis">
+              <Menu-item name="交叉分析">
                 <Icon type="shuffle"></Icon>
                 交叉分析
               </Menu-item>
@@ -61,7 +61,7 @@
   export default {
     data () {
       return {
-        subActive: 'result'
+        subActive: this.$route.name
       }
     },
     computed: {
@@ -85,23 +85,13 @@
         this.$router.push('/login')
       },
       selectMenu (name) {
-        console.log('select')
-        switch (name) {
-          case 'cross-analysis':
-            this.subActive = name
-            this.$router.push('/platform/statis/cross-analysis/' + this.$route.params.id)
-            break
-          case 'result':
-            this.subActive = name
-            this.$router.push('/platform/statis/result/' + this.$route.params.id)
-            break
-          case 'source':
-            this.subActive = name
-            this.$router.push('/platform/statis/source/' + this.$route.params.id)
-            break
-          default:
-            break
-        }
+        this.subActive = name
+        this.$router.push({
+          name: name,
+          params: {
+            id: this.$route.params.id
+          }
+        })
       }
     }
   }
