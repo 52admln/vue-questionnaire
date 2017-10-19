@@ -418,6 +418,10 @@ class Naire_model extends CI_Model
 
         // 获取参数 naire id
         // JSON 反序列化
+//        var_dump($this->input->raw_input_stream);
+//        $ss = $GLOBALS['HTTP_RAW_POST_DATA'];
+//        $ss = json_decode($ss,true);
+//        var_dump($ss);exit;
         $n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
         $x_id = json_decode($this->input->raw_input_stream, true)['x_id'];
         $y_id = json_decode($this->input->raw_input_stream, true)['y_id'];
@@ -430,6 +434,8 @@ class Naire_model extends CI_Model
         // 表头
         $table_column = $this->db->query("select * from options where options.q_id = {$y_id}")
             ->result_array();
+        $table_row = $this->db->query("select * from options where options.q_id = {$x_id}")
+            ->result_array();
 
         $cross_result = $this->db->query("select t1.o_value as x_value, t1.o_id as x_id,t2.o_id as y_id, count(*) as count from (select result.u_id, result.q_id, result.o_id, options.o_value from result, options where result.n_id = {$n_id} and options.o_id = result.o_id) as t1, (select result.u_id, result.q_id, result.o_id, options.o_value from result, options where result.n_id = {$n_id} and options.o_id = result.o_id) as t2 where t1.u_id = t2.u_id and t1.q_id = {$x_id} and t2.q_id = {$y_id} group by t1.o_id, t2.o_id")->result_array();
 
@@ -441,6 +447,7 @@ class Naire_model extends CI_Model
         // 返回结构
         $result["cross_result"] = $cross_result;
         $result["column"] = $table_column;
+        $result["row"] = $table_row;
 
         return array("err" => 0, "data" => $result);
 
