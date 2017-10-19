@@ -21,7 +21,7 @@
                 <h3>自变量：</h3>
                 <p>一般为样本数据，例如性别和年龄，目前支持一项。</p>
                 <Select v-model="options.x_id" style="width:100%;padding-right: 20px">
-                    <Option v-for="item in options.select" :value="item.value" :key="item.value">{{ item.label }}
+                    <Option v-for="(item, index) in options.select" :value="item.value" :key="index">{{ item.label }}
                     </Option>
                 </Select>
                 </Col>
@@ -29,7 +29,7 @@
                 <h3>因变量：</h3>
                 <p>您要分析的目标题目，目前支持一项。</p>
                 <Select v-model="options.y_id" style="width:100%;padding-right: 20px">
-                    <Option v-for="item in options.select" :value="item.value" :key="item.value">{{ item.label }}
+                    <Option v-for="(item, index) in options.select" :value="item.value" :key="index">{{ item.label }}
                     </Option>
                 </Select>
                 </Col>
@@ -100,39 +100,49 @@
       },
       // 格式化数据
       formateData () {
-        let _temp = [] // 存放表头
-        let _obj = {} // 一行的临时数据
-        let curIndex = 0
-        let _rowSum = 0 // 一行的小计
-        let _sum = 0 // 一行的小计
-        let sum = []
-        this.statisData.cross_result.forEach((item, index) => {
-          curIndex++
-          _rowSum += item.count * 1
-          if (curIndex >= this.statisData.column.length || index === this.statisData.cross_result.length - 1) {
-            sum[item.x_id] = _rowSum
-            _obj = {}
-            curIndex = 0
-            _rowSum = 0
+        // 得出已有的结果对象
+        let curResult = {}
+        this.statisData.cross_result.forEach((crossResult) => {
+          curResult[`${crossResult.y_id}_${crossResult.x_id}` + ''] = {
+            count: crossResult['count'],
+            value: crossResult['x_value'],
+            y_id: crossResult['y_id'],
+            x_id: crossResult['x_id']
           }
         })
-        this.statisData.cross_result.forEach((item, index) => {
+        let rows = {}
+        this.statisData.row.forEach((row) => {
+          rows[row.o_id] = {id: row.o_value}
+        })
+        // 遍历全部的 x+y 的组合
+        let allResult = []
+        this.statisData.row.forEach((row) => {
+          let _obj = {type: rows[row.o_id].id} // 每一行数据初始对象
+          let sum = 0 // 小计
+          this.statisData.column.forEach((column) => {
+            // 格式为： 'y_id, x_id'
+            // 对应为： `${column.o_id}_${row.o_id}`
+            // 通过循环全部结果，从而判断不存在的结果，赋值为 0
+            let curItem = curResult[`${column.o_id}_${row.o_id}`] // 当前组合的对象
+            let curCount = curItem === undefined ? 0 : curItem.count // 当前组合对象的数量
+            _obj[`y_${column.o_id}`] = curCount // 生成 y_id 对应的数据列
+            sum += curCount * 1 // 小计
+          })
+          // 将一行数据添加
+          _obj.count = sum
+          allResult.push(_obj)
+        })
+        // 对列数据进行百分比运算
+        allResult.forEach(item => {
           console.log(item)
-          curIndex++
-          _obj.type = item.x_value
-          // this.GetRound(((item.count / sum[item.x_id])
-          _obj['y_' + item.y_id] = `${item.count}`
-          _sum += item.count * 1
-          if (curIndex >= this.statisData.column.length || index === this.statisData.cross_result.length - 1) {
-            _obj.count = _sum
-            _temp.push(Object.assign({}, _obj))
-            _obj = {}
-            curIndex = 0
-            _sum = 0
+          for (let key in item) {
+            console.log(key)
+            if (key !== 'type' && key !== 'count') {
+              item[key] = `${item[key]} (${item[key] === 0 ? 0 : this.GetRound((item[key] * 100 / item.count), 2)}%)`
+            }
           }
         })
-        console.log(_temp)
-        this.curResult = _temp
+        this.curResult = allResult
       },
       // 根据返回的题目列表，创建表格表头
       createColumn () {
@@ -157,7 +167,7 @@
         }
         this.statisData.column.forEach((item, index) => {
           tempObj.title = item.o_value
-          tempObj.key = 'y_' + item.o_id // 表头与数据 采用 q_<q_id> 来关联
+          tempObj.key = 'y_' + item.o_id // 表头与数据 采用 y_<y_id> 来关联
           this.columnsStatis.push(Object.assign({}, tempObj))
         })
       },
@@ -174,6 +184,7 @@
             if (response.data.err === 0) {
               this.statisData.cross_result = response.data.data.cross_result
               this.statisData.column = response.data.data.column
+              this.statisData.row = response.data.data.row
               this.createColumn() // 创建表头
               this.formateData() // 格式化表表格数据
               this.tableDisplay = true
