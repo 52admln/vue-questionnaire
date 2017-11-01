@@ -4,22 +4,10 @@
       <i-col :span="5" class="layout-menu-left">
         <Menu :active-name="defaultActive" theme="dark" width="auto">
           <div class="layout-logo-left">微型问卷系统</div>
-          <router-link to="/platform/list">
-            <Menu-item name="/platform/list">
-              <Icon type="ios-paper"></Icon>
-              <span class="layout-text">我的问卷</span>
-            </Menu-item>
-          </router-link>
-          <router-link to="/platform/edit">
-            <Menu-item name="/platform/edit">
-              <Icon type="android-create"></Icon>
-              <span class="layout-text">新建问卷</span>
-            </Menu-item>
-          </router-link>
-          <router-link to="/platform/user">
-            <Menu-item name="/platform/user">
-              <Icon type="person"></Icon>
-              <span class="layout-text">用户管理</span>
+          <router-link v-for="(item, index) in navList" :to="item.to" :key="index">
+            <Menu-item :name="item.name">
+              <Icon :type="item.icon"></Icon>
+              <span class="layout-text">{{ item.text }}</span>
             </Menu-item>
           </router-link>
         </Menu>
@@ -61,7 +49,33 @@
   export default {
     data () {
       return {
-        subActive: this.$route.name
+        subActive: this.$route.name,
+        navList: [
+          {
+            to: '/platform/list',
+            name: '/platform/list',
+            text: '我的问卷',
+            icon: 'ios-paper'
+          },
+          {
+            to: '/platform/edit',
+            name: '/platform/edit',
+            text: '新建问卷',
+            icon: 'android-create'
+          },
+          {
+            to: '/platform/user',
+            name: '/platform/user',
+            text: '用户管理',
+            icon: 'person'
+          },
+          {
+            to: '/platform/admin',
+            name: '/platform/admin',
+            text: '管理员设置',
+            icon: 'ios-analytics'
+          }
+        ]
       }
     },
     computed: {

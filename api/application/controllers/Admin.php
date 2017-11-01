@@ -23,7 +23,7 @@ class Admin extends CI_Controller
 		$header = $this->input->get_request_header('Authorization', TRUE);
 		list($token) = sscanf($header, 'token %s');
 		if ($header != '' && jwt_helper::validate($token)) {
-			$userid = jwt_helper::decode($header)->userId;
+			$userid = jwt_helper::decode($token)->userId;
 			$result = $this->admin_model->changePwd($userid);
 			echo json_encode($result);
 		} else {
