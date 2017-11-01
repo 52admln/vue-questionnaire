@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "~0.15.3",
+    "clipboard": "^1.7.1",
     "iview": "=2.0.0-rc.13",
     "url-search-params": "~0.9.0",
     "vue": "~2.2.1",

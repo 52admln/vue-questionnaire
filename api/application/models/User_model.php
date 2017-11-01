@@ -70,7 +70,7 @@ class User_model extends CI_Model
 		$insert_data = array(
 			'u_major' => $data[0],
 			'u_name' => $data[1],
-			'u_sex' => $data[2],
+			'u_sex' => $data[2] == '男' ? 0 : 1,
 			'u_class' => $data[3],
 			'u_number' => $data[4],
 			'u_birthday' => $data[5],
