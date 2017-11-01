@@ -4,7 +4,7 @@
       <Col span="2" style="width: 100px">
       <Button type="primary" @click="handleAdd">新增用户</Button>
       </Col>
-      <Col span="2" style="width: 100px">
+      <Col span="2" style="width: 120px">
       <Upload
         action="/api/user/upload"
         accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

@@ -159,11 +159,12 @@
       <file leaf-file-name="user.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
+            <state relative-caret-position="252">
               <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
+                <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#Upload#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <marker date="1507878643315" expanded="true" signature="2693:2898" ph="..." />
+                <marker date="1509519211569" expanded="true" signature="2693:2898" ph="..." />
               </folding>
             </state>
           </provider>
@@ -235,7 +236,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/edit/new.vue" />
         <option value="$PROJECT_DIR$/src/store/modules/question.list.js" />
         <option value="$PROJECT_DIR$/src/components/preview/preview.vue" />
         <option value="$PROJECT_DIR$/src/store/modules/naire.js" />
@@ -286,6 +286,7 @@
         <option value="$PROJECT_DIR$/api/application/models/User_model.php" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/views/list/list.vue" />
+        <option value="$PROJECT_DIR$/src/views/user/user.vue" />
       </list>
     </option>
   </component>
@@ -587,7 +588,7 @@
       <workItem from="1508393350698" duration="74000" />
       <workItem from="1508400891920" duration="4825000" />
       <workItem from="1509433448338" duration="68000" />
-      <workItem from="1509504648888" duration="5883000" />
+      <workItem from="1509504648888" duration="6913000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -817,7 +818,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318360000" />
+    <option name="totallyTimeSpent" value="319390000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1392,11 +1393,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
+        <state relative-caret-position="252">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
+            <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#Upload#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <marker date="1507878643315" expanded="true" signature="2693:2898" ph="..." />
+            <marker date="1509519211569" expanded="true" signature="2693:2898" ph="..." />
           </folding>
         </state>
       </provider>
