@@ -22,7 +22,7 @@ class User extends CI_Controller
     public function upload()
     {
         $this->load->model('user_model');
-
+        // todo 自适应服务器环境路径
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'xls|xlsx';
         $config['max_size'] = 2048;
@@ -79,7 +79,7 @@ class User extends CI_Controller
                 // var_dump($strs);
                 // 往数据库内导入数据
                 // 执行数据库语句，返回插入影响行数
-                $insert_num = $this->user_model->upload($strs);
+                $insert_num = $this->user_model->add_user($strs);
 
                 // 如果影响行数大于0，增加1条成功记录
                 if ($insert_num > 0) {
@@ -132,16 +132,51 @@ class User extends CI_Controller
         }
     }
 
-    // todo 新增用户
+    // 新增用户
     public function addUser()
     {
-
+        $this->load->model('user_model');
+        $header = $this->input->get_request_header('Authorization', TRUE);
+        list($token) = sscanf($header, 'token %s');
+        if ($header != '' && jwt_helper::validate($token)) {
+            $insert_data = array(
+                0 => json_decode($this->input->raw_input_stream, true)['u_major'],
+                1 => json_decode($this->input->raw_input_stream, true)['u_name'],
+                2 => json_decode($this->input->raw_input_stream, true)['u_sex'],
+                3 => json_decode($this->input->raw_input_stream, true)['u_class'],
+                4 => json_decode($this->input->raw_input_stream, true)['u_number'],
+                5 => json_decode($this->input->raw_input_stream, true)['u_birthday'],
+                6 => json_decode($this->input->raw_input_stream, true)['u_nation'],
+                7 => json_decode($this->input->raw_input_stream, true)['u_identity'],
+                8 => json_decode($this->input->raw_input_stream, true)['u_number']
+            );
+            if ($this->user_model->add_user($insert_data) > 0) {
+                $result = array('err' => 0, "data" => '新增 1 个用户成功');
+            } else {
+                $result = array('err' => 1, "data" => '新增用户失败，此用户已存在');
+            }
+            echo json_encode($result);
+        } else {
+            show_error("Permission denied", 401, "Please check your token.");
+        }
     }
 
-    // todo 更新用户
+    // 更新用户
     public function updateUser()
     {
-
+        $this->load->model('user_model');
+        $header = $this->input->get_request_header('Authorization', TRUE);
+        list($token) = sscanf($header, 'token %s');
+        if ($header != '' && jwt_helper::validate($token)) {
+            if ($this->user_model->update_user() > 0) {
+                $result = array('err' => 0, "data" => '修改用户成功');
+            } else {
+                $result = array('err' => 1, "data" => '修改用户失败');
+            }
+            echo json_encode($result);
+        } else {
+            show_error("Permission denied", 401, "Please check your token.");
+        }
     }
 
 }

@@ -80,7 +80,7 @@
     },
     computed: {
       defaultActive () {
-        console.log(this.$route.matched[1])
+//        console.log(this.$route.matched[1])
         if (this.$route.matched.length > 1) {
           return this.$route.matched[1].path
         } else {
@@ -93,7 +93,7 @@
     },
     methods: {
       logout () {
-        console.log('logout')
+//        console.log('logout')
         this.$store.dispatch('logout')
         this.$Message.warning('已登出!')
         this.$router.push('/login')
@@ -152,7 +152,7 @@
 
   .layout-menu-left {
     display: block;
-    position: absolute;
+    position: absolute;c
     width: 250px;
     left: 0;
     top: 0;
@@ -173,7 +173,7 @@
 
   .layout-logo-left {
     width: 90%;
-    height: 30px;
+    min-height: 30px;
     /*background: #5b6270;*/
     text-align: center;
     font-size: 24px;

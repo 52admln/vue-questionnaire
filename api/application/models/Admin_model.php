@@ -10,6 +10,7 @@ class Admin_model extends CI_Model
         $this->load->database();
     }
 
+    // 登录
     public function login()
     {
 //        $data = json_decode($this->input->raw_input_stream);
@@ -27,6 +28,7 @@ class Admin_model extends CI_Model
         }
     }
 
+    // 修改管理员密码
     public function changePwd($userid)
     {
         $oldpwd = json_decode($this->input->raw_input_stream, true)['oldpwd'];

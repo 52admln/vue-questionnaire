@@ -6,7 +6,7 @@
             </Col>
         </Row>
         <Spin v-if="loading">
-            <Icon type="load-c" size=18        class="demo-spin-icon-load"></Icon>
+            <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
             <div>数据加载中...</div>
         </Spin>
         <Table border :context="self" :columns="columns7" :data="naireList" v-if="!loading"></Table>
