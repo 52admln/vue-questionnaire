@@ -1,20 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/login/login'
-import Layout from '@/components/layout/layout'
+import Login from '@/views/login/login'
+import Layout from '@/views/layout/layout'
 
-import List from '@/components/list/list'
-import Edit from '@/components/edit/edit'
-import View from '@/components/view/view'
-import User from '@/components/user/user'
+import List from '@/views/list/list'
+import Edit from '@/views/edit/edit'
+import View from '@/views/view/view'
+import User from '@/views/user/user'
+import ChangePwd from '@/views/admin/changepwd'
 
-import Statis from '@/components/statis/statis'
-import Result from '@/components/statis/result'
-import crossAnalysis from '@/components/statis/cross-analysis'
-import SourceData from '@/components/statis/source-data'
+import Statis from '@/views/statis/statis'
+import Result from '@/views/statis/result'
+import crossAnalysis from '@/views/statis/cross-analysis'
+import SourceData from '@/views/statis/source-data'
 
-import Error from '@/components/common/error/error'
-import Complete from '@/components/common/complete/complete'
+import Error from '@/views/common/error/error'
+import Complete from '@/views/common/complete/complete'
 
 Vue.use(Router)
 
@@ -67,6 +68,11 @@ let router = new Router({
         {
           path: 'user',
           component: User,
+          meta: {requiresAuth: true}
+        },
+        {
+          path: 'admin',
+          component: ChangePwd,
           meta: {requiresAuth: true}
         },
         {

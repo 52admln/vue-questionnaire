@@ -13,6 +13,9 @@ class User_model extends CI_Model
 	// 获取用户
 	public function get_users()
 	{
+        // todo 搜索功能
+        $keyword = $this->input->post_get('keyword', TRUE);
+        $value = $this->input->post_get('value', TRUE);
 		// 如果传入用户ID,返回当前用户的信息
 		$currentUser = $this->input->post_get('u_id', TRUE);
 		// 参数1: $currentPage 当前页码, 参数2: $pageSize 每页显示条数
@@ -21,12 +24,13 @@ class User_model extends CI_Model
 		$pageSize = $this->input->post_get('page_size', TRUE);
 		$total_query = $this->db->get('users');
 		$total = $total_query->num_rows();
-
+        
 		// 如果传入用户ID,返回当前用户的信息
 		if ($currentUser != '') {
 			// 返回全部数据
 			$query = $this->db->where('u_id', $currentUser)
 				->get('users');
+			// todo 搜索条件
 			if (!$query) {
 				$error = 1; // ERROR
 			} else {
@@ -38,6 +42,7 @@ class User_model extends CI_Model
 		if ($currentPage == '' && $pageSize == '') {
 			// 返回全部数据
 			$query = $this->db->get('users');
+            // todo 搜索条件
 			if (!$query) {
 				$error = 1; // ERROR
 			} else {
@@ -59,8 +64,27 @@ class User_model extends CI_Model
 
 	}
 
-	// 批量上传
-	public function upload($data)
+    // 更新用户
+    public function update_user() {
+	    $u_id = json_decode($this->input->raw_input_stream, true)['u_id'];
+        $update_data = array(
+            'u_major' => json_decode($this->input->raw_input_stream, true)['u_major'],
+            'u_name' => json_decode($this->input->raw_input_stream, true)['u_name'],
+            'u_sex' => json_decode($this->input->raw_input_stream, true)['u_sex'],
+            'u_class' => json_decode($this->input->raw_input_stream, true)['u_class'],
+            'u_number' => json_decode($this->input->raw_input_stream, true)['u_number'],
+            'u_birthday' => json_decode($this->input->raw_input_stream, true)['u_birthday'],
+            'u_nation' => json_decode($this->input->raw_input_stream, true)['u_nation'],
+            'u_identity' => json_decode($this->input->raw_input_stream, true)['u_identity'],
+            'u_password' => sha1(json_decode($this->input->raw_input_stream, true)['u_number'])
+        );
+        $this->db->where('u_id', $u_id);
+        $this->db->update('users', $update_data);
+        return $this->db->affected_rows();
+    }
+
+	// 批量上传,新增用户
+	public function add_user($data)
 	{
 		// 如果学号冲突，则不添加此用户
 		$is_exist = $this->db->get_where('users', array('u_number' => $data[4]));
@@ -70,7 +94,7 @@ class User_model extends CI_Model
 		$insert_data = array(
 			'u_major' => $data[0],
 			'u_name' => $data[1],
-			'u_sex' => $data[2],
+			'u_sex' => $data[2] == '男' ? 0 : 1,
 			'u_class' => $data[3],
 			'u_number' => $data[4],
 			'u_birthday' => $data[5],

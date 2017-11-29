@@ -1,63 +1,73 @@
 <template>
-  <div class="naire-list">
-    <Row class="naire-btn">
-      <Col span="24">
-      <Button type="primary" @click="newNaire">新建问卷</Button>
-      </Col>
-    </Row>
-    <Spin v-if="loading">
-      <Icon type="load-c" size=18      class="demo-spin-icon-load"></Icon>
-      <div>数据加载中...</div>
-    </Spin>
-    <Table border :context="self" :columns="columns7" :data="naireList" v-if="!loading"></Table>
-    <!-- 复制地址 -->
-    <Modal v-model="showURL">
-      <Input v-model="url" ref="copyURL" :autofocus="true" :readonly="true"></Input>
-      <p>选中后，使用 Ctrl + C 复制。</p>
-    </Modal>
-    <!-- 查看回收情况 -->
-    <Modal
-      v-model="submitStatisModel"
-      title="查看回收情况"
-      :styles="{top: '40px'}"
-      width="800">
-      <Form :model="searchForm" inline>
-        <Form-item prop="user" style="width: 150px;">
-          <Select v-model="searchForm.status" placeholder="请选择状态">
-            <Option value="-1">全部</Option>
-            <Option value="1">已完成</Option>
-            <Option value="0">未完成</Option>
-          </Select>
-        </Form-item>
-        <Form-item prop="password" style="width: 250px;">
-          <Select v-model="searchForm.u_class" placeholder="请选择班级">
-            <Option value="all">全部</Option>
-            <Option v-if="classList.length > 0" v-for="(item, index) in classList" :value="item.u_class" :key="index">
-              {{ item.u_class }}
-            </Option>
-          </Select>
-        </Form-item>
-        <Form-item>
-          <Button type="primary" @click="handleSubmit">检索</Button>
-        </Form-item>
-      </Form>
-      <Spin v-if="submitStatisLoading">
-        <Icon type="load-c" size=18      class="demo-spin-icon-load"></Icon>
-        <div>数据加载中...</div>
-      </Spin>
-      <Table border :context="self" :columns="submitStatisColumns" :data="submitStatisData"
-             v-if="!submitStatisLoading"></Table>
-      <div style="margin: 10px;overflow: hidden">
-        <div style="float: right;" v-if="!submitStatisLoading">
-          <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage"></Page>
-        </div>
-      </div>
-    </Modal>
-  </div>
+    <div class="naire-list">
+        <Row class="naire-btn">
+            <Col span="24">
+            <Button type="primary" @click="newNaire">新建问卷</Button>
+            </Col>
+        </Row>
+        <Spin v-if="loading">
+            <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+            <div>数据加载中...</div>
+        </Spin>
+        <Table border :context="self" :columns="columns7" :data="naireList" v-if="!loading"></Table>
+        <!-- 复制地址 -->
+        <Modal v-model="showURL" title="复制地址">
+            <Row>
+                <Col span="18">
+                    <Input v-model="url" ref="copyURL" id="url" :autofocus="true" :readonly="true"></Input>
+                </Col>
+                <Col span="4" offset="1">
+                    <Button class="copyboard" data-clipboard-target="#url" @click="handleCopy">复制</Button>
+                </Col>
+            </Row>
+            <Alert style="margin-top: 20px">如无法使用上方复制按钮，请选中内容后，使用 Ctrl + C 复制。</Alert>
+        </Modal>
+        <!-- 查看回收情况 -->
+        <Modal
+                v-model="submitStatisModel"
+                title="查看回收情况"
+                :styles="{top: '40px'}"
+                width="800">
+            <Form :model="searchForm" inline>
+                <Form-item prop="user" style="width: 150px;">
+                    <Select v-model="searchForm.status" placeholder="请选择状态">
+                        <Option value="-1">全部</Option>
+                        <Option value="1">已完成</Option>
+                        <Option value="0">未完成</Option>
+                    </Select>
+                </Form-item>
+                <Form-item prop="password" style="width: 250px;">
+                    <Select v-model="searchForm.u_class" placeholder="请选择班级">
+                        <Option value="all">全部</Option>
+                        <Option v-if="classList.length > 0" v-for="(item, index) in classList" :value="item.u_class"
+                                :key="index">
+                            {{ item.u_class }}
+                        </Option>
+                    </Select>
+                </Form-item>
+                <Form-item>
+                    <Button type="primary" @click="handleSubmit">检索</Button>
+                </Form-item>
+            </Form>
+            <Spin v-if="submitStatisLoading">
+                <Icon type="load-c" size=18        class="demo-spin-icon-load"></Icon>
+                <div>数据加载中...</div>
+            </Spin>
+            <Table border :context="self" :columns="submitStatisColumns" :data="submitStatisData"
+                   v-if="!submitStatisLoading"></Table>
+            <div style="margin: 10px;overflow: hidden">
+                <div style="float: right;" v-if="!submitStatisLoading">
+                    <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage"></Page>
+                </div>
+            </div>
+        </Modal>
+    </div>
 </template>
 
 <script>
   import { formatDate } from '../../common/js/utils'
+  import Clipboard from 'clipboard'
+
   const OK = 0 // OK
   export default {
     data () {
@@ -250,13 +260,25 @@
             this.$Message.error('网络错误，请重试')
           })
       },
-      preview (index) {
-        this.$router.push('/view/' + index)
+      preview (nid) {
+        window.open(window.location.origin + '/#/view/' + nid)
       },
       getURL (nid) {
         // 复制地址
         this.showURL = true
         this.url = window.location.origin + '/#/view/' + nid
+      },
+      handleCopy () {
+        let clipboard = new Clipboard('.copyboard')
+
+        clipboard.on('success', (e) => {
+          this.$Message.success('复制成功！')
+          e.clearSelection()
+        })
+
+        clipboard.on('error', (e) => {
+          this.$Message.error('复制失败！')
+        })
       },
       changePage (curPage) {
         // 从服务端获取数据
@@ -348,29 +370,29 @@
 </script>
 
 <style>
-  .naire-btn {
-    padding-bottom: 10px;
-  }
-
-  .demo-spin-icon-load {
-    animation: ani-demo-spin 1s linear infinite;
-  }
-
-  @keyframes ani-demo-spin {
-    from {
-      transform: rotate(0deg);
+    .naire-btn {
+        padding-bottom: 10px;
     }
-    50% {
-      transform: rotate(180deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
 
-  .demo-spin-col {
-    height: 100px;
-    position: relative;
-    border: 1px solid #eee;
-  }
+    .demo-spin-icon-load {
+        animation: ani-demo-spin 1s linear infinite;
+    }
+
+    @keyframes ani-demo-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .demo-spin-col {
+        height: 100px;
+        position: relative;
+        border: 1px solid #eee;
+    }
 </style>

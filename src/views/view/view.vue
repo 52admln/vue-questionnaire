@@ -306,12 +306,13 @@
     max-height: 100%;
     height: 100%;
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 10px;
     overflow-y: scroll;
   }
 
   .view-layout .main {
-    width: 800px;
+    /*width: 800px;*/
+    width: 100%;
     height: auto;
     margin: 0 auto;
     padding-bottom: 30px;
@@ -328,7 +329,8 @@
   }
 
   .view-layout .header h1 {
-    width: 500px;
+    /*width: 500px;*/
+    width: 100%;
     margin: 0 auto;
     text-align: center;
   }
