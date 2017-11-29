@@ -24,7 +24,7 @@ class User_model extends CI_Model
 		$pageSize = $this->input->post_get('page_size', TRUE);
 		$total_query = $this->db->get('users');
 		$total = $total_query->num_rows();
-        
+
 		// 如果传入用户ID,返回当前用户的信息
 		if ($currentUser != '') {
 			// 返回全部数据
