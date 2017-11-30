@@ -4,7 +4,7 @@
             <Col span="2" style="width: 100px">
             <Button type="primary" @click="handleAdd">新增用户</Button>
             </Col>
-            <Col span="2">
+            <Col span="3" style="width: 120px">
             <Upload
                     action="/api/user/upload"
                     accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -13,17 +13,28 @@
                     :on-format-error="handleFormatError"
                     :on-exceeded-size="handleMaxSize"
                     :on-success="handleSuccess"
-                    :on-error="handleError"
-            >
+                    :on-error="handleError">
                 <Button type="ghost" icon="ios-cloud-upload-outline">批量导入</Button>
             </Upload>
             </Col>
-
+            <Col span="4" style="margin-right: 20px">
+            <Select v-model="filters.keyword" placeholder="搜索类别">
+                <Option v-for="item in filters.options"
+                        :key="item.value"
+                        :value="item.value">{{item.label}}</Option>
+            </Select>
+            </Col>
+            <Col span="4" style="margin-right: 20px">
+            <Input v-model="filters.value" placeholder="搜索内容"></Input>
+            </Col>
+            <Col span="4">
+            <Button type="primary" icon="ios-cloud-upload-outline" @click="getData">搜索用户</Button>
+            </Col>
         </Row>
         <Row>
             <Col span="24">
             <Spin fix v-if="loading">
-                <Icon type="load-c" size=18      class="demo-spin-icon-load"></Icon>
+                <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
                 <div>数据加载中...</div>
             </Spin>
             <Table border :context="self" :columns="tableColumns" :data="userData" v-if="!loading"></Table>
@@ -146,6 +157,16 @@
   export default {
     data () {
       return {
+        filters: {
+          keyword: '',
+          value: '',
+          options: [
+            {value: '', label: '全部'},
+            {value: 'u_name', label: '姓名'},
+            {value: 'u_number', label: '学号'},
+            {value: 'u_identity', label: '身份证号'}
+          ]
+        },
         self: this,
         loading: true,
         currentPage: 1,
@@ -343,6 +364,8 @@
       getData () {
         this.$http.get('/api/user', {
           params: {
+            keyword: this.filters.keyword,
+            value: this.filters.value,
             current: this.currentPage,
             page_size: this.pageSize
           }

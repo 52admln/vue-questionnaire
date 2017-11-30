@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8f6936f-27ac-4727-ad41-0ced38230e62" name="Default" comment="fix 问卷未发布不显示">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/statis/cross-analysis.vue" afterPath="$PROJECT_DIR$/src/components/statis/cross-analysis.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/Naire_model.php" afterPath="$PROJECT_DIR$/api/application/models/Naire_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +32,7 @@
       <file leaf-file-name="list.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/list/list.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="0">
               <caret line="234" column="22" lean-forward="false" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
               <folding>
                 <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -50,7 +50,7 @@
       <file leaf-file-name="Admin_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/application/models/Admin_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
+            <state relative-caret-position="336">
               <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
               <folding />
             </state>
@@ -60,23 +60,32 @@
       <file leaf-file-name="user.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="435" column="16" lean-forward="true" selection-start-line="435" selection-start-column="16" selection-end-line="435" selection-end-column="16" />
+            <state relative-caret-position="-479">
+              <caret line="163" column="37" lean-forward="true" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
               <folding>
+                <element signature="n#style#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#Col#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#6415#7843#0" expanded="false" />
-                <element signature="e#7884#8038#0" expanded="false" />
-                <element signature="e#8089#8896#0" expanded="false" />
-                <element signature="e#8919#9118#0" expanded="false" />
-                <element signature="e#9524#10023#0" expanded="false" />
-                <element signature="e#10060#10601#0" expanded="false" />
-                <element signature="e#10642#11231#0" expanded="false" />
-                <element signature="e#11266#11720#0" expanded="false" />
-                <element signature="e#11769#11915#0" expanded="false" />
-                <element signature="e#11960#12091#0" expanded="false" />
-                <element signature="e#12159#12368#0" expanded="false" />
-                <element signature="e#12431#12503#0" expanded="false" />
-                <marker date="1511946162397" expanded="true" signature="7575:7780" ph="..." />
+                <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#Col#2;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#Col#3;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#7316#8744#0" expanded="false" />
+                <element signature="e#8785#8939#0" expanded="false" />
+                <element signature="e#8990#9797#0" expanded="false" />
+                <element signature="e#9820#10019#0" expanded="false" />
+                <element signature="e#10140#10359#0" expanded="false" />
+                <element signature="e#10425#10924#0" expanded="false" />
+                <element signature="e#10961#11502#0" expanded="false" />
+                <element signature="e#11543#12132#0" expanded="false" />
+                <element signature="e#12752#12898#0" expanded="false" />
+                <element signature="e#12943#13074#0" expanded="false" />
+                <element signature="e#13142#13351#0" expanded="false" />
+                <element signature="e#13414#13486#0" expanded="false" />
+                <element signature="e#13525#13567#0" expanded="false" />
+                <element signature="e#13609#14434#0" expanded="false" />
+                <element signature="e#14476#15244#0" expanded="false" />
+                <marker date="1512024876815" expanded="true" signature="8476:8681" ph="..." />
               </folding>
             </state>
           </provider>
@@ -85,8 +94,8 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/application/controllers/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="172" column="20" lean-forward="true" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+            <state relative-caret-position="1143">
+              <caret line="175" column="36" lean-forward="false" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
               <folding>
                 <element signature="n#upload#0;n#User#0;n#!!top" expanded="false" />
                 <element signature="n#del#0;n#User#0;n#!!top" expanded="false" />
@@ -97,32 +106,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User_model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User_model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/application/models/User_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+            <state relative-caret-position="797">
+              <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
               <folding>
+                <element signature="e#993#1396#0#PHP" expanded="false" />
                 <element signature="n#add_user#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#del_user#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#get_user_id#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#get_class_list#0;n#User_model#0;n#!!top" expanded="false" />
-                <marker date="1511946497982" expanded="true" signature="3621:3656" ph="DELETE FROM " />
-                <marker date="1511946497982" expanded="true" signature="4715:4757" ph="SELECT u_cla... users" />
+                <marker date="1512025010996" expanded="true" signature="4708:4743" ph="DELETE FROM " />
+                <marker date="1512025010996" expanded="true" signature="6027:6069" ph="SELECT u_cla... users" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="235">
-                <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/application/config/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="86" column="21" lean-forward="true" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/application/cache/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/application/cache/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+              <folding>
+                <marker date="1490025068000" expanded="true" signature="0:63" ph="&lt;IfModule authz_core_module&gt;" />
+                <marker date="1490025068000" expanded="true" signature="64:123" ph="&lt;IfModule !authz_core_module&gt;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -194,7 +224,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/preview/preview.vue" />
         <option value="$PROJECT_DIR$/src/store/modules/naire.js" />
         <option value="$PROJECT_DIR$/src/api/index.js" />
         <option value="$PROJECT_DIR$/src/api/resource.js" />
@@ -241,10 +270,11 @@
         <option value="$PROJECT_DIR$/src/views/list/list.vue" />
         <option value="$PROJECT_DIR$/src/views/layout/layout.vue" />
         <option value="$PROJECT_DIR$/api/application/controllers/User.php" />
-        <option value="$PROJECT_DIR$/src/views/user/user.vue" />
         <option value="$PROJECT_DIR$/api/application/models/Admin_model.php" />
-        <option value="$PROJECT_DIR$/api/application/models/User_model.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/api/application/config/database.php" />
+        <option value="$PROJECT_DIR$/src/views/user/user.vue" />
+        <option value="$PROJECT_DIR$/api/application/models/User_model.php" />
       </list>
     </option>
   </component>
@@ -272,8 +302,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -309,6 +339,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -332,7 +363,14 @@
               <item name="vue-questionnaire" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="cache" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="vue-questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-questionnaire" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="vue-questionnaire" type="b2602c69:ProjectViewProjectNode" />
@@ -396,7 +434,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
@@ -577,7 +614,8 @@
       <workItem from="1509504648888" duration="6913000" />
       <workItem from="1509694916754" duration="684000" />
       <workItem from="1510197253901" duration="405000" />
-      <workItem from="1511938493287" duration="7679000" />
+      <workItem from="1511938493287" duration="7928000" />
+      <workItem from="1511948608297" duration="2626000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -807,7 +845,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328158000" />
+    <option name="totallyTimeSpent" value="331033000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -938,27 +976,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="37" column="44" lean-forward="false" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -1026,13 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1082">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="26" column="65" lean-forward="false" selection-start-line="26" selection-start-column="65" selection-end-line="26" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1182,7 +1192,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="27" column="33" lean-forward="false" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1232,7 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="0" column="1389" lean-forward="false" selection-start-line="0" selection-start-column="1389" selection-end-line="0" selection-end-column="1389" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,7 +1256,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,7 +1321,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/list/list.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="0">
           <caret line="234" column="22" lean-forward="false" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
           <folding>
             <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -1328,10 +1335,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/models/Admin_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/cache/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/cache/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding>
+            <marker date="1490025068000" expanded="true" signature="0:63" ph="&lt;IfModule authz_core_module&gt;" />
+            <marker date="1490025068000" expanded="true" signature="64:123" ph="&lt;IfModule !authz_core_module&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="86" column="21" lean-forward="true" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="448">
+            <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/config/memcached.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-479">
+          <caret line="163" column="37" lean-forward="true" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#2;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#3;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#7316#8744#0" expanded="false" />
+            <element signature="e#8785#8939#0" expanded="false" />
+            <element signature="e#8990#9797#0" expanded="false" />
+            <element signature="e#9820#10019#0" expanded="false" />
+            <element signature="e#10140#10359#0" expanded="false" />
+            <element signature="e#10425#10924#0" expanded="false" />
+            <element signature="e#10961#11502#0" expanded="false" />
+            <element signature="e#11543#12132#0" expanded="false" />
+            <element signature="e#12752#12898#0" expanded="false" />
+            <element signature="e#12943#13074#0" expanded="false" />
+            <element signature="e#13142#13351#0" expanded="false" />
+            <element signature="e#13414#13486#0" expanded="false" />
+            <element signature="e#13525#13567#0" expanded="false" />
+            <element signature="e#13609#14434#0" expanded="false" />
+            <element signature="e#14476#15244#0" expanded="false" />
+            <marker date="1512024876815" expanded="true" signature="8476:8681" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/controllers/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="172" column="20" lean-forward="true" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+        <state relative-caret-position="1143">
+          <caret line="175" column="36" lean-forward="false" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
           <folding>
             <element signature="n#upload#0;n#User#0;n#!!top" expanded="false" />
             <element signature="n#del#0;n#User#0;n#!!top" expanded="false" />
@@ -1341,60 +1434,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="435" column="16" lean-forward="true" selection-start-line="435" selection-start-column="16" selection-end-line="435" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#Col#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#6415#7843#0" expanded="false" />
-            <element signature="e#7884#8038#0" expanded="false" />
-            <element signature="e#8089#8896#0" expanded="false" />
-            <element signature="e#8919#9118#0" expanded="false" />
-            <element signature="e#9524#10023#0" expanded="false" />
-            <element signature="e#10060#10601#0" expanded="false" />
-            <element signature="e#10642#11231#0" expanded="false" />
-            <element signature="e#11266#11720#0" expanded="false" />
-            <element signature="e#11769#11915#0" expanded="false" />
-            <element signature="e#11960#12091#0" expanded="false" />
-            <element signature="e#12159#12368#0" expanded="false" />
-            <element signature="e#12431#12503#0" expanded="false" />
-            <marker date="1511946162397" expanded="true" signature="7575:7780" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/models/Admin_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
-          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/models/User_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+        <state relative-caret-position="797">
+          <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
           <folding>
+            <element signature="e#993#1396#0#PHP" expanded="false" />
             <element signature="n#add_user#0;n#User_model#0;n#!!top" expanded="false" />
             <element signature="n#del_user#0;n#User_model#0;n#!!top" expanded="false" />
             <element signature="n#get_user_id#0;n#User_model#0;n#!!top" expanded="false" />
             <element signature="n#get_class_list#0;n#User_model#0;n#!!top" expanded="false" />
-            <marker date="1511946497982" expanded="true" signature="3621:3656" ph="DELETE FROM " />
-            <marker date="1511946497982" expanded="true" signature="4715:4757" ph="SELECT u_cla... users" />
+            <marker date="1512025010996" expanded="true" signature="4708:4743" ph="DELETE FROM " />
+            <marker date="1512025010996" expanded="true" signature="6027:6069" ph="SELECT u_cla... users" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="235">
-            <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
