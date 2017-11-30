@@ -21,24 +21,39 @@
             <Select v-model="filters.keyword" placeholder="搜索类别">
                 <Option v-for="item in filters.options"
                         :key="item.value"
-                        :value="item.value">{{item.label}}</Option>
+                        :value="item.value">{{item.label}}
+                </Option>
             </Select>
             </Col>
             <Col span="4" style="margin-right: 20px">
             <Input v-model="filters.value" placeholder="搜索内容"></Input>
             </Col>
             <Col span="4">
-            <Button type="primary" icon="ios-cloud-upload-outline" @click="getData">搜索用户</Button>
+            <Button type="primary" icon="ios-search" @click="getData">搜索用户</Button>
             </Col>
         </Row>
         <Row>
             <Col span="24">
             <Spin fix v-if="loading">
-                <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+                <Icon type="load-c" size=18        class="demo-spin-icon-load"></Icon>
                 <div>数据加载中...</div>
             </Spin>
-            <Table border :context="self" :columns="tableColumns" :data="userData" v-if="!loading"></Table>
-            <div style="margin: 10px;overflow: hidden">
+            <Table border :context="self"
+                   v-if="!loading"
+                   :columns="tableColumns"
+                   :data="userData"
+                   @on-selection-change="selectionChange"></Table>
+            <div style="margin: 10px 0 10px 0;overflow: hidden">
+                <div style="float: left;" v-if="!loading">
+                    <Poptip
+                            placement="right"
+                            confirm
+                            title="您确认删除这几条内容吗？"
+                            width="200"
+                            @on-ok="betchRemove">
+                        <i-button type="error">批量删除</i-button>
+                    </Poptip>
+                </div>
                 <div style="float: right;" v-if="!loading">
                     <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage"></Page>
                 </div>
@@ -157,6 +172,7 @@
   export default {
     data () {
       return {
+        selectRows: [],
         filters: {
           keyword: '',
           value: '',
@@ -298,6 +314,10 @@
       }
     },
     methods: {
+      selectionChange (selection) {
+        console.log(selection)
+        this.selectRows = selection
+      },
       // 编辑用户
       update (index) {
         this.$http.get('/api/user', {
@@ -319,17 +339,32 @@
       },
       // 删除用户
       remove (index) {
-        console.log(index)
-        this.$http.get('/api/user/del', {
-          params: {
-            u_id: this.userData[index].u_id
-          }
+        this.$http.post('/api/user/del', {
+          u_id: this.userData[index].u_id
         })
           .then((response) => {
-            console.log(response.data.data)
             if (response.data.data > 0 && response.data.err === OK) {
-              this.$Message.success('删除成功')
+              this.$Message.success(`成功删除${response.data.data}个用户`)
               this.userData.splice(index, 1)
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('删除失败')
+          })
+      },
+      betchRemove () {
+        const rowIds = []
+        this.selectRows.forEach(({u_id}) => {
+          rowIds.push(u_id)
+        })
+        this.$http.post('/api/user/del', {
+          u_id: rowIds + ''
+        })
+          .then((response) => {
+            if (response.data.data > 0 && response.data.err === OK) {
+              this.$Message.success(`成功删除${response.data.data}个用户`)
+              this.getData()
             }
           })
           .catch((error) => {

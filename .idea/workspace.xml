@@ -60,33 +60,46 @@
       <file leaf-file-name="user.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-479">
-              <caret line="163" column="37" lean-forward="true" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+            <state relative-caret-position="420">
+              <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#Col#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#Col#2;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#Col#3;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#7316#8744#0" expanded="false" />
-                <element signature="e#8785#8939#0" expanded="false" />
-                <element signature="e#8990#9797#0" expanded="false" />
-                <element signature="e#9820#10019#0" expanded="false" />
-                <element signature="e#10140#10359#0" expanded="false" />
-                <element signature="e#10425#10924#0" expanded="false" />
-                <element signature="e#10961#11502#0" expanded="false" />
-                <element signature="e#11543#12132#0" expanded="false" />
-                <element signature="e#12752#12898#0" expanded="false" />
-                <element signature="e#12943#13074#0" expanded="false" />
-                <element signature="e#13142#13351#0" expanded="false" />
-                <element signature="e#13414#13486#0" expanded="false" />
-                <element signature="e#13525#13567#0" expanded="false" />
-                <element signature="e#13609#14434#0" expanded="false" />
-                <element signature="e#14476#15244#0" expanded="false" />
-                <marker date="1512024876815" expanded="true" signature="8476:8681" ph="..." />
+                <element signature="e#9367#9521#0" expanded="false" />
+                <element signature="e#9572#10379#0" expanded="false" />
+                <element signature="e#10402#10601#0" expanded="false" />
+                <element signature="e#10722#10941#0" expanded="false" />
+                <element signature="e#11119#11618#0" expanded="false" />
+                <element signature="e#11655#12116#0" expanded="false" />
+                <element signature="e#12139#12681#0" expanded="false" />
+                <element signature="e#12722#13311#0" expanded="false" />
+                <element signature="e#13346#13882#0" expanded="false" />
+                <element signature="e#13931#14077#0" expanded="false" />
+                <element signature="e#14122#14253#0" expanded="false" />
+                <element signature="e#14321#14530#0" expanded="false" />
+                <element signature="e#14593#14665#0" expanded="false" />
+                <element signature="e#14704#14746#0" expanded="false" />
+                <element signature="e#14788#15613#0" expanded="false" />
+                <element signature="e#15655#16423#0" expanded="false" />
+                <marker date="1512026096021" expanded="true" signature="9058:9263" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,8 +107,8 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/application/controllers/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1143">
-              <caret line="175" column="36" lean-forward="false" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+            <state relative-caret-position="380">
+              <caret line="136" column="5" lean-forward="true" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
               <folding>
                 <element signature="n#upload#0;n#User#0;n#!!top" expanded="false" />
                 <element signature="n#del#0;n#User#0;n#!!top" expanded="false" />
@@ -106,20 +119,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User_model.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/application/models/User_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="797">
-              <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+            <state relative-caret-position="393">
+              <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
               <folding>
+                <element signature="n#get_users#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="e#993#1396#0#PHP" expanded="false" />
+                <element signature="n#update_user#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#add_user#0;n#User_model#0;n#!!top" expanded="false" />
-                <element signature="n#del_user#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#get_user_id#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#get_class_list#0;n#User_model#0;n#!!top" expanded="false" />
-                <marker date="1512025010996" expanded="true" signature="4708:4743" ph="DELETE FROM " />
-                <marker date="1512025010996" expanded="true" signature="6027:6069" ph="SELECT u_cla... users" />
+                <marker date="1512025996594" expanded="true" signature="4730:4764" ph="DELETE FROM " />
+                <marker date="1512025996594" expanded="true" signature="4730:4769" ph="DELETE FROM " />
+                <marker date="1512025996594" expanded="true" signature="4730:4780" ph="DELETE FROM " />
+                <marker date="1512025996594" expanded="true" signature="6054:6096" ph="SELECT u_cla... users" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="224">
+                <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -264,17 +293,17 @@
         <option value="$PROJECT_DIR$/src/views/admin/changePwd.scss" />
         <option value="$PROJECT_DIR$/api/application/controllers/Admin.php" />
         <option value="$PROJECT_DIR$/src/views/admin/changePwd.vue" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/views/view/view.vue" />
         <option value="$PROJECT_DIR$/src/views/list/list.vue" />
         <option value="$PROJECT_DIR$/src/views/layout/layout.vue" />
         <option value="$PROJECT_DIR$/api/application/controllers/User.php" />
         <option value="$PROJECT_DIR$/api/application/models/Admin_model.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/api/application/config/database.php" />
-        <option value="$PROJECT_DIR$/src/views/user/user.vue" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/api/application/models/User_model.php" />
+        <option value="$PROJECT_DIR$/src/views/user/user.vue" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -615,7 +644,7 @@
       <workItem from="1509694916754" duration="684000" />
       <workItem from="1510197253901" duration="405000" />
       <workItem from="1511938493287" duration="7928000" />
-      <workItem from="1511948608297" duration="2626000" />
+      <workItem from="1511948608297" duration="3707000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -845,7 +874,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331033000" />
+    <option name="totallyTimeSpent" value="332114000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1275,14 +1304,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="4" column="107" lean-forward="true" selection-start-line="4" selection-start-column="107" selection-end-line="4" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/controllers/Naire.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1988">
@@ -1370,17 +1391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="448">
-            <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/config/memcached.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -1389,42 +1399,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
+    <entry file="file://$PROJECT_DIR$/api/application/models/User_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-479">
-          <caret line="163" column="37" lean-forward="true" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+        <state relative-caret-position="393">
+          <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
           <folding>
-            <element signature="n#style#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Col#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Col#2;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Col#3;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#7316#8744#0" expanded="false" />
-            <element signature="e#8785#8939#0" expanded="false" />
-            <element signature="e#8990#9797#0" expanded="false" />
-            <element signature="e#9820#10019#0" expanded="false" />
-            <element signature="e#10140#10359#0" expanded="false" />
-            <element signature="e#10425#10924#0" expanded="false" />
-            <element signature="e#10961#11502#0" expanded="false" />
-            <element signature="e#11543#12132#0" expanded="false" />
-            <element signature="e#12752#12898#0" expanded="false" />
-            <element signature="e#12943#13074#0" expanded="false" />
-            <element signature="e#13142#13351#0" expanded="false" />
-            <element signature="e#13414#13486#0" expanded="false" />
-            <element signature="e#13525#13567#0" expanded="false" />
-            <element signature="e#13609#14434#0" expanded="false" />
-            <element signature="e#14476#15244#0" expanded="false" />
-            <marker date="1512024876815" expanded="true" signature="8476:8681" ph="..." />
+            <element signature="n#get_users#0;n#User_model#0;n#!!top" expanded="false" />
+            <element signature="e#993#1396#0#PHP" expanded="false" />
+            <element signature="n#update_user#0;n#User_model#0;n#!!top" expanded="false" />
+            <element signature="n#add_user#0;n#User_model#0;n#!!top" expanded="false" />
+            <element signature="n#get_user_id#0;n#User_model#0;n#!!top" expanded="false" />
+            <element signature="n#get_class_list#0;n#User_model#0;n#!!top" expanded="false" />
+            <marker date="1512025996594" expanded="true" signature="4730:4764" ph="DELETE FROM " />
+            <marker date="1512025996594" expanded="true" signature="4730:4769" ph="DELETE FROM " />
+            <marker date="1512025996594" expanded="true" signature="4730:4780" ph="DELETE FROM " />
+            <marker date="1512025996594" expanded="true" signature="6054:6096" ph="SELECT u_cla... users" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/application/controllers/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1143">
-          <caret line="175" column="36" lean-forward="false" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+        <state relative-caret-position="380">
+          <caret line="136" column="5" lean-forward="true" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
           <folding>
             <element signature="n#upload#0;n#User#0;n#!!top" expanded="false" />
             <element signature="n#del#0;n#User#0;n#!!top" expanded="false" />
@@ -1434,19 +1431,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/models/User_model.php">
+    <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
-          <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+        <state relative-caret-position="420">
+          <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
           <folding>
-            <element signature="e#993#1396#0#PHP" expanded="false" />
-            <element signature="n#add_user#0;n#User_model#0;n#!!top" expanded="false" />
-            <element signature="n#del_user#0;n#User_model#0;n#!!top" expanded="false" />
-            <element signature="n#get_user_id#0;n#User_model#0;n#!!top" expanded="false" />
-            <element signature="n#get_class_list#0;n#User_model#0;n#!!top" expanded="false" />
-            <marker date="1512025010996" expanded="true" signature="4708:4743" ph="DELETE FROM " />
-            <marker date="1512025010996" expanded="true" signature="6027:6069" ph="SELECT u_cla... users" />
+            <element signature="n#style#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#0;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#1;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#2;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Col#3;n#Row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#Row#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#9367#9521#0" expanded="false" />
+            <element signature="e#9572#10379#0" expanded="false" />
+            <element signature="e#10402#10601#0" expanded="false" />
+            <element signature="e#10722#10941#0" expanded="false" />
+            <element signature="e#11119#11618#0" expanded="false" />
+            <element signature="e#11655#12116#0" expanded="false" />
+            <element signature="e#12139#12681#0" expanded="false" />
+            <element signature="e#12722#13311#0" expanded="false" />
+            <element signature="e#13346#13882#0" expanded="false" />
+            <element signature="e#13931#14077#0" expanded="false" />
+            <element signature="e#14122#14253#0" expanded="false" />
+            <element signature="e#14321#14530#0" expanded="false" />
+            <element signature="e#14593#14665#0" expanded="false" />
+            <element signature="e#14704#14746#0" expanded="false" />
+            <element signature="e#14788#15613#0" expanded="false" />
+            <element signature="e#15655#16423#0" expanded="false" />
+            <marker date="1512026096021" expanded="true" signature="9058:9263" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="224">
+            <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

@@ -126,14 +126,15 @@ class User_model extends CI_Model
     // 删除用户
     public function del_user()
     {
-        $user_id = $this->input->post_get('u_id', TRUE);
+        $user_id = json_decode($this->input->raw_input_stream, true)['u_id'];
+
         // 删除多表中的数据
 //        $del_tables = array('users', 'helper');
 //        $this->db->where('user_id', $user_id);
 //        $this->db->delete($del_tables);
 //        $result = $this->db->affected_rows();
 
-        $this->db->query("DELETE FROM users WHERE users.u_id={$user_id}");
+        $this->db->query("DELETE FROM users WHERE users.u_id in ({$user_id})");
         $rows = $this->db->affected_rows();
 
         if ($rows != 0) {
