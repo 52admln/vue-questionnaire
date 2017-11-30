@@ -29,34 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="list.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/list/list.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="234" column="22" lean-forward="false" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
-              <folding>
-                <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#Alert#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#2933#2983#0" expanded="true" />
-                <marker date="1511939859807" expanded="true" signature="6493:6827" ph="..." />
-                <marker date="1511939859807" expanded="true" signature="6860:7751" ph="..." />
-                <marker date="1511939859807" expanded="true" signature="6925:7062" ph="..." />
-                <marker date="1511939859807" expanded="true" signature="7116:7717" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/application/models/Admin_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="user.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/user/user.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -140,15 +112,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="224">
-                <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+              <first_editor relative-caret-position="336">
+                <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/view/view.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2569">
+              <caret line="310" column="3" lean-forward="true" selection-start-line="310" selection-start-column="3" selection-end-line="310" selection-end-column="3" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -253,7 +245,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/store/modules/naire.js" />
         <option value="$PROJECT_DIR$/src/api/index.js" />
         <option value="$PROJECT_DIR$/src/api/resource.js" />
         <option value="$PROJECT_DIR$/src/utils.js" />
@@ -304,6 +295,7 @@
         <option value="$PROJECT_DIR$/api/application/models/User_model.php" />
         <option value="$PROJECT_DIR$/src/views/user/user.vue" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -644,7 +636,7 @@
       <workItem from="1509694916754" duration="684000" />
       <workItem from="1510197253901" duration="405000" />
       <workItem from="1511938493287" duration="7928000" />
-      <workItem from="1511948608297" duration="3707000" />
+      <workItem from="1511948608297" duration="3799000" />
     </task>
     <task id="LOCAL-00001" summary="questionList 组件完成">
       <created>1494480718360</created>
@@ -874,7 +866,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332114000" />
+    <option name="totallyTimeSpent" value="332206000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1005,13 +997,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/getters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1221,6 +1206,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="27" column="33" lean-forward="false" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1285,13 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/view/view.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="310" column="3" lean-forward="true" selection-start-line="310" selection-start-column="3" selection-end-line="310" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1474,14 +1453,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/view/view.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2569">
+          <caret line="310" column="3" lean-forward="true" selection-start-line="310" selection-start-column="3" selection-end-line="310" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="224">
-            <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <first_editor relative-caret-position="336">
+            <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
