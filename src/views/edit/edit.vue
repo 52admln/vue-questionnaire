@@ -45,8 +45,7 @@
     <!-- addRadio -->
     <Modal v-model="addRadio_modal"
            title="添加单选题"
-           :mask-closable="false"
-    >
+           :mask-closable="false">
       <!-- form表单-->
       <Form ref="addRadio" v-model="addRadio_form" :label-width="80" class="form">
         <Form-item label="题目" prop="title">
