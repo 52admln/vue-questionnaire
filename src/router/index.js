@@ -121,7 +121,6 @@ router.beforeEach((to, from, next) => {
   // 获取 JWT Token
   if (to.meta.requiresAuth) {
     // 判断该路由是否需要登录权限
-    console.log('store token:' + localStorage.getItem('USER_NAME'))
     if (localStorage.getItem('USER_NAME')) {
       // 通过vuex state获取当前的token是否存在
       next()

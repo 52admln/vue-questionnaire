@@ -10,7 +10,7 @@
           <Input type="password" v-model="formValidate.password"></Input>
         </Form-item>
         <Form-item>
-          <Button type="primary" html-type="submit" @click.prevent="handleSubmit('formValidate')" long>立即登录</Button>
+          <Button type="primary" html-type="submit" @click.native="handleSubmit('formValidate')" long>立即登录</Button>
         </Form-item>
       </Form>
     </div>
@@ -55,10 +55,8 @@
             const params = qs.stringify({ 'username': this.formValidate.username, 'password': this.formValidate.password })
             this.$http.post('/api/admin/login', params)
               .then((response) => {
-                console.log(response.data)
                 if (response.data.err === OK) {
                   this.$Message.success('登录成功!')
-                  console.log(response.data)
                   const data = {
                     username: this.formValidate.username,
                     token: response.data.token
@@ -71,8 +69,7 @@
                   this.$Message.error('帐号或密码有误!')
                 }
               })
-              .catch((error) => {
-                console.log(error)
+              .catch(() => {
                 this.$Message.error('网络请求有误，请稍后重试!')
               })
           } else {

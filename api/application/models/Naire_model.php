@@ -614,6 +614,16 @@ class Naire_model extends CI_Model
         return array('err' => 0, "data" => $result);
     }
 
+    // 修改问卷时间
+    public function change_time() {
+        $n_id = json_decode($this->input->raw_input_stream, true)['n_id'];
+        $n_deadline = json_decode($this->input->raw_input_stream, true)['n_deadline'];
+        // 修改发布状态
+        $this->db->query("UPDATE naire SET n_deadline = {$n_deadline} WHERE n_id='{$n_id}'");
+        $result = $this->db->affected_rows();
+        return array('err' => 0, "data" => $result);
+    }
+
     // 获得毫秒级的时间戳
     private function getMillisecond()
     {

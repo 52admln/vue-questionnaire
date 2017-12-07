@@ -22,6 +22,14 @@
             </Row>
             <Alert style="margin-top: 20px">如无法使用上方复制按钮，请选中内容后，使用 Ctrl + C 复制。</Alert>
         </Modal>
+        <!-- 修改截止时间 -->
+        <Modal v-model="updateTime" title="修改截止时间" @on-ok="submitChangeTime">
+            <Date-picker type="datetime" placeholder="截止日期"
+                         v-model="deadline"
+                         :editable="false" placement="bottom"
+                         :options="dateOption">
+            </Date-picker>
+        </Modal>
         <!-- 查看回收情况 -->
         <Modal
                 v-model="submitStatisModel"
@@ -79,6 +87,14 @@
         searchForm: {
           u_class: '',
           status: ''
+        },
+        updateTimeId: 0,
+        updateTime: false,
+        deadline: '',
+        dateOption: {
+          disabledDate (date) {
+            return date && date.valueOf() < Date.now() - 86400000
+          }
         },
         classList: [],
         sexList: [
@@ -211,7 +227,7 @@
                               <Dropdown-item><span @click="preview(${row.n_id})">预览问卷</span></Dropdown-item>
                               <Dropdown-item><span @click="getURL(${row.n_id})">复制地址</span></Dropdown-item>
                               <Dropdown-item><span @click="submitStatis(${row.n_id})">查看回收情况</span></Dropdown-item>
-                              <Dropdown-item divided disabled>编辑问卷</Dropdown-item>
+                              <Dropdown-item divided><span  @click="changeTime(${row.n_deadline}, ${row.n_id})">编辑截止时间</span></Dropdown-item>
                               <Dropdown-item ><span @click="changeStatus(${row.n_id},${row.n_status})">${_publishText}</span></Dropdown-item>
                           </Dropdown-menu>
                       </Dropdown>
@@ -223,6 +239,7 @@
       }
     },
     methods: {
+      // 删除问卷
       remove (index) {
         console.log(index)
         this.$http.get('/api/naire/del', {
@@ -243,12 +260,15 @@
             this.$Message.error('删除失败')
           })
       },
+      // 统计
       statis (nid) {
         this.$router.push('/platform/statis/result/' + nid)
       },
+      // 新建问卷
       newNaire () {
         this.$router.push('/platform/edit')
       },
+      // 获取问卷列表数据
       getData () {
         this.$http.get('/api/naire')
           .then((response) => {
@@ -260,14 +280,17 @@
             this.$Message.error('网络错误，请重试')
           })
       },
+      // 问卷预览
       preview (nid) {
         window.open(window.location.origin + '/#/view/' + nid)
       },
+      // 复制问卷地址
       getURL (nid) {
         // 复制地址
         this.showURL = true
         this.url = window.location.origin + '/#/view/' + nid
       },
+      // 问卷地址快速复制
       handleCopy () {
         let clipboard = new Clipboard('.copyboard')
 
@@ -280,6 +303,7 @@
           this.$Message.error('复制失败！')
         })
       },
+      // 分页
       changePage (curPage) {
         // 从服务端获取数据
         console.log(curPage)
@@ -317,6 +341,29 @@
         this.currentId = id
         this._fetchStatisData()
         this._getClass()
+      },
+      // 修改截止时间
+      changeTime (time, id) {
+        this.updateTime = true
+        this.deadline = new Date(time).getTime()
+        this.updateTimeId = id
+      },
+      // 提交截止时间修改
+      submitChangeTime () {
+        this.$http.post('/api/naire/changeTime', {
+          n_id: this.updateTimeId,
+          n_deadline: new Date(this.deadline).getTime()
+        })
+          .then((response) => {
+            if (response.data.err === OK && response.data.data > 0) {
+              this.$Message.success('问卷截止时间更改成功')
+              this.getData()
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            this.$Message.error('更改问卷截止时间失败')
+          })
       },
       handleSubmit () {
         console.log(this.searchForm)
