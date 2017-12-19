@@ -2,9 +2,9 @@
 
 class jwt_helper extends CI_Controller
 {
-    const CONSUMER_KEY = 'dididasan';
-    const CONSUMER_SECRET = 'dididasan';
-    const CONSUMER_TTL = 86400;
+    const CONSUMER_KEY = 'questionnaire';
+    const CONSUMER_SECRET = 'questionnaire';
+    const CONSUMER_TTL = 1440;
 
     // 生成 token
     public static function create($userid)

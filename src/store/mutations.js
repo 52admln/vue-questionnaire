@@ -44,12 +44,12 @@ export default {
   },
   [types.USER_LOGIN] (state, payload) {
     state.isAdmin = true
-    localStorage.setItem('USER_NAME', payload.username)
-    localStorage.setItem('JWT_TOKEN', payload.token)
+    sessionStorage.setItem('USER_NAME', payload.username)
+    sessionStorage.setItem('JWT_TOKEN', payload.token)
   },
   [types.LOG_OUT] (state) {
     state.isAdmin = false
-    localStorage.removeItem('JWT_TOKEN')
-    localStorage.removeItem('USER_NAME')
+    sessionStorage.removeItem('JWT_TOKEN')
+    sessionStorage.removeItem('USER_NAME')
   }
 }
