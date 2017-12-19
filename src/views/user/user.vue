@@ -35,7 +35,7 @@
         <Row>
             <Col span="24">
             <Spin fix v-if="loading">
-                <Icon type="load-c" size=18        class="demo-spin-icon-load"></Icon>
+                <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
                 <div>数据加载中...</div>
             </Spin>
             <Table border :context="self"
@@ -67,38 +67,38 @@
                :mask-closable="false">
             <!-- form表单-->
             <Form ref="addUser" :model="addUserForm"
-                  :rules="userRule"
+                  :rules="addUserRule"
                   :label-width="80"
                   class="form">
-                <FormItem label="姓名" prop="name">
+                <FormItem label="姓名" prop="u_name">
                     <Input v-model="addUserForm.u_name"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="专业名称" prop="major">
+                <FormItem label="专业名称" prop="u_major">
                     <Input v-model="addUserForm.u_major"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="班级名称" prop="class">
+                <FormItem label="班级名称" prop="u_class">
                     <Input v-model="addUserForm.u_class"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="学号" prop="number">
+                <FormItem label="学号" prop="u_number">
                     <Input v-model="addUserForm.u_number"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="出生日期" prop="birthday">
+                <FormItem label="出生日期" prop="u_birthday">
                     <Input v-model="addUserForm.u_birthday"
                            placeholder="格式：20171001"></Input>
                 </FormItem>
-                <FormItem label="民族" prop="nation">
+                <FormItem label="民族" prop="u_nation">
                     <Input v-model="addUserForm.u_nation"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="身份证号" prop="identity">
+                <FormItem label="身份证号" prop="u_identity">
                     <Input v-model="addUserForm.u_identity"
                            placeholder="如最后为字母，以大写结尾"></Input>
                 </FormItem>
-                <FormItem label="性别" prop="sex">
+                <FormItem label="性别" prop="u_sex">
                     <RadioGroup v-model="addUserForm.u_sex">
                         <Radio v-for="item in sexList"
                                :key="item.value"
@@ -119,38 +119,38 @@
                :mask-closable="false">
             <!-- form表单-->
             <Form ref="updateUser" :model="updateUserForm"
-                  :rules="userRule"
+                  :rules="updateUserRule"
                   :label-width="80"
                   class="form">
-                <FormItem label="姓名" prop="name">
+                <FormItem label="姓名" prop="u_name">
                     <Input v-model="updateUserForm.u_name"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="专业名称" prop="major">
+                <FormItem label="专业名称" prop="u_major">
                     <Input v-model="updateUserForm.u_major"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="班级名称" prop="class">
+                <FormItem label="班级名称" prop="u_class">
                     <Input v-model="updateUserForm.u_class"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="学号" prop="number">
+                <FormItem label="学号" prop="u_number">
                     <Input v-model="updateUserForm.u_number"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="出生日期" prop="birthday">
+                <FormItem label="出生日期" prop="u_birthday">
                     <Input v-model="updateUserForm.u_birthday"
                            placeholder="格式：20171001"></Input>
                 </FormItem>
-                <FormItem label="民族" prop="nation">
+                <FormItem label="民族" prop="u_nation">
                     <Input v-model="updateUserForm.u_nation"
                            placeholder=""></Input>
                 </FormItem>
-                <FormItem label="身份证号" prop="identity">
+                <FormItem label="身份证号" prop="u_identity">
                     <Input v-model="updateUserForm.u_identity"
                            placeholder="如最后为字母，以大写结尾"></Input>
                 </FormItem>
-                <FormItem label="性别" prop="sex">
+                <FormItem label="性别" prop="u_sex">
                     <RadioGroup v-model="updateUserForm.u_sex">
                         <Radio v-for="item in sexList"
                                :key="item.value"
@@ -261,7 +261,33 @@
           }
         ],
         addFormLoading: false,
-        userRule: {
+        updateUserRule: {
+          u_name: [
+            {required: true, message: '请输入姓名', trigger: 'blur'}
+          ],
+          u_major: [
+            {required: true, message: '请输入专业名称', trigger: 'blur'}
+          ],
+          u_class: [
+            {required: true, message: '请输入班级', trigger: 'blur'}
+          ],
+          u_number: [
+            {required: true, message: '请输入学号', trigger: 'blur'}
+          ],
+          u_birthday: [
+            {required: true, message: '请输入出生日期', trigger: 'blur'}
+          ],
+          u_nation: [
+            {required: true, message: '请输入民族', trigger: 'blur'}
+          ],
+          u_sex: [
+            {required: true, message: '请选择性别', trigger: 'change'}
+          ],
+          u_identity: [
+            {required: true, message: '请输入身份证号', trigger: 'blur'}
+          ]
+        },
+        addUserRule: {
           u_name: [
             {required: true, message: '请输入姓名', trigger: 'blur'}
           ],
