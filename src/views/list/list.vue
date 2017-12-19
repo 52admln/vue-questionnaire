@@ -14,13 +14,16 @@
         <Modal v-model="showURL" title="复制地址">
             <Row>
                 <Col span="18">
-                    <Input v-model="url" ref="copyURL" id="url" :autofocus="true" :readonly="true"></Input>
+                <Input v-model="url" ref="copyURL" id="url" :autofocus="true" :readonly="true"></Input>
                 </Col>
                 <Col span="4" offset="1">
-                    <Button class="copyboard" data-clipboard-target="#url" @click="handleCopy">复制</Button>
+                <Button class="copyboard" data-clipboard-target="#url" @click="handleCopy">复制</Button>
                 </Col>
             </Row>
-            <Alert style="margin-top: 20px">如无法使用上方复制按钮，请选中内容后，使用 Ctrl + C 复制。</Alert>
+            <Alert style="margin-top: 20px">如无法使用上方复制按钮，请选中内容后，使用 Ctrl + C 复制。也可扫描下方二维码或右键保存二维码进行访问。</Alert>
+            <div class="qrcode-wrapper">
+                <div id="qrcode" ref="qrcode"></div>
+            </div>
         </Modal>
         <!-- 修改截止时间 -->
         <Modal v-model="updateTime" title="修改截止时间" @on-ok="submitChangeTime">
@@ -73,6 +76,7 @@
 </template>
 
 <script>
+  import QRCode from 'qrcodejs2'
   import { formatDate } from '../../common/js/utils'
   import Clipboard from 'clipboard'
 
@@ -289,6 +293,16 @@
         // 复制地址
         this.showURL = true
         this.url = window.location.origin + '/#/view/' + nid
+        this.$nextTick(() => {
+          new QRCode(this.$refs.qrcode, { // eslint-disable-line no-new
+            text: `${window.location.host}${window.location.pathname}`,
+            width: 250,
+            height: 250,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+          })
+        })
       },
       // 问卷地址快速复制
       handleCopy () {
@@ -441,5 +455,16 @@
         height: 100px;
         position: relative;
         border: 1px solid #eee;
+    }
+
+    .qrcode-wrapper {
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    #qrcode {
+        margin: 0 auto;
+        width: 250px;
+        height: 250px;
     }
 </style>
