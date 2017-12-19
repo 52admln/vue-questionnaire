@@ -295,7 +295,7 @@
         this.url = window.location.origin + '/#/view/' + nid
         this.$nextTick(() => {
           new QRCode(this.$refs.qrcode, { // eslint-disable-line no-new
-            text: `${window.location.host}${window.location.pathname}`,
+            text: window.location.origin + '/#/view/' + nid,
             width: 250,
             height: 250,
             colorDark: '#000000',
