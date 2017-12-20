@@ -14,8 +14,8 @@ Vue.use(iView)
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    if (sessionStorage.JWT_TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
-      config.headers.Authorization = `token ${sessionStorage.JWT_TOKEN}`
+    if (localStorage.JWT_TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers.Authorization = `token ${localStorage.JWT_TOKEN}`
     }
     return config
   },
