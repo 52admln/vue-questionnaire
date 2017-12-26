@@ -3,7 +3,7 @@
     ["env", { "modules": false }],
     "stage-2"
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": ["transform-runtime", "syntax-dynamic-import"],
   "comments": false,
   "env": {
     "test": {
