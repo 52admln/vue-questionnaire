@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/login/login'
-import Layout from '@/views/layout/layout'
+const Login = () => import('@/views/login/login')
+const Layout = () => import('@/views/layout/layout')
 
-import List from '@/views/list/list'
-import Edit from '@/views/edit/edit'
-import View from '@/views/view/view'
-import User from '@/views/user/user'
-import ChangePwd from '@/views/admin/changepwd'
+const List = () => import('@/views/list/list')
+const Edit = () => import('@/views/edit/edit')
+const View = () => import('@/views/view/view')
+const User = () => import('@/views/user/user')
+const ChangePwd = () => import('@/views/admin/changepwd')
 
-import Statis from '@/views/statis/statis'
-import Result from '@/views/statis/result'
-import crossAnalysis from '@/views/statis/cross-analysis'
-import SourceData from '@/views/statis/source-data'
+const Statis = () => import('@/views/statis/statis')
+const Result = () => import('@/views/statis/result')
+const crossAnalysis = () => import('@/views/statis/cross-analysis')
+const SourceData = () => import('@/views/statis/source-data')
 
-import Error from '@/views/common/error/error'
-import Complete from '@/views/common/complete/complete'
+const Error = () => import('@/views/common/error/error')
+const Complete = () => import('@/views/common/complete/complete')
 
 Vue.use(Router)
 
