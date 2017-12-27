@@ -2,7 +2,7 @@
     <div class="login-wrapper">
         <div class="login-form">
             <h3 class="title">微型问卷系统后台管理</h3>
-            <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" label-position="top" class="form-area" @submit.prevent>
+            <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" label-position="top" class="form-area" @submit.prevent @keyup.enter="handleSubmit('formValidate')">
                 <Form-item label="用户名" prop="username">
                     <Input v-model="formValidate.username"></Input>
                 </Form-item>
@@ -10,7 +10,7 @@
                     <Input type="password" v-model="formValidate.password"></Input>
                 </Form-item>
                 <Form-item>
-                    <Button type="primary" html-type="submit" @click="handleSubmit('formValidate')" long>立即登录
+                    <Button type="primary" html-type="submit"  @click="handleSubmit('formValidate')" long>立即登录
                     </Button>
                 </Form-item>
             </Form>
