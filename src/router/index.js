@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Login = () => import('@/views/login/login')
-const Layout = () => import('@/views/layout/layout')
+// const Layout = () => import('@/views/layout/layout')
+import Layout from '@/views/layout/layout'
 
 const List = () => import('@/views/list/list')
 const Edit = () => import('@/views/edit/edit')
