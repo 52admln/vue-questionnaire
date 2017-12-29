@@ -239,7 +239,8 @@
             }
           }
         ],
-        naireList: []
+        naireList: [],
+        qrcode: null
       }
     },
     methods: {
@@ -294,14 +295,18 @@
         this.showURL = true
         this.url = window.location.origin + '/#/view/' + nid
         this.$nextTick(() => {
-          new QRCode(this.$refs.qrcode, { // eslint-disable-line no-new
-            text: window.location.origin + '/#/view/' + nid,
-            width: 250,
-            height: 250,
-            colorDark: '#000000',
-            colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.H
-          })
+          if (this.qrcode === null) {
+            this.qrcode = new QRCode(this.$refs.qrcode, { // eslint-disable-line no-new
+              text: window.location.origin + '/#/view/' + nid,
+              width: 250,
+              height: 250,
+              colorDark: '#000000',
+              colorLight: '#ffffff',
+              correctLevel: QRCode.CorrectLevel.H
+            })
+          } else {
+            this.qrcode.makeCode(window.location.origin + '/#/view/' + nid)
+          }
         })
       },
       // 问卷地址快速复制

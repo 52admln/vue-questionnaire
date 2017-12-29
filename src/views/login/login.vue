@@ -2,7 +2,7 @@
     <div class="login-wrapper">
         <div class="login-form">
             <h3 class="title">微型问卷系统后台管理</h3>
-            <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" label-position="top" class="form-area" @submit.prevent @keyup.enter="handleSubmit('formValidate')">
+            <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" label-position="top" class="form-area" @submit.native.prevent @keyup.enter="handleSubmit('formValidate')">
                 <Form-item label="用户名" prop="username">
                     <Input v-model="formValidate.username"></Input>
                 </Form-item>
@@ -10,7 +10,7 @@
                     <Input type="password" v-model="formValidate.password"></Input>
                 </Form-item>
                 <Form-item>
-                    <Button type="primary" html-type="submit"  @click="handleSubmit('formValidate')" long>立即登录
+                    <Button type="primary" html-type="submit" @click="handleSubmit('formValidate')" long>立即登录
                     </Button>
                 </Form-item>
             </Form>
@@ -75,7 +75,7 @@
                   this.$store.dispatch('login', data)
                   // dispatch action，从action commit 到mutation更新登录状态
 //                  this.$store.dispatch('login', this.formValidate.username);
-                  this.$router.push('/platform')
+                  this.$router.push('/platform/list')
                 } else {
                   this.$Message.error('帐号或密码有误!')
                 }
