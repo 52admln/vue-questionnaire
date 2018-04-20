@@ -47,3 +47,9 @@ npm run build
 数据库文件： `api/database.sql`，使用前请先导入。
 
 CI框架数据库连接配置信息请先设置。
+
+## 打赏
+如果我的付出能够帮助到你，我也乐于接受你的帮助，小小的赞赏是我们持续进步的动力。
+
+![支付宝支付](http://o99llmab0.bkt.clouddn.com/alipay.png)
+![微信支付](http://o99llmab0.bkt.clouddn.com/wechat.png)
