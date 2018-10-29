@@ -1,4 +1,11 @@
 <?php
+if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
+  header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  header('Access-Control-Allow-Methods: GET, POST, PUT,DELETE,OPTIONS,PATCH');
+  exit;
+}
+header("Access-Control-Allow-Origin:*");
 /**
  * CodeIgniter
  *
@@ -35,8 +42,6 @@
  * @since	Version 1.0.0
  * @filesource
  */
-
-header("Access-Control-Allow-Origin:*");
 
 /*
  *---------------------------------------------------------------
