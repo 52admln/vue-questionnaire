@@ -247,7 +247,7 @@
       // 删除问卷
       remove (index) {
         console.log(index)
-        this.$http.get('/api/naire/del', {
+        this.$http.get('/naire/del', {
           params: {
             n_id: this.naireList[index].n_id
           }
@@ -275,7 +275,7 @@
       },
       // 获取问卷列表数据
       getData () {
-        this.$http.get('/api/naire')
+        this.$http.get('/naire')
           .then((response) => {
             this.naireList = response.data.data
             this.loading = false
@@ -338,7 +338,7 @@
       // 修改问卷状态
       changeStatus (nId, status) {
         console.log(nId, status)
-        this.$http.get('/api/naire/changeStatus', {
+        this.$http.get('/naire/changeStatus', {
           params: {
             n_id: nId
           }
@@ -369,7 +369,7 @@
       },
       // 提交截止时间修改
       submitChangeTime () {
-        this.$http.post('/api/naire/changeTime', {
+        this.$http.post('/naire/changeTime', {
           n_id: this.updateTimeId,
           n_deadline: new Date(this.deadline).getTime()
         })
@@ -393,7 +393,7 @@
         this.submitStatisLoading = true
         // 从服务端获取数据
         // 往后台传2各参数，每页显示条数和当前页码
-        this.$http.get('/api/naire/submitStatis', {
+        this.$http.get('/naire/submitStatis', {
           params: {
             n_id: this.currentId,
             current: this.currentPage,
@@ -414,7 +414,7 @@
           })
       },
       _getClass () {
-        this.$http.get('/api/user/getClass')
+        this.$http.get('/user/getClass')
           .then((response) => {
             console.log(response.data)
             if (response.data.err === OK) {

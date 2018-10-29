@@ -107,7 +107,7 @@
     beforeCreate () {
       // 获取数据，push 到 chartOptions 中
       // 获取 问卷id
-      this.$http.post('/api/naire/sourcedata', {
+      this.$http.post('/naire/sourcedata', {
         n_id: this.$route.params.id
       })
         .then((response) => {

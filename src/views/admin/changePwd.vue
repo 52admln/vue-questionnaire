@@ -77,7 +77,7 @@
               'oldpwd': this.formCustom.oldppasswd,
               'newpwd': this.formCustom.passwd
             }
-            this.$http.post('/api/admin/changepwd', params)
+            this.$http.post('/admin/changepwd', params)
               .then((response) => {
                 console.log(response.data)
                 // 影响行数大于0
