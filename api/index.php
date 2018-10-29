@@ -36,6 +36,8 @@
  * @filesource
  */
 
+header("Access-Control-Allow-Origin:*");
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
