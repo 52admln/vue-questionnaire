@@ -11,7 +11,7 @@ import 'iview/dist/styles/iview.css'   // 使用 CSS
 
 Vue.use(iView)
 
-axios.defaults.baseURL = 'http://wocn.vip/'
+axios.defaults.baseURL = '/api/'
 
 // http request 拦截器
 axios.interceptors.request.use(
