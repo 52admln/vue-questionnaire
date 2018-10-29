@@ -1,13 +1,13 @@
 // import api from '../api/index'
 import * as types from './mutation-types'
-import axios from 'axios'
+import Vue from 'vue'
 
 // 全局的actions
 
 // questionList
 export const getNaire = ({commit, state}, data) => {
   console.log('commit REQUEST_QUESTION_LIST')
-  return axios.post('/api/naire/detail', {
+  return Vue.$http.post('/naire/detail', {
     n_id: data.n_id
   })
 }
@@ -21,7 +21,7 @@ export const saveNewNaire = ({commit, state}, data) => {
   // const params = new URLSearchParams()
   // params.append('naire', JSON.stringify(state.naire))
   // params.append('status', state.status)
-  return axios.post('/api/naire/save', {
+  return Vue.$http.post('/naire/save', {
     naire: state.naire,
     status: state.status
   })

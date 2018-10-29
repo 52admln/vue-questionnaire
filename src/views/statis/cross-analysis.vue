@@ -174,7 +174,7 @@
       crossAnalysis () {
         // 获取数据，push 到 chartOptions 中
         // 获取 问卷id
-        this.$http.post('/api/naire/crossanalysis', {
+        this.$http.post('/naire/crossanalysis', {
           n_id: this.$route.params.id,
           x_id: this.options.x_id,
           y_id: this.options.y_id
@@ -199,7 +199,7 @@
       }
     },
     beforeCreate () {
-      this.$http.post('/api/naire/questions', {
+      this.$http.post('/naire/questions', {
         n_id: this.$route.params.id
       })
         .then((response) => {

@@ -64,7 +64,7 @@
               'username': this.formValidate.username,
               'password': this.formValidate.password
             })
-            this.$http.post('/api/admin/login', params)
+            this.$http.post('/admin/login', params)
               .then((response) => {
                 if (response.data.err === OK) {
                   this.$Message.success('登录成功!')

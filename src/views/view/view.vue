@@ -102,7 +102,7 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
 // 查找用户，返回用户id
-            this.$http.post('/api/user/getId', {
+            this.$http.post('/user/getId', {
               n_id: this.naire.n_id,
               name: this.userInfo.name,
               identity: this.userInfo.identity.toUpperCase()
@@ -257,7 +257,7 @@
         console.log(result)
         // 防止重复提交
         this.finished = true
-        this.$http.post('/api/naire/submit', {
+        this.$http.post('/naire/submit', {
           result: result
         })
           .then((response) => {

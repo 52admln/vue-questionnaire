@@ -6,7 +6,7 @@
             </Col>
             <Col span="3" style="width: 120px">
             <Upload
-                    action="/api/user/upload"
+                    action="/user/upload"
                     accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     name="userfile"
                     :show-upload-list="false"
@@ -346,7 +346,7 @@
       },
       // 编辑用户
       update (index) {
-        this.$http.get('/api/user', {
+        this.$http.get('/user', {
           params: {
             u_id: this.userData[index].u_id
           }
@@ -365,7 +365,7 @@
       },
       // 删除用户
       remove (index) {
-        this.$http.post('/api/user/del', {
+        this.$http.post('/user/del', {
           u_id: this.userData[index].u_id
         })
           .then((response) => {
@@ -384,7 +384,7 @@
         this.selectRows.forEach(({u_id}) => {
           rowIds.push(u_id)
         })
-        this.$http.post('/api/user/del', {
+        this.$http.post('/user/del', {
           u_id: rowIds + ''
         })
           .then((response) => {
@@ -405,7 +405,7 @@
         this.loading = true
         this.currentPage = curPage
         // 往后台传2各参数，每页显示条数和当前页码
-        this.$http.get('/api/user', {
+        this.$http.get('/user', {
           params: {
             current: curPage,
             page_size: this.pageSize
@@ -423,7 +423,7 @@
       },
       // 拉取用户数据
       getData () {
-        this.$http.get('/api/user', {
+        this.$http.get('/user', {
           params: {
             keyword: this.filters.keyword,
             value: this.filters.value,
@@ -478,7 +478,7 @@
       updateUser (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$http.post('/api/user/updateUser', Object.assign({}, this.updateUserForm))
+            this.$http.post('/user/updateUser', Object.assign({}, this.updateUserForm))
               .then((response) => {
                 console.log(response.data.data)
                 if (response.data.err === OK) {
@@ -503,7 +503,7 @@
       submitUser (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$http.post('/api/user/addUser', Object.assign({}, this.addUserForm))
+            this.$http.post('/user/addUser', Object.assign({}, this.addUserForm))
               .then((response) => {
                 if (response.data.err === OK) {
                   this.$Message.success(response.data.data)
