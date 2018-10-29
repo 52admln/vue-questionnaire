@@ -6,7 +6,7 @@
             </Col>
             <Col span="3" style="width: 120px">
             <Upload
-                    action="/user/upload"
+                    :action="`${baseURL}/user/upload`"
                     accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     name="userfile"
                     :show-upload-list="false"
@@ -168,10 +168,12 @@
 </template>
 
 <script>
+  import baseURL from '@/config'
   const OK = 0 // OK
   export default {
     data () {
       return {
+        baseURL: baseURL,
         selectRows: [],
         filters: {
           keyword: '',
