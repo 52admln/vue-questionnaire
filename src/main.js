@@ -8,10 +8,10 @@ import axios from 'axios'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'   // 使用 CSS
 // import IEcharts from 'vue-echarts-v3/src/full.vue';
-
+import baseURL from './config'
 Vue.use(iView)
 
-axios.defaults.baseURL = '/api/'
+axios.defaults.baseURL = baseURL
 
 // http request 拦截器
 axios.interceptors.request.use(
