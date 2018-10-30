@@ -50,9 +50,11 @@ Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
+const vm = new Vue({
   el: '#app',
   router,
   store,
   ...App
 }).$mount('#app')
+
+export default vm
