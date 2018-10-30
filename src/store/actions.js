@@ -1,13 +1,13 @@
 // import api from '../api/index'
 import * as types from './mutation-types'
-import Vue from 'vue'
+import vm from '@/main'
 
 // 全局的actions
 
 // questionList
 export const getNaire = ({commit, state}, data) => {
   console.log('commit REQUEST_QUESTION_LIST')
-  return Vue.$http.post('/naire/detail', {
+  return vm.$http.post('/naire/detail', {
     n_id: data.n_id
   })
 }
@@ -21,7 +21,7 @@ export const saveNewNaire = ({commit, state}, data) => {
   // const params = new URLSearchParams()
   // params.append('naire', JSON.stringify(state.naire))
   // params.append('status', state.status)
-  return Vue.$http.post('/naire/save', {
+  return vm.$http.post('/naire/save', {
     naire: state.naire,
     status: state.status
   })
