@@ -51,5 +51,11 @@ CI框架数据库连接配置信息请先设置。
 ## 打赏
 如果我的付出能够帮助到你，我也乐于接受你的帮助，小小的赞赏是我们持续进步的动力。
 
+
+头像 | 昵称 | 金额
+---|---|---
+![](https://avatars0.githubusercontent.com/u/29153603?s=60&v=4) | [Little Mo](https://github.com/one-mo) | ￥50.00
+
+
 ![支付宝支付](http://o99llmab0.bkt.clouddn.com/alipay.png)
 ![微信支付](http://o99llmab0.bkt.clouddn.com/wechat.png)
