@@ -58,11 +58,11 @@ CI框架数据库连接配置信息请先设置。
 如果我的付出能够帮助到你，我也乐于接受你的帮助，小小的赞赏是我们持续进步的动力。
 
 
-头像 | 昵称 | 金额
----|---|---
-![](https://avatars0.githubusercontent.com/u/29153603?s=60&v=4) | [Little Mo](https://github.com/one-mo) | ￥50.00
-![](https://avatars1.githubusercontent.com/u/10943213?s=60&v=4) | [mike](https://github.com/zhezhe168) | ￥1600.00
-![](https://avatars0.githubusercontent.com/u/22438119?s=60&v=4) | [stepven8](https://github.com/stepven8) | ￥50.00
+昵称 | 金额
+---|---
+[Little Mo](https://github.com/one-mo) | ￥50.00
+[mike](https://github.com/zhezhe168) | ￥1600.00
+[stepven8](https://github.com/stepven8) | ￥50.00
 
 ![支付宝支付](https://blog.52admin.net/wp-content/uploads/2017/09/alipay.png)
 ![微信支付](https://blog.52admin.net/wp-content/uploads/2017/09/wechat.png)
