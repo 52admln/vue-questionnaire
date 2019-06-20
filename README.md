@@ -16,7 +16,9 @@
 2. 查看问题选项所选人员信息（姓名、班级）
 3. 修改用户已填写的选项
 
-## 安装
+## 前端部署说明
+
+前端文件存放于 `/front-end/ ` 文件夹下
 
 ``` bash
 # 安装依赖
@@ -25,7 +27,7 @@ npm install
 # 服务热重载地址：localhost:8080
 npm run dev
 
-# 为生产环境打包成压缩版本
+# 线上部署编译
 npm run build
 
 ```
@@ -43,6 +45,10 @@ npm run build
 
 同时也可以根据本地PHP环境的访问地址来修改 `/config/index.js` 中 `proxyTabel` 相关配置。
 
+### API接口请求地址
+
+修改 `/src/config/index.js` 中的 `baseURL`
+
 ## 后台配置
 数据库文件： `api/database.sql`，使用前请先导入。
 
@@ -52,10 +58,11 @@ CI框架数据库连接配置信息请先设置。
 如果我的付出能够帮助到你，我也乐于接受你的帮助，小小的赞赏是我们持续进步的动力。
 
 
-头像 | 昵称 | 金额
----|---|---
-![](https://avatars0.githubusercontent.com/u/29153603?s=60&v=4) | [Little Mo](https://github.com/one-mo) | ￥50.00
-![](https://avatars1.githubusercontent.com/u/10943213?s=60&v=4) | [mike](https://github.com/zhezhe168) | ￥400.00
+昵称 | 金额
+---|---
+[Little Mo](https://github.com/one-mo) | ￥50.00
+[mike](https://github.com/zhezhe168) | ￥1600.00
+[stepven8](https://github.com/stepven8) | ￥50.00
 
 ![支付宝支付](https://blog.52admin.net/wp-content/uploads/2017/09/alipay.png)
 ![微信支付](https://blog.52admin.net/wp-content/uploads/2017/09/wechat.png)
