@@ -1,5 +1,10 @@
 # vue-questionnaire
 
+注意：
+
+本项目已暂停维护，取而代之的是 TypeScript 版本的微型问卷调查系统，[点击查看](https://github.com/52admln/ts-vue-questionnaire)。
+
+
 > 简易问卷系统,目前功能正在逐步完善中...
 
 > 由于本系统用于校内学生，所以在提交问卷时需要先查看用户的有效性（参与问卷调查的人员是可控的），如不需要此功能，可以自行修改代码。
@@ -57,12 +62,11 @@ CI框架数据库连接配置信息请先设置。
 ## 打赏
 如果我的付出能够帮助到你，我也乐于接受你的帮助，小小的赞赏是我们持续进步的动力。
 
-
 昵称 | 金额
 ---|---
 [Little Mo](https://github.com/one-mo) | ￥50.00
 [mike](https://github.com/zhezhe168) | ￥1600.00
 [stepven8](https://github.com/stepven8) | ￥50.00
+飞 | ￥50.00
 
-![支付宝支付](https://blog.52admin.net/wp-content/uploads/2017/09/alipay.png)
-![微信支付](https://blog.52admin.net/wp-content/uploads/2017/09/wechat.png)
+<img src="https://raw.githubusercontent.com/52admln/static-images/master/img/donate.png" width="60%" />
