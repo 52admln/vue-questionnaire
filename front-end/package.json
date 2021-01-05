@@ -11,7 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "axios": "~0.15.3",
+    "axios": "~0.21.1",
     "clipboard": "^1.7.1",
     "iview": "=2.0.0-rc.13",
     "qrcodejs2": "0.0.2",
